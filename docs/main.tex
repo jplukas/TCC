@@ -1,0 +1,144 @@
+\documentclass[11pt]{article}
+\usepackage[table]{xcolor}
+\usepackage[a4paper, portrait, margin=1.1811in]{geometry}
+\usepackage[portuguese]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{helvet}
+\usepackage{lipsum}  
+\usepackage{etoolbox}
+\usepackage{graphicx}
+\usepackage{titlesec}
+\usepackage{caption}
+\usepackage{booktabs}
+\usepackage{xcolor} 
+\usepackage{url}
+\def\UrlBreaks{\do\/\do-}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=blue,
+    citecolor=blue,
+    pdftitle={Proposta TCC João Pedro},
+    pdfpagemode=FullScreen,
+    }
+
+\urlstyle{same}
+\usepackage{caption}
+\captionsetup[figure]{name=Figure}
+\graphicspath{ {./images/} }
+\usepackage{scrextend}
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+\usepackage[T1]{fontenc}
+%\pagestyle{plain}
+\makeatletter
+\patchcmd{\@maketitle}{\LARGE \@title}{\fontsize{16}{19.2}\selectfont\@title}{}{}
+\makeatother
+
+\usepackage{authblk}
+\renewcommand\Authfont{\fontsize{10}{10.8}\selectfont}
+\renewcommand\Affilfont{\fontsize{10}{10.8}\selectfont}
+\renewcommand*{\Authsep}{\\}
+\renewcommand*{\Authand}{\\}
+\renewcommand*{\Authands}{\\}
+\setlength{\affilsep}{2em}  
+\newsavebox\affbox
+\author{\textbf{João Pedro Lukasavicus Silva (IME - USP)}\\
+        \textbf{Orientador: Mateus Espadoto (IME - USP)}\\
+}
+\titlespacing\section{0pt}{12pt plus 4pt minus 2pt}{0pt plus 2pt minus 2pt}
+\titlespacing\subsection{12pt}{12pt plus 4pt minus 2pt}{0pt plus 2pt minus 2pt}
+\titlespacing\subsubsection{12pt}{12pt plus 4pt minus 2pt}{0pt plus 2pt minus 2pt}
+
+
+\titleformat{\section}{\normalfont\fontsize{11}{15}\bfseries}{\thesection.}{1em}{}
+\titleformat{\subsection}{\normalfont\fontsize{11}{15}\bfseries}{\thesubsection.}{1em}{}
+\titleformat{\subsubsection}{\normalfont\fontsize{11}{15}\bfseries}{\thesubsubsection.}{1em}{}
+
+\titleformat{\author}{\normalfont\fontsize{11}{15}\bfseries}{\thesection}{1em}{}
+
+\title{\vspace{-1.0cm} \textbf{\Large Proposta - Trabalho de Formatura Supervisionado}\\
+	Modelagem de Tópicos em Textos Históricos utilizando LLMs
+ \vspace{0.2cm}
+ 
+\large 2025}
+\date{}
+
+\begin{document}
+
+\pagestyle{headings}	
+\newpage
+\setcounter{page}{1}
+\renewcommand{\thepage}{\arabic{page}}
+
+\captionsetup[figure]{labelfont={bf},labelformat={default},labelsep=period,name={Figura }}
+\captionsetup[table]{labelfont={bf},labelformat={default},labelsep=period,name={Tabela }}
+\setlength{\parskip}{0.5em}
+	
+\maketitle
+
+\section{Introdução}
+Tradicionalmente, pesquisadores das áreas de humanidades como história, filosofia, entre outras, dependem da análise de grandes quantidades de fontes para a realização do seu trabalho. Esta análise tipicamente é realizada de forma manual, e com grande custo, tanto em termos de tempo quanto de recursos humanos, custo este que pode se tornar um fator limitador da produção científica desses pesquisadores.
+
+A área de processamento de linguagem natural (NLP) possui métodos bem estabelecidos para análise semântica de textos, como por exemplo, modelagem de tópicos~\cite{deerwester1990indexing,blei2003latent,jelodar2019latent}. No entanto, o uso destas técnicas requer certa familiaridade com o seu funcionamento, para que sejam feitos os ajustes necessários para a obtenção de bons resultados.
+
+Com o surgimento de grandes modelos de linguagem (LLM) baseados em transformers~\cite{vaswani2017attention,devlin2019bert}, é possível observar um grande salto em termos de qualidade das ferramentas e métodos, o que pode ser atribuído à maior capacidade de mapeamento de conceitos em um espaço latente de atributos, que, por sua vez, possibilita um melhor agrupamento de textos em termos de semântica.
+
+% A área de modelagem de tópicos é uma subárea de processamento de linguagem natural (NLP), que visa desenvolver métodos para extrair tópicos de documentos de texto e agrupar documentos tratando de assuntos semelhantes...\\
+% Dada uma representação de uma série de documentos em um espaço latente, e uma categorização dos tópicos destes documentos, podemos analisar como estão distribuídos esses tópicos, e como eles se conectam, usando ferramentas teóricas de Teoria dos Grafos.
+
+\section{Objetivos}
+
+Neste trabalho, iremos investigar conexões entre tópicos de interesse de historiadores sobre a obra conhecida como "Etimologias", de Isidoro de Sevilha (c.560-636), que é uma compilação de 20 livros sobre as origens das palavras, em que o autor buscou registrar o conhecimento de escritores latinos da Antiguidade Clássica, como Varrão e Plínio o Velho. Esta obra é considerada a primeira grande enciclopédia da Idade Média, e foi copiada exaustivamente ao longo de cerca de 700 anos para ser utilizada como livro-texto base nas instituições de ensino da época.
+
+O texto original é em latim medieval, mas para este trabalho será utilizada a tradução para a língua inglesa das Etimologias~\cite{barney2006etymologies}, por conveniência.
+
+Para o estudo de conexões e tópicos existentes na obra, serão utilizadas ferramentas como grandes modelos de linguagem para geração de \emph{embeddings}, como Jina V3~\cite{jina}, bibliotecas de modelagem de tópicos baseadas em transformers, como BERTopic~\cite{grootendorst2022bertopic}, UMAP~\cite{mcinnes2018umap} para visualização dos \emph{embeddings} em duas dimensões, e Graphviz~\cite{gansner2000open} para visualização das conexões na forma de grafos.
+
+
+\section{Plano de trabalho e cronograma}
+As atividades a serem realizadas estão resumidas abaixo. Tanto a lista de atividades quanto o cronograma estão sujeitos a alterações.
+\begin{enumerate}
+    \item Conversas com especialistas para entender questões de interesse
+    \item Estudo das ferramentas a serem utilizadas no projeto
+    \item Preparação do texto para processamento
+    \item Criação de ferramenta para modelagem de tópicos
+    \item Análise dos resultados e validação com especialistas
+    \item Apresentação do trabalho
+    \item Produção do texto final
+
+\end{enumerate}
+
+\newcolumntype{B}{p{0.05\textwidth}}
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|c|c|c|c|c|c|c|c|c|}  
+    \hline
+    Atividades&Maio&Jun.&Jul.&Ago.&Set.&Out.&Nov.&Dez. \\
+    \hline
+    1&\cellcolor{black!100}& \cellcolor{black!100} & & & & & &\\
+    \hline
+    2& \cellcolor{black!100} & \cellcolor{black!100}&&&&&&\\
+    \hline
+    3&&\cellcolor{black!100}&\cellcolor{black!100}&&&&&\\
+    \hline
+    4&&&\cellcolor{black!100}&\cellcolor{black!100}&\cellcolor{black!100}&&&\\
+    \hline
+    5&&&&&\cellcolor{black!100}&\cellcolor{black!100}&&\\
+    \hline
+    6&&&&&&\cellcolor{black!100}&&\\
+    \hline
+    7&&&&&&\cellcolor{black!100}&\cellcolor{black!100}&\\
+    \hline
+    \end{tabular}
+    \caption{Cronograma de execução mensal, de maio a dezembro de 2025}
+    \label{table:Cronograma}
+\end{table}
+
+\bibliographystyle{alpha} 
+\bibliography{dashboard}
+\end{document}
+
