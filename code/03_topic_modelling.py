@@ -12,6 +12,8 @@ import chromadb
 import matplotlib.pyplot as plt
 from bertopic import BERTopic
 from sentence_transformers import SentenceTransformer
+import datamapplot
+from tqdm import tqdm
 
 
 def plot(X_2d, y, words_2d, words):
@@ -39,23 +41,28 @@ embedders = [
 
 
 if __name__ == '__main__':
+    for emb_name in (pbar:= tqdm(embedders)):
+        pbar.set_postfix_str(emb_name)
+    # emb_name = 'jinaai/jina-embeddings-v3' #TODO: change to plot data from a different embedder
+        coll_name = emb_name.replace('-', '_').replace(':', '_').replace('/', '_') + '__en'
+        client = chromadb.PersistentClient('isidb')
+        coll = client.get_collection(coll_name)
+        all_data = coll.get(include=['embeddings', 'documents'])
 
-    emb_name = 'jinaai/jina-embeddings-v3' #TODO: change to plot data from a different embedder
-    coll_name = emb_name.replace('-', '_').replace(':', '_').replace('/', '_') + '__en'
-    client = chromadb.PersistentClient('isidb')
-    coll = client.get_collection(coll_name)
-    all_data = coll.get(include=['embeddings', 'documents'])
+        if not os.path.exists('models/' + coll_name):
+            topic_model = BERTopic(nr_topics=30).fit(all_data['documents'], embeddings=all_data['embeddings'])
+            topic_model.save('models/' + coll_name, 'safetensors', emb_name, True)
+        
+        else:
+            topic_model = BERTopic.load('models/' + coll_name)
+        intplot = topic_model.visualize_document_datamap(all_data['documents'], embeddings=all_data['embeddings'], interactive=True)
+        intplot.save('visualizations/' + coll_name + '.html')
 
-    if not os.path.exists('models/' + coll_name):
-        topic_model = BERTopic(nr_topics=30).fit(all_data['documents'], embeddings=all_data['embeddings'])
-        topic_model.save('models/' + coll_name, 'safetensors', emb_name, True)
+
     
-    else:
-        topic_model = BERTopic.load('models/' + coll_name)
-    
+    # fig = topic_model.visualize_documents(all_data['documents'], embeddings=all_data['embeddings'])
     # p = UMAP(n_neighbors=10, n_components=2, min_dist=0.0, metric='cosine')
     # reduced_embeddings = p.fit_transform(all_data['embeddings'])
-    # fig = topic_model.visualize_documents(all_data['documents'], )
     
     # embedder = SentenceTransformer(emb_name, trust_remote_code=True)
 
