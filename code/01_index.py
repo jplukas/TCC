@@ -2,8 +2,10 @@
 # -*- coding: utf-8 -*-
 
 import warnings
+import logging
 warnings.simplefilter(action='ignore', category=FutureWarning)
 warnings.simplefilter(action='ignore', category=UserWarning)
+logging.basicConfig()
 
 import sys
 import readline
@@ -11,7 +13,8 @@ import os
 import spacy
 from spacy.attrs import ORTH, NORM
 from tqdm import tqdm
-import chromadb
+from chromadb import PersistentClient
+from chromadb.utils.batch_utils import create_batches
 import json
 from datetime import datetime
 from rich import print
@@ -30,7 +33,6 @@ SETTINGS['en'] = {'split_normal': r'^(?=[mdclxvi])m*(c[md]|d?C{0,3})(x[cl]|l?x{0
                 'num_topic_regex': r'(\d+\.)[ A-Z]',
                 'topic_id_cleanup': lambda s: re.sub('[A-Z. ]', '', s),
                 'senter': 'en'}
-
 
 class TextLoader:
     def __init__(self, book_dir, settings):
@@ -52,8 +54,10 @@ class TextLoader:
             split_chp_regex = self.settings['split_normal']
 
         book = {}
-
-        book_file_name = os.path.join(self.book_dir, self.settings['file_name_mask'].format(book_id))
+        
+        book_file_name = os.path.join(self.book_dir,
+            self.settings['file_name_mask'].format(book_id) if book_id != '10' else 'book_10.txt'
+        )
 
         #empty book if not exists
         if not os.path.exists(book_file_name):
@@ -164,12 +168,13 @@ class TextLoader:
 class Searcher:
     def __init__(self, embedder_name):
         self.embedder_name = embedder_name
-        self.embedder = SentenceTransformer(self.embedder_name, trust_remote_code=True)
-
+        device = "cuda" if embedder_name not in [
+            'intfloat/multilingual-e5-large-instruct',
+            # 'nomic-ai/nomic-embed-text-v2-moe',
+        ] else "cpu"
+        self.embedder = SentenceTransformer(self.embedder_name, trust_remote_code=True, device=device)
         self.coll_base_name = self.embedder_name.replace('-', '_').replace(':', '_').replace('/', '_')
-
-        self.client = chromadb.PersistentClient('isidb')
-
+        self.client = PersistentClient('isidb')
         self.documents = []
 
 
@@ -184,21 +189,22 @@ class Searcher:
         return is_loaded, collection
 
 
-    def insert_db(self, batch_ids, batch_txt, collection):
+    def insert_db(self, batch_ids, batch_txt, collection, metadatas):
         embeddings = self.embedder.encode(batch_txt, normalize_embeddings=True)
-        collection.add(ids=batch_ids, embeddings=embeddings, documents=batch_txt)
+        batches = create_batches(self.client, list(batch_ids), list(embeddings), list(metadatas), list(batch_txt))
+        for batch in tqdm(batches, desc="Batches", leave=False):
+            collection.add(*batch)
 
 
     def save_to_vectordb(self, book_text, edition, collection):
         #each book
-        for book_id, book in tqdm(book_text.items()):
+        batch_ids = []
+        batch_txt = []
+        metadatas = []
+        for book_id, book in book_text.items():
             #each chapter in book
             for chp_id in book.keys():
                 topics = book[chp_id]['topics']
-
-                batch_ids = []
-                batch_txt = []
-
                 #for each topic in chapter
                 for topic_id, topic in topics.items():
                     #full chapter (aka all topics in one sentence)
@@ -206,17 +212,22 @@ class Searcher:
                         continue
                     else:
                         for sent_id, ssent in topic.items():
-                            #full topic (aka all sentences in one)
-                            if sent_id == 'all':
-                                continue
-                            #each sentence in topic
-                            else:
+                            # full topic (aka all sentences in one)
+                            # if sent_id == 'all':
+                            #     continue
+                            # # each sentence in topic
+                            # else:
                                 idx = '{0}.{1}.{2}.{3}.S{4}'.format(edition, book_id, chp_id, topic_id, sent_id)
-                                print(idx)
                                 batch_ids.append(idx)
                                 batch_txt.append(ssent)
-
-            self.insert_db(batch_ids, batch_txt, collection)
+                                metadatas.append({
+                                    "edition": edition,
+                                    "book": book_id,
+                                    "chapter": chp_id,
+                                    "topic": topic_id,
+                                    "sentence": sent_id,
+                                })
+        self.insert_db(batch_ids, batch_txt, collection, metadatas)
 
 
     def query(self, query, n, collection):
@@ -240,12 +251,19 @@ class Searcher:
 
 
 if __name__ == '__main__':
-    embedders = ['sentence-transformers/LaBSE', 'jinaai/jina-embeddings-v3', 'intfloat/multilingual-e5-large-instruct', 'nomic-ai/nomic-embed-text-v2-moe']
+    embedders = [
+        'sentence-transformers/LaBSE',
+        'jinaai/jina-embeddings-v3',
+        'intfloat/multilingual-e5-large-instruct',
+        'nomic-ai/nomic-embed-text-v2-moe',
+    ]
 
     book_editions = ['en']
     loaders = {}
 
-    for ed in (pbar:= tqdm(book_editions)):
+    print("Loading books...")
+
+    for ed in (pbar:= tqdm(book_editions, desc='Editions', leave=True, unit='ed')):
         pbar.set_postfix_str(ed)
 
         loaders[ed] = TextLoader('./books', SETTINGS[ed])
@@ -262,19 +280,21 @@ if __name__ == '__main__':
 
     embedder_collections = {}
 
-    for emb in embedders:
+    print()
+    print('Embedding books...')
+
+    for emb in (pbar := tqdm(embedders, desc='Embedders', leave=True, unit='emb')):
         pbar.set_postfix_str(emb)
 
         s = Searcher(emb)
         collections = {}
 
-        for ed in (pbar:= tqdm(book_editions)):
+        for ed in (pbared:= tqdm(book_editions, leave=False, desc='Editions')):
             is_loaded, coll = s.init_collection(ed)
-
-            pbar.set_postfix_str(coll.name)
+            pbared.set_postfix_str(ed)
 
             if not is_loaded:
-                print('Loading {0}'.format(ed))
+                # print('Loading {0}'.format(ed))
                 s.save_to_vectordb(loaders[ed].books, ed, coll)
 
             collections[ed] = coll
