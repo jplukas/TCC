@@ -22,6 +22,7 @@ import re
 import gc
 import torch
 from sentence_transformers import SentenceTransformer
+from utils import getOpt, getCollBaseName
 
 SETTINGS = {}
 
@@ -173,7 +174,7 @@ class Searcher:
             # 'nomic-ai/nomic-embed-text-v2-moe',
         ] else "cpu"
         self.embedder = SentenceTransformer(self.embedder_name, trust_remote_code=True, device=device)
-        self.coll_base_name = self.embedder_name.replace('-', '_').replace(':', '_').replace('/', '_')
+        self.coll_base_name = getCollBaseName(self.embedder_name)
         self.client = PersistentClient('isidb')
         self.documents = []
 
@@ -251,12 +252,7 @@ class Searcher:
 
 
 if __name__ == '__main__':
-    embedders = [
-        'sentence-transformers/LaBSE',
-        'jinaai/jina-embeddings-v3',
-        'intfloat/multilingual-e5-large-instruct',
-        'nomic-ai/nomic-embed-text-v2-moe',
-    ]
+    embedders = getOpt("embedders")
 
     book_editions = ['en']
     loaders = {}
