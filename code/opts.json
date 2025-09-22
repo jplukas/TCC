@@ -1,0 +1,43 @@
+{
+    "words": ["crisis", "famine", "plague", "disease", "sickness", "death", "food", "noble", "slave", "cattle", "dog", "sheep", "plough", "land", "weather", "climate", 
+             "cheese", "meat", "fruit", "milk", "car", "road", "vehicle", "earth", "sun", "moon", "star", "arithmetic", "rain", "drought",  "flood",
+             "science", "harvest", "wheat", "rye", "sorghum", "bread", "wine", "water", "yeast", "farm", "farmer", "worker",
+             "king", "queen", "servant", "saint", "Christ", "God", "angel", "man", "woman", "wife", "war",
+             "industry", "battle", "weapon", "knife", "sword", "steel", "gold", "money", "wealth", "poverty",
+             "jewish", "hebrew", "abraham", "muhammad", "arab", "muslim", "african", "egyptian", "berber", "game", "fight", "struggle", "physician"],
+
+    "book_struct":[
+        {"title_en": "Grammar", "title_la": "De grammatica"},
+        {"title_en": "Rhetoric and dialectic", "title_la": "De rhetorica et dialectica"},
+        {"title_en": "Mathematics, music, astronomy", "titla_la": "De mathematica"},
+        {"title_en": "Medicine", "title_la": "De medicina"},
+        {"title_en": "Laws and times", "title_la": "De legibus et temporibus"},
+        {"title_en": "Books and ecclesiastical offices", "title_la": "De libris et officiis ecclesiasticis"},
+        {"title_en": "God, angels, and saints", "title_la": "De deo, angelis et sanctis"},
+        {"title_en": "The Church and sects", "title_la": "De ecclesia et sectis"},
+        {"title_en": "Languages, nations, reigns, the military, citizens, family relationships", "title_la": "De linguis, gentibus, regnis, militia, civibus, affinitatibus"},
+        {"title_en": "Vocabulary", "title_la": "De vocabulis"},
+        {"title_en": "The human being and portents", "title_la": "De homine et portentis"},
+        {"title_en": "Animals", "title_la": "De animalibus"},
+        {"title_en": "The cosmos and its parts", "title_la": "De mundo et partibus"},
+        {"title_en": "The earth and its parts", "title_la": "De terra et partibus"},
+        {"title_en": "Buildings and fields", "title_la": "De aedificiis et agris"},
+        {"title_en": "Stones and metals", "title_la": "De lapidibus et metallis"},
+        {"title_en": "Rural matters", "title_la": "De rebus rusticis"},
+        {"title_en": "War and games", "title_la": "De bello et ludis"},
+        {"title_en": "Ships, buildings, and clothing", "title_la": "De navibus aedificiis et vestibus"},
+        {"title_en": "Provisions and various implements", "title_la": "Provisions and various implements"}
+    ],
+    "args": {
+        "embedder": [
+            "sentence-transformers/LaBSE",
+            "jinaai/jina-embeddings-v3",
+            "intfloat/multilingual-e5-large-instruct",
+            "nomic-ai/nomic-embed-text-v2-moe"
+        ],
+        "granularity": ["topics", "sentences", "mixed"],
+        "reduction": [{"n_neighbors":10, "n_components":5, "min_dist":0.0, "low_memory": false, "metric":"cosine", "random_state":42}],
+        "clustering": [{"min_cluster_size": 10, "min_samples": 1}],
+        "n_topics": [10, 20, 50, 100]
+    }
+}
