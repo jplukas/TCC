@@ -91,21 +91,21 @@
 % Estes comandos definem o título e autoria do trabalho e devem sempre ser
 % definidos, pois além de serem utilizados para criar a capa, também são
 % armazenados nos metadados do PDF. O subtítulo é opcional.
-\title{Título do trabalho}[um subtítulo]
+\title{Modelagem de Tópicos em Textos Históricos utilizando LLMs}
 \translatedtitle{Title of the document}[a subtitle]
 
-\author[fem]{Nome Completo}
+\author[masc]{João Pedro Lukasavicus Silva}
 
 \def\profa{Prof\kern.02em.\kern-.07emª\kern.07em}
 \def\dra{Dr\kern-.04em.\kern-.11emª\kern.07em}
 
 % Para TCCs, este comando define o supervisor
-\orientador[fem]{\profa{} \dra{} Fulana de Tal}
+\orientador[masc]{Mateus Espadoto}
 
 % Se não houver, remova; se houver mais de um, basta
 % repetir o comando quantas vezes forem necessárias
-\coorientador{Prof. Dr. Ciclano de Tal}
-\coorientador[fem]{\profa{} \dra{} Beltrana de Tal}
+% \coorientador{Prof. Dr. Ciclano de Tal}
+% \coorientador[fem]{\profa{} \dra{} Beltrana de Tal}
 
 \banca{
   \profa{} \dra{} Fulana de Tal (orientadora) -- IME-USP [sem ponto final],
@@ -130,7 +130,7 @@
 
 \defesa{
   local={São Paulo},
-  data=2017-08-10, % YYYY-MM-DD
+  % data=2017-08-10, % YYYY-MM-DD
 }
 
 % Se não houve bolsa, remova
@@ -312,19 +312,6 @@ texto texto texto texto. Texto opcional.
 % junto com o comando \printindex, mas em alguns casos isso torna necessário
 % executar texindy (ou makeindex) mais de uma vez, então colocar aqui é melhor.
 \index{Inglês|see{Língua estrangeira}}
-\index{Figuras|see{Floats}}
-\index{Tabelas|see{Floats}}
-\index{Código-fonte|see{Floats}}
-\index{Subcaptions|see{Subfiguras}}
-\index{Sublegendas|see{Subfiguras}}
-\index{Equações|see{Modo matemático}}
-\index{Fórmulas|see{Modo matemático}}
-\index{Rodapé, notas|see{Notas de rodapé}}
-\index{Captions|see{Legendas}}
-\index{Versão original|see{Tese/Dissertação, versões}}
-\index{Versão corrigida|see{Tese/Dissertação, versões}}
-\index{Palavras estrangeiras|see{Língua estrangeira}}
-\index{Floats!Algoritmo|see{Floats, ordem}}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% CAPÍTULOS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -341,9 +328,11 @@ texto texto texto texto. Texto opcional.
 
 % A introdução não tem número de capítulo, então os cabeçalhos também não
 \pagestyle{unnumberedchapter}
-\input{conteudo/00-exemplo-introducao}
+\input 00-introducao
 \pagestyle{mainmatter}
-\input{conteudo/01-exemplo-normas-ime}
+\input 01-background
+\input 02-setup-experimental
+\input 03-resultados
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%% APÊNDICES E ANEXOS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -371,33 +360,33 @@ texto texto texto texto. Texto opcional.
 
 %%%% Apêndices %%%%
 
-\cleardoublepage
+% \cleardoublepage
 
-\pagestyle{appendix}
+% \pagestyle{appendix}
 
-\appendix
+% \appendix
 
-% \addappheadtotoc acrescenta a palavra "Apêndice" ao sumário; se
-% só há apêndices, sem anexos, provavelmente não é necessário.
-\addappheadtotoc
+% % \addappheadtotoc acrescenta a palavra "Apêndice" ao sumário; se
+% % só há apêndices, sem anexos, provavelmente não é necessário.
+% \addappheadtotoc
 
-\input{conteudo/apendice-exemplo-faq}
-\par
+% \input{conteudo/apendice-exemplo-faq}
+% \par
 
 %%%% Anexos %%%%
 
-\cleardoublepage
+% \cleardoublepage
 
-\pagestyle{appendix} % repete o anterior, caso você não use apêndices
+% \pagestyle{appendix} % repete o anterior, caso você não use apêndices
 
-\annex
+% \annex
 
-% \addappheadtotoc acrescenta a palavra "Anexo" ao sumário; se
-% só há anexos, sem apêndices, provavelmente não é necessário.
-\addappheadtotoc
+% % \addappheadtotoc acrescenta a palavra "Anexo" ao sumário; se
+% % só há anexos, sem apêndices, provavelmente não é necessário.
+% \addappheadtotoc
 
-\input{conteudo/anexo-exemplo-imegoodies}
-\par
+% \input{conteudo/anexo-exemplo-imegoodies}
+% \par
 
 
 %%%%%%%%%%%%%%% SEÇÕES FINAIS (BIBLIOGRAFIA E ÍNDICE REMISSIVO) %%%%%%%%%%%%%%%%
