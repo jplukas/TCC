@@ -1,4 +1,4 @@
-@default_files = ('tese');
+@default_files = ('monografia');
 
 # TeXLive até no mínimo 2023 produz PDFs identificados como versão 1.5.
 # Ao incorporar arquivos PDF de imagem com versões mais novas, isso faz
@@ -24,11 +24,15 @@ $pre_tex_code = '\RequirePackage[1.7]{bxpdfver}';
 # Nao eh necessario neste modelo, mas pode ser util.
 # Veja a secao 5 de "textoc kpathsea" e
 # https://www.overleaf.com/learn/latex/Articles/An_introduction_to_Kpathsea_and_how_TeX_engines_search_for_files
-#ensure_path('TEXINPUTS', 'conteudo//');
 #ensure_path('TEXINPUTS', 'extras//');
 #ensure_path('TEXINPUTS', '.');
 #ensure_path('BSTINPUTS', 'extras//');
 #ensure_path('BSTINPUTS', '.');
+ensure_path('BSTINPUTS', './bib//');
+ensure_path('BIBINPUTS', './bib//');
+ensure_path('TEXINPUTS', './bib//');
+ensure_path('TEXINPUTS', './packages//');
+ensure_path('TEXINPUTS', './conteudo//');
 
 # Rodando latexmk a partir do editor atom, texindy falha;
 # "2>&1 | tee" é um truque para contornar esse problema
