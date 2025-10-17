@@ -17,8 +17,7 @@
 #DEFAULT_TARGET: $(word 1, $(basename $(wildcard *.tex))).pdf
 DEFAULT_TARGET: monografia.pdf
 
-SHOW_PDF_AFTER_COMPILATION := true
-# SHOW_PDF_AFTER_COMPILATION := false
+SHOW_PDF_AFTER_COMPILATION := false
 
 
 ###############################################################################
