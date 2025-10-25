@@ -7,20 +7,49 @@
 
 \section{Conjunto de dados}
 \subsection{Textos históricos}
-O conjunto de dados utilizados neste trabalho consiste nas obras Etimologias - Isidoro de Sevilha, ... TODO: lista de obras
+O conjunto de dados utilizados neste trabalho consiste nas obras \textit{Etimologias - Isidoro de Sevilha}, ... TODO: lista de obras. Pergunta: Vamos usar apenas \textit{Etimologias} ou usaremos outras obras? Vamos usar outras edicoes? Outros idiomas?
 
-Todos os arquivos estão em formato texto puro, e foram obtidos em... TODO: Como pode-se obter esses arquivos.
+Todos os arquivos estão em formato texto puro, e foram obtidos em... TODO: Como se pode obter esses arquivos?
 
 \subsection{Preparação dos dados}
-Primeiramente, pelo modo como cada livro está formatado, fazemos um processamento inicial para separar cada livro em capítulos, e juntar palavras com hífen. TODO: exemplos.
-Então, cada capítulo foi subdividido em sentenças usando a biblioteca Spacy... TODO: expandir. TODO: exemplos
+(TODO: Adicionar figura do esquema geral do processo)
+\subsubsection{Pré-processamento}
+Primeiramente, pelo modo como cada livro está formatado, fizemos um processamento inicial para separar cada livro em capítulos, e juntar palavras com hífen. TODO: exemplos.
+Então, cada capítulo foi subdividido em sentenças usando o módulo SentenceRecognizer da biblioteca Spacy. PERGUNTA: Eu deveria explicar como ele funciona? TODO: exemplos.
 
-Apesar de algumas tarefas em processamento de linguagem natural serem usadas em outras abordagens de modelagem de tópicos, como remoção de stop-words, lematização, etc, não fazemos esses procedimentos na fase de preparação dos dados para a abordagem utilizada neste trabalho, pois ... TODO: expandir. PERGUNTA: Devo explicar remoção de stop words e lematização?
+Uma particularidade da edição escolhida da obra \textit{Etimologias} é que cada capítulo possui uma subdivisão em \textit{subcapítulos} PERGUNTA: Qual o melhor nome para essa subdivisão? TODO: exemplos. Podemos usar cada \textit{subcapítulo} como a nossa unidade de documento (e então fazer a modelagem de tópicos baseado neles) ou usar cada sentença como a unidade de documento. Em nossa análise, utilizamos ambas abordagens e comparamos os resultados.
 
-Depois de um pré-processamento dos textos, terminando em sua divisão em sentenças, geramos embeddings para cada uma dessas sentenças. Os modelos usados para a geração desses embeddings foram: "sentence-transformers/LaBSE", "jinaai/jina-embeddings-v3", "intfloat/multilingual-e5-large-instruct", "nomic-ai/nomic-embed-text-v2-moe".
-Esses embeddings então foram armazenados em um banco de dados vetorial, juntamente com cada sentença, e alguns outros metadados, como nome do autor, nome da obra, e uma identificação do capítulo. Esses metadados servem para criar filtros para buscas posteriores nesse banco de dados.
+Apesar de algumas tarefas rotineiras em processamento de linguagem natural serem usadas em outras abordagens de modelagem de tópicos, como remoção de stop-words, stemming, lematização, etc, não fizemos esses procedimentos na fase de preparação dos dados para a abordagem utilizada neste trabalho, pois os modelos de embedding que usamos utilizam informações contextuais de cada palavra em uma sentença, e remover palavras ou modificá-las poderia prejudicar a performance de tais modelos. PERGUNTA: Devo explicar remoção de stop words, stemming e lematização?
 
-A seguir, fazemos uma redução de dimensionalidade de cada um dos conjuntos de embeddings gerados. Essa etapa é importante para o desempenho da etapa posterior do método, de clusterização, pois... TODO: expandir. Esses embeddings reduzidos são armazenados então, para sua utilização posterior.
+\subsubsection{Geração de embeddings}
+Depois da etapa de pré-processamento dos textos, geramos embeddings para cada documento, utilizando modelos do tipo \textit{sentence embedders} pré-treinados. Os modelos usados para a geração desses embeddings foram: \textit{sentence-transformers/LaBSE}, \textit{jinaai/jina-embeddings-v3}, \textit{intfloat/multilingual-e5-large-instruct}, \textit{nomic-ai/nomic-embed-text-v2-moe}. Estes modelos foram desenhados e treinados para que sentenças semanticamente similares em línguas diferentes, ou traduções, estejam próximas umas das outras em um espaço latente. Podemos usar estes modelos para comparar textos em diferentes idiomas e analisar suas conexões.
+
+\subsubsection{Redução de dimensionalidade}
+A seguir, fizemos uma redução de dimensionalidade de cada um dos conjuntos de embeddings gerados.
+Para isso, utilizamos o UMAP, com parâmetros \verb|n_neighbors = 10|, \verb|n_components = 5|, \verb|min_dist = 0.0|, \verb|low_memory = false|, \verb|metric = "cosine"|, parâmetros padrão usados no BERTopic, e \verb|random_state = 42|, para prevenir comportamento estocástico. TODO: normalmente o BERTopic usa \verb|n_neighbors = 15|, então por que eu mudei esse valor?
+A implementação usada foi a da biblioteca umap-learn.
+
+A etapa de redução de dimensionalidade é importante para o desempenho da etapa posterior do método, de clusterização, por conta de um fenômeno conhecido como a Maldição da Dimensionalidade: em espaços de alta dimensão, os conceitos de proximidade, distância, ou vizinhos mais próximos perdem sua significância. Este fenômeno então acaba por prejudicar a performance de algoritmos e técnicas que utilizem esses conceitos, como praticamente todos os algoritmos de clusterização conhecidos.\\
+Além disso, nessa etapa também computamos reduções desses embeddings a 2 dimensões, para serem utilizadas posteriormente em visualizações, também utilizando o UMAP. Fora o número de dimensões do espaço resultante, todos os outros parâmetros permanecem os mesmos.
+
+\subsubsection{Conjuntos de dados}
+Após essas etapas iniciais, definimos nossos conjuntos de dados. Cada conjunto é definido por um modelo de embedding e um `nível de granularidade' que usamos para definir os documentos, como: subcapítulos, sentenças ou ambos.\\
+TODO: exemplos, visualizações dos espaços de embeddings.
+
+\subsection{Persistência}
+Os embeddings gerados, suas reduções, e diversos metadados foram armazenados em um banco de dados do \textit{ChromaDB}, juntamente com cada documento.
+
+TODO: versão final do modelo de dados no ChromaDB.
+
+Dessa forma, podemos fazer diversos tipos de busca, como busca por similaridade, busca textual, filtrar resultados baseados em metadados de cada documento, como autor, idioma, etc.
 
 \section{Experimentos}
-Cada experimento consistiu em aplicar o BERTopic, utilizando os diferentes conjuntos de dados gerados pelos diferentes modelos de embedding, variando o número de tópicos a serem descobertos: 10, 20, 50 e 100 tópicos.
+Cada experimento consistiu em aplicar o BERTopic, utilizando os diferentes conjuntos de dados mencionados anteriormente, variando o número de tópicos a serem descobertos: 10, 20, 50 e 100 tópicos.
+
+Com os embeddings gerados e suas reduções já computadas, inicializamos o BERTopic de modo a pular essas etapas iniciais e começar pela etapa de clustering. O algoritmo utilizado foi o HDBSCAN... TODO: Por quê?, com parâmetros...
+
+Para melhorar a representação dos tópicos gerados, fizemos alguns ajustes nas etapas finais do método:
+\begin{itemize}
+    \item Remoção de stop-words, no CountVectorizer
+    \item Remoção de palavras comuns e uso de BM-25 weighting measure.
+\end{itemize}
