@@ -7,35 +7,79 @@
 
 \section{Conjunto de dados}
 \subsection{Textos históricos}
-O conjunto de dados utilizados neste trabalho consiste nas obras \textit{Etimologias - Isidoro de Sevilha}, ... TODO: lista de obras. Pergunta: Vamos usar apenas \textit{Etimologias} ou usaremos outras obras? Vamos usar outras edicoes? Outros idiomas?
-
-Todos os arquivos estão em formato texto puro, e foram obtidos em... TODO: Como se pode obter esses arquivos?
+O conjunto de dados utilizados neste trabalho consiste na primeira versão completa traduzida do Latim para a língua Inglesa de \textit{Etimologias} de \textit{Isidoro de Sevilha}\footnote{Disponível em: \url{https://www.cambridge.org/core/books/etymologies-of-isidore-of-seville/F2336BA779D4ED95E6D25AAE2CCBAD25} \index{Livro - Etimologias}}. O texto está disponível em versão digital, em PDF, como um volume único.
+O texto foi extraído do arquivo PDF do livro e armazenado em formato texto puro, removendo-se cabeçalhos, rodapés, números de página, e outros artefatos dessa conversão.
 
 \subsection{Preparação dos dados}
 (TODO: Adicionar figura do esquema geral do processo)
 \subsubsection{Pré-processamento}
 Primeiramente, pelo modo como cada livro está formatado, fizemos um processamento inicial para separar cada livro em capítulos, e juntar palavras com hífen. TODO: exemplos.
-Então, cada capítulo foi subdividido em sentenças usando o módulo SentenceRecognizer da biblioteca Spacy. PERGUNTA: Eu deveria explicar como esse módulo funciona? TODO: exemplos.
+Então, cada capítulo foi subdividido em sentenças usando o módulo SentenceRecognizer da biblioteca Spacy\footnote{\url{https://spacy.io/api/sentencerecognizer} \index{SentenceRecognizer}}. TODO: exemplos.
 
-Uma particularidade da edição escolhida da obra \textit{Etimologias} é que cada capítulo possui uma subdivisão em \textit{subcapítulos} PERGUNTA: Qual o melhor nome para essa subdivisão? TODO: exemplos. Com isso, podemos fazer a modelagem dos tópicos usando três níveis diferente de granularidade, a depender de como definimos um ``documento'', unidade básica de nossa análise:
+Uma particularidade da edição escolhida da obra \textit{Etimologias} é que cada capítulo é subdividido em seções relativamente curtas, a maioria tendo somente uma oração. Com isso, podemos fazer a modelagem dos tópicos usando três níveis diferentes de granularidade, a depender de como definimos um ``documento'', unidade básica de nossa análise:
 \begin{itemize}
-    \item \textbf{Subcapítulos}, já presentes no texto;
-    \item \textbf{Sentenças}, delimitadas pelo módulo SentenceRecognizer, do Spacy;
-    \item \textbf{Misto}, com ambos subcapítulos e sentenças;
+    \item \textbf{Seções}, já presentes no texto;
+    \item \textbf{Sentenças}, delimitadas automaticamente;
+    \item \textbf{Misto}, com ambas seções e sentenças;
 \end{itemize}
 Em nossa análise, utilizamos todas essas abordagens e comparamos os resultados.
 
-Apesar de algumas tarefas rotineiras em processamento de linguagem natural serem usadas em outras abordagens de modelagem de tópicos, como remoção de stop-words, stemming, lematização, etc, não fizemos esses procedimentos na fase de preparação dos dados para a abordagem utilizada neste trabalho, pois os modelos de embedding que usamos utilizam informações contextuais de cada palavra em uma sentença, e remover palavras ou modificá-las poderia prejudicar a performance de tais modelos. PERGUNTA: Devo explicar remoção de stop words, stemming e lematização?
+TODO: Exemplos das seções.
 
-\subsubsection{Geração de embeddings}
-Depois da etapa de pré-processamento dos textos, geramos embeddings para cada documento, utilizando modelos do tipo \textit{sentence embedders} pré-treinados. Os modelos usados para a geração desses embeddings foram: \textit{sentence-transformers/LaBSE}, \textit{jinaai/jina-embeddings-v3}, \textit{intfloat/multilingual-e5-large-instruct}, \textit{nomic-ai/nomic-embed-text-v2-moe}. Estes modelos foram desenhados e treinados para que sentenças semanticamente similares em línguas diferentes, ou traduções, estejam próximas umas das outras em um espaço latente. Podemos usar estes modelos para comparar textos em diferentes idiomas e analisar suas conexões.
+\subsubsection{\textit{Stop words}, \textit{stemming} e lematização}
+Tarefas rotineiras de pré-processamento de linguagem natural incluem: remoção de \textit{stop words}, que são palavras muito comuns e irrelevantes, \textit{stemming}, e lematização, que são formas de padronizar palavras, reduzindo-as a sua forma mais básica. Apesar de outras técnicas de modelagem de tópicos adotarem essas tarefas como parte do seu processo de preparação dos dados, não utilizamos essas técnicas para este trabalho, pois os modelos de \textit{embedding} que usamos utilizam informações contextuais de cada palavra em uma sentença, e remover palavras ou modificá-las poderia prejudicar a performance de tais modelos~\citep{stopwords}.
+
+\subsubsection{Geração de \textit{embeddings}}
+Depois da etapa de pré-processamento dos textos, geramos \textit{embeddings} para cada documento, utilizando modelos do tipo \textit{sentence embedders} pré-treinados. Os modelos usados para a geração desses \textit{embeddings} foram: \textit{sentence-transformers/LaBSE}, \textit{jinaai/jina-embeddings-v3}, \textit{intfloat/multilingual-e5-large-instruct}, \textit{nomic-ai/nomic-embed-text-v2-moe}. Estes modelos foram desenhados e treinados para que sentenças semanticamente similares em línguas diferentes, ou traduções, estejam próximas umas das outras em um espaço latente. Podemos usar estes modelos para comparar textos em diferentes idiomas e analisar suas conexões.
 
 \subsubsection{Redução de dimensionalidade}
 A seguir, fizemos uma redução de dimensionalidade de cada um dos conjuntos de embeddings gerados.
-Para isso, utilizamos o UMAP, com parâmetros \verb|n_neighbors = 10|, \verb|n_components = 5|, \verb|min_dist = 0.0|, \verb|low_memory = false|, \verb|metric = "cosine"|, parâmetros padrão usados no BERTopic, e \verb|random_state = 42|, para prevenir comportamento estocástico. TODO: normalmente o BERTopic usa \verb|n_neighbors = 15|, então por que eu mudei esse valor?
-A implementação usada foi a da biblioteca umap-learn.
+Para isso, utilizamos o UMAP, com os seguintes parâmetros:
+% Please add the following required packages to your document preamble:
+% \usepackage{booktabs}
+% \begin{table}[H]
 
-A etapa de redução de dimensionalidade é importante para o desempenho da etapa posterior do método, de clusterização, por conta de um fenômeno conhecido como a Maldição da Dimensionalidade: em espaços de alta dimensão, os conceitos de proximidade, distância, ou vizinhos mais próximos perdem sua significância. Este fenômeno então acaba por prejudicar a performance de algoritmos e técnicas que utilizem esses conceitos, como praticamente todos os algoritmos de clusterização conhecidos.\\
+\begin{xltabular}{1\textwidth} {
+    |>{\centering\arraybackslash\hsize=0.8\hsize\linewidth=\hsize}X
+    |>{\centering\arraybackslash\hsize=2\hsize\linewidth=\hsize}X
+    |>{\centering\arraybackslash\hsize=0.5\hsize\linewidth=\hsize}X
+    |>{\centering\arraybackslash\hsize=0.7\hsize\linewidth=\hsize}X|
+    }
+\caption{Parâmetros usados para o UMAP} \label{tab:umap_params}\\
+\hline \hline
+\textbf{Nome do parâmetro} & \textbf{Descrição} & \textbf{Valor usado} & \textbf{Nota} \\
+\hline \hline
+\endfirsthead
+\multicolumn{4}{c}%
+{\tablename\ \thetable{} -- continuação} \\
+\hline \hline
+\textbf{Nome do parâmetro} & \textbf{Descrição} & \textbf{Valor usado} & \textbf{Nota} \\
+\hline \hline
+\endhead
+\hline\hline \multicolumn{4}{|r|}{{Continua na próxima página}} \\ \hline \hline
+\endfoot
+\hline
+\endlastfoot
+\hline
+\verb|n_neigbors| & Controla como o UMAP equilibra estrutura local versus global nos dados. Valores maiores levam a uma visão mais global da estrutura dos dados, e valores menores a uma visão mais local. & \verb|10| & O valor padrão para o BERTopic é 15. \\
+\hline
+\verb|n_components| & Dimensionalidade do \textit{dataset} resultante.  & \verb|5| & Valor padrão para o BERTopic. \\
+\hline
+\verb|min_dist| & Controla o quão dispersos os pontos estarão na projeção de baixa dimensionalidade. Valores baixos podem ser interessantes para tarefas de clustering. & \verb|0| & Valor padrão para o BERTopic. \\
+\hline
+\verb|low_memory| & Restringe o uso de memória em detrimento da velocidade da computação. Útil quando há pouca memória disponível. & \verb|false| &  \\
+\hline
+\verb|metric| & Métrica usada para calcular distâncias entre pontos. & \verb|"cosine"| & Valor padrão para o BERTopic. \\
+\hline
+\verb|random_state| & Usado para garantir determinismo. & \verb|42| &  \\
+\hline \hline
+\end{xltabular}
+% \end{table}
+
+TODO: normalmente o BERTopic usa \verb|n_neighbors = 15|, então por que eu mudei esse valor?
+A implementação usada foi a da biblioteca umap-learn\footnote{\url{https://umap-learn.readthedocs.io/en/latest/}}.
+
+A etapa de redução de dimensionalidade é importante para o desempenho da etapa posterior do método, de clusterização, por conta de um fenômeno conhecido como a Maldição da Dimensionalidade: em espaços de alta dimensionalidade, os conceitos de proximidade, distância, ou vizinhos mais próximos perdem sua significância~\citep{dimen_hubs}. Este fenômeno então acaba por prejudicar a performance de algoritmos e técnicas que utilizem esses conceitos, como algoritmos de clusterização populares \citep{dimen_hubs, dimen_distance_metrics}.\\
 Além disso, nessa etapa também computamos reduções desses embeddings a 2 dimensões, para serem utilizadas posteriormente em visualizações, também utilizando o UMAP. Fora o número de dimensões do espaço resultante, todos os outros parâmetros permanecem os mesmos.
 
 \subsubsection{Conjuntos de dados}
@@ -51,7 +95,35 @@ Dessa forma, podemos fazer diversos tipos de busca, como busca por similaridade,
 \section{Experimentos}
 Cada experimento consistiu em aplicar o BERTopic, utilizando os diferentes conjuntos de dados mencionados anteriormente, variando o número de tópicos a serem descobertos: 10, 20, 50 e 100 tópicos.
 
-Com os embeddings gerados e suas reduções já computadas, inicializamos o BERTopic de modo a pular essas etapas iniciais e começar pela etapa de clustering. O algoritmo utilizado foi o HDBSCAN, utilizando \verb|min_cluster_size = 10|, que é o valor padrão para este parâmetro, e \verb|min_samples = 1|, para diminuir a quantidade de pontos classificados como outliers. TODO: Por que utilizamos o HDBSCAN?
+Com os embeddings gerados e suas reduções já computadas, inicializamos o BERTopic de modo a pular essas etapas iniciais e começar pela etapa de clustering. O algoritmo utilizado foi o HDBSCAN, disponível na biblioteca Scikit-learn\footnote{\url{https://scikit-learn.org/stable/modules/generated/sklearn.cluster.HDBSCAN.html}}, e utilizamos os seguintes parâmetros:
+
+\begin{xltabular}{1\textwidth} {
+    |>{\centering\arraybackslash\hsize=1\hsize\linewidth=\hsize}X
+    |>{\centering\arraybackslash\hsize=1.6\hsize\linewidth=\hsize}X
+    |>{\centering\arraybackslash\hsize=0.3\hsize\linewidth=\hsize}X
+    |>{\centering\arraybackslash\hsize=1.1\hsize\linewidth=\hsize}X|
+    }
+\caption{Parâmetros usados para o HDBSCAN} \label{tab:hdbscan_params}\\
+\hline \hline
+\textbf{Nome do parâmetro} & \textbf{Descrição} & \textbf{Valor usado} & \textbf{Nota} \\
+\hline \hline
+\endfirsthead
+\multicolumn{4}{c}%
+{\tablename\ \thetable{} -- continuação} \\
+\hline \hline
+\textbf{Nome do parâmetro} & \textbf{Descrição} & \textbf{Valor usado} & \textbf{Nota} \\
+\hline \hline
+\endhead
+\hline\hline \multicolumn{4}{|r|}{{Continua na próxima página}} \\ \hline \hline
+\endfoot
+\hline
+\endlastfoot
+\hline
+\verb|min_cluster_size| & Controla o tamanho mínimo e a quantidade de \textit{clusters} gerados. & \verb|10| & Valor padrão para o BERTopic. \\
+\hline
+\verb|min_samples| & Controla a quantidade de pontos classificados como ruído. & \verb|1| & Escolhemos um valor baixo para tentar diminuir a quantidade pontos classificados como outliers. \\
+\hline \hline
+\end{xltabular}
 
 Para melhorar a representação dos tópicos gerados, fizemos alguns ajustes nas etapas finais do método:
 \begin{itemize}

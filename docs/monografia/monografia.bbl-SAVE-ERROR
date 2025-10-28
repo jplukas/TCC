@@ -1,0 +1,168 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.3 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{nyt/global//global/global/global}
+    \entry{dimen_distance_metrics}{inproceedings}{}{}
+      \name{author}{3}{}{%
+        {{un=0,uniquepart=base,hash=86d11a07b1bfeac58dc68f7a419b3039}{%
+           family={Aggarwal},
+           familyi={A\bibinitperiod},
+           given={Charu\bibnamedelima C.},
+           giveni={C\bibinitperiod\bibinitdelim C\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=498e97a23d4417319e95a6af6af725b6}{%
+           family={Hinneburg},
+           familyi={H\bibinitperiod},
+           given={Alexander},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=afd6b4c7bfdbc6a8849818a152ed8006}{%
+           family={Keim},
+           familyi={K\bibinitperiod},
+           given={Daniel\bibnamedelima A.},
+           giveni={D\bibinitperiod\bibinitdelim A\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{location}{1}{%
+        {Berlin, Heidelberg}%
+      }
+      \list{publisher}{1}{%
+        {Springer-Verlag}%
+      }
+      \strng{namehash}{d86c438c39698c3206070ebe3a425511}
+      \strng{fullhash}{9528ef0d6f5a33e2d640f8b6e2f53695}
+      \strng{fullhashraw}{9528ef0d6f5a33e2d640f8b6e2f53695}
+      \strng{bibnamehash}{9528ef0d6f5a33e2d640f8b6e2f53695}
+      \strng{authorbibnamehash}{9528ef0d6f5a33e2d640f8b6e2f53695}
+      \strng{authornamehash}{d86c438c39698c3206070ebe3a425511}
+      \strng{authorfullhash}{9528ef0d6f5a33e2d640f8b6e2f53695}
+      \strng{authorfullhashraw}{9528ef0d6f5a33e2d640f8b6e2f53695}
+      \field{labelalpha}{AHK01}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{In recent years, the effect of the curse of high dimensionality has been studied in great detail on several problems such as clustering, nearest neighbor search, and indexing. In high dimensional space the data becomes sparse, and traditional indexing and algorithmic techniques fail from a efficiency and/or effectiveness perspective. Recent research results show that in high dimensional space, the concept of proximity, distance or nearest neighbor may not even be qualitatively meaningful. In this paper, we view the dimensionality curse from the point of view of the distance metrics which are used to measure the similarity between objects. We specifically examine the behavior of the commonly used Lk norm and show that the problem of meaningfulness in high dimensionality is sensitive to the value of k. For example, this means that the Manhattan distance metric (L1 norm) is consistently more preferable than the Euclidean distance metric (L2 norm) for high dimensional data mining applications. Using the intuition derived from our analysis, we introduce and examine a natural extension of the Lk norm to fractional distance metrics. We show that the fractional distance metric provides more meaningful results both from the theoretical and empirical perspective. The results show that fractional distance metrics can significantly improve the effectiveness of standard clustering algorithms such as the k-means algorithm.}
+      \field{booktitle}{Proceedings of the 8th International Conference on Database Theory}
+      \field{isbn}{3540414568}
+      \field{series}{ICDT '01}
+      \field{title}{On the Surprising Behavior of Distance Metrics in High Dimensional Spaces}
+      \field{year}{2001}
+      \field{pages}{420\bibrangedash 434}
+      \range{pages}{15}
+    \endentry
+    \entry{stopwords}{inproceedings}{}{}
+      \name{author}{3}{}{%
+        {{un=0,uniquepart=base,hash=bce49d0ea13169fc51238ce401c2c949}{%
+           family={Chaerul\bibnamedelima Haviana},
+           familyi={C\bibinitperiod\bibinitdelim H\bibinitperiod},
+           given={Sam\bibnamedelima Farisa},
+           giveni={S\bibinitperiod\bibinitdelim F\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=7b20550a3a2241615684ae94ffd3157a}{%
+           family={Mulyono},
+           familyi={M\bibinitperiod},
+           given={Sri},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=e6f78099e06e0ef3e1f9c74345faeb5f}{%
+           family={Badie’Ah},
+           familyi={B\bibinitperiod}}}%
+      }
+      \strng{namehash}{ec168a07e208b63f919d8f9cf682e6b6}
+      \strng{fullhash}{ab0f3cbcce9962aa3ab18a0a889cb687}
+      \strng{fullhashraw}{ab0f3cbcce9962aa3ab18a0a889cb687}
+      \strng{bibnamehash}{ab0f3cbcce9962aa3ab18a0a889cb687}
+      \strng{authorbibnamehash}{ab0f3cbcce9962aa3ab18a0a889cb687}
+      \strng{authornamehash}{ec168a07e208b63f919d8f9cf682e6b6}
+      \strng{authorfullhash}{ab0f3cbcce9962aa3ab18a0a889cb687}
+      \strng{authorfullhashraw}{ab0f3cbcce9962aa3ab18a0a889cb687}
+      \field{labelalpha}{CMB23}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{2023 10th International Conference on Electrical Engineering, Computer Science and Informatics (EECSI)}
+      \field{title}{The Effects of Stopwords, Stemming, and Lemmatization on Pre-trained Language Models for Text Classification: A Technical Study}
+      \field{year}{2023}
+      \field{pages}{521\bibrangedash 527}
+      \range{pages}{7}
+      \verb{doi}
+      \verb 10.1109/EECSI59885.2023.10295797
+      \endverb
+      \keyw{Electrical engineering;Computer science;Vocabulary;Computational modeling;Text categorization;Data preprocessing;Natural language processing;preprocessing;pre-trained model;classification}
+    \endentry
+    \entry{dimen_hubs}{article}{}{}
+      \name{author}{3}{}{%
+        {{un=0,uniquepart=base,hash=c9ca6c3a3b863037975071923b37465a}{%
+           family={Radovanović},
+           familyi={R\bibinitperiod},
+           given={Miloš},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=d20d8ed3106d02b40477267ae812e11d}{%
+           family={Nanopoulos},
+           familyi={N\bibinitperiod},
+           given={Alexandros},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=eb9264faad51700ee49a5dfdd90eb79a}{%
+           family={Ivanović},
+           familyi={I\bibinitperiod},
+           given={Mirjana},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {JMLR.org}%
+      }
+      \strng{namehash}{30896d92c942be92bd6d210e898a6e21}
+      \strng{fullhash}{b58b6f55675020738a856ec033d1f761}
+      \strng{fullhashraw}{b58b6f55675020738a856ec033d1f761}
+      \strng{bibnamehash}{b58b6f55675020738a856ec033d1f761}
+      \strng{authorbibnamehash}{b58b6f55675020738a856ec033d1f761}
+      \strng{authornamehash}{30896d92c942be92bd6d210e898a6e21}
+      \strng{authorfullhash}{b58b6f55675020738a856ec033d1f761}
+      \strng{authorfullhashraw}{b58b6f55675020738a856ec033d1f761}
+      \field{labelalpha}{RNI10}
+      \field{sortinit}{R}
+      \field{sortinithash}{5e1c39a9d46ffb6bebd8f801023a9486}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Different aspects of the curse of dimensionality are known to present serious challenges to various machine-learning methods and tasks. This paper explores a new aspect of the dimensionality curse, referred to as hubness, that affects the distribution of k-occurrences: the number of times a point appears among the k nearest neighbors of other points in a data set. Through theoretical and empirical analysis involving synthetic and real data sets we show that under commonly used assumptions this distribution becomes considerably skewed as dimensionality increases, causing the emergence of hubs, that is, points with very high k-occurrences which effectively represent "popular" nearest neighbors. We examine the origins of this phenomenon, showing that it is an inherent property of data distributions in high-dimensional vector space, discuss its interaction with dimensionality reduction, and explore its influence on a wide range of machine-learning tasks directly or indirectly based on measuring distances, belonging to supervised, semi-supervised, and unsupervised learning families.}
+      \field{issn}{1532-4435}
+      \field{journaltitle}{J. Mach. Learn. Res.}
+      \field{month}{12}
+      \field{title}{Hubs in Space: Popular Nearest Neighbors in High-Dimensional Data}
+      \field{volume}{11}
+      \field{year}{2010}
+      \field{pages}{2487\bibrangedash 2531}
+      \range{pages}{45}
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+
