@@ -1,7 +1,9 @@
 <html>
     <head>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
-        <style>body{ margin:0 100; background:whitesmoke; }</style>
+        <style>
+            body{ margin:0 100; background:whitesmoke; }
+        </style>
     </head>
     <body>
         <h1>Resumo do modelo</h1>
@@ -64,9 +66,12 @@
                 </tr>
             </thead>
             <tbody>
-                {% for _, topic in topics.iterrows() %}
+                {% for index, topic in topics.iterrows() %}
                     <tr>
-                        <td>{{ topic['Name'] }}</td> <td>{{ topic['Count'] }}</td> <td>{{ topic['Representative_Docs'] }}</td>
+                        <td>{{ topic['Name'] }}</td> <td>{{ topic['Count'] }}</td>
+                        <td>
+                            {{ topic['svg'] | safe }}
+                        </td>
                     </tr>
                 {% endfor %}
             </tbody>

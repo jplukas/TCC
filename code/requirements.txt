@@ -127,9 +127,9 @@ shellingham==1.5.4
 six==1.17.0
 smart-open==7.1.0
 sniffio==1.3.1
-spacy==3.8.5
-spacy-legacy==3.0.12
-spacy-loggers==1.0.5
+spacy>=3.8.5
+spacy-legacy>=3.0.12
+spacy-loggers>=1.0.5
 spacy_lookups_data @ git+https://github.com/diyclassics/spacy-lookups-data.git@5f2b7e60d3b461cd61649c0bb75f65a242b56ece
 srsly==2.5.1
 starlette==0.45.3
