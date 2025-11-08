@@ -3,36 +3,56 @@
 % para saber mais: https://tex.stackexchange.com/q/78101
 
 \chapter{Experimentos}
+\label{cap:experimentos}
 % Cap 2 (3 páginas): Experimentos. Aqui você pode começar a descrever o setup experimental do trabalho, por exemplo, datasets (os livros), a preparação dos dados (obtenção dos textos, separação em sentenças, etc), a indexação usando bancos de dados vetoriais e embeddings gerados a partir LLMs multi-idiomas, e do processo de geração de tópicos. Depois podemos falar um pouco do design da aplicação que estamos fazendo.
 
+Neste capítulo detalhamos os dados utilizados neste trabalho juntamente com o \emph{pipeline} de processamento empregado para a sua coleta e preparação, e a configuração experimental utilizada no estudo.
+
 \section{Conjunto de dados}
-\subsection{Textos históricos}
-O conjunto de dados utilizados neste trabalho consiste na primeira versão completa traduzida do Latim para a língua Inglesa de \textit{Etimologias} de \textit{Isidoro de Sevilha}\footnote{Disponível em: \url{https://www.cambridge.org/core/books/etymologies-of-isidore-of-seville/F2336BA779D4ED95E6D25AAE2CCBAD25} \index{Livro - Etimologias}}. O texto está disponível em versão digital, em PDF, como um volume único.
-O texto foi extraído do arquivo PDF do livro e armazenado em formato texto puro, removendo-se cabeçalhos, rodapés, números de página, e outros artefatos dessa conversão.
 
-\subsection{Preparação dos dados}
+Como conjunto de dados a ser explorado neste trabalho, temos as seguintes obras:
+
+\begin{itemize}
+\item Etimologias (\emph{Etymologiae})~\parencite{barney2006etymologies}, por Isidoro de Sevilha (c. 560 - 636);
+\item Sobre Agricultura (\emph{De Agri Cultura})~\parencite{Cato1934Agriculture}, por Marco Pórcio Catão, o Velho (234 - 149 a.C.);
+\item Sobre Ciência Agrícola (\emph{De Re Rustica})~\parencite{Cato1934Agriculture}, por Marco Terêncio Varrão (116 - 27 a.C.).
+\end{itemize}
+
+No caso das Etimologias, foi utilizada a tradução~\parencite{barney2006etymologies} do latim para o inglês em formato \emph{pdf}. Para os textos de Catão e Varrão foram utilizadas edições da \emph{Loeb Classical Library}~\parencite{Cato1934Agriculture}, atualmente em domínio público e disponíveis \emph{online}~\parencite{ThayerLacusCurtius} em formato \emph{html}.
+
+\section{Preparação dos dados}
 (TODO: Adicionar figura do esquema geral do processo)
-\subsubsection{Pré-processamento}
-Primeiramente, pelo modo como cada livro está formatado, fizemos um processamento inicial para separar cada livro em capítulos, e juntar palavras com hífen. TODO: exemplos.
-Então, cada capítulo foi subdividido em sentenças usando o módulo SentenceRecognizer da biblioteca Spacy\footnote{\url{https://spacy.io/api/sentencerecognizer} \index{SentenceRecognizer}}. TODO: exemplos.
 
-Uma particularidade da edição escolhida da obra \textit{Etimologias} é que cada capítulo é subdividido em seções relativamente curtas, a maioria tendo somente uma oração. Com isso, podemos fazer a modelagem dos tópicos usando três níveis diferentes de granularidade, a depender de como definimos um ``documento'', unidade básica de nossa análise:
+\subsection{Limpeza}
+
+No caso das Etimologias, o texto foi extraído do arquivo \emph{pdf} do livro e convertido para formato de texto puro, removendo-se cabeçalhos, rodapés, números de página, e outros artefatos dessa conversão que não são necessários para a análise. Devido a peculiaridades do formato \emph{pdf} e dificuldades encontradas nas bibliotecas utilizadas para a extração do texto, parte do processo de limpeza teve de ser realizado manualmente. No caso das outras obras, disponíveis em formato \emph{html}, o processamento foi realizado de forma totalmente automática.
+
+\subsection{Pré-processamento}
+
+Primeiramente, pelo modo como cada livro está formatado, fizemos um processamento inicial para separar cada livro em capítulos, e juntar palavras com hífen. Em seguida, cada capítulo foi subdividido em sentenças usando o módulo \emph{SentenceRecognizer} da biblioteca Spacy~\parencite{Honnibal2020Industrialstrength}, que possui diversos recursos para processamento de linguagem natural (NLP).
+
+Uma particularidade da edição escolhida das Etimologias é que cada capítulo é subdividido em seções relativamente curtas, a maioria tendo somente uma oração. Com isso, podemos fazer a modelagem dos tópicos usando três níveis diferentes de granularidade, a depender de como definimos um ``documento'', unidade básica de nossa análise:
+
 \begin{itemize}
     \item \textbf{Seções}, já presentes no texto;
     \item \textbf{Sentenças}, delimitadas automaticamente;
     \item \textbf{Misto}, com ambas seções e sentenças;
 \end{itemize}
-Em nossa análise, utilizamos todas essas abordagens e comparamos os resultados.
+
+Em nossa análise, utilizamos as três abordagens e comparamos os resultados.
 
 TODO: Exemplos das seções.
 
-\subsubsection{\textit{Stop words}, \textit{stemming} e lematização}
-Tarefas rotineiras de pré-processamento de linguagem natural incluem: remoção de \textit{stop words}, que são palavras muito comuns e irrelevantes, \textit{stemming}, e lematização, que são formas de padronizar palavras, reduzindo-as a sua forma mais básica. Apesar de outras técnicas de modelagem de tópicos adotarem essas tarefas como parte do seu processo de preparação dos dados, não utilizamos essas técnicas para este trabalho, pois os modelos de \textit{embedding} que usamos utilizam informações contextuais de cada palavra em uma sentença, e remover palavras ou modificá-las poderia prejudicar a performance de tais modelos~\citep{stopwords}.
+\subsection{\textit{Stop words}, \textit{stemming} e lematização}
 
-\subsubsection{Geração de \textit{embeddings}}
+Tarefas rotineiras de pré-processamento de linguagem natural incluem: remoção de \textit{stop words}, que são palavras muito comuns e irrelevantes, \textit{stemming}, e lematização, que são formas de padronizar palavras, reduzindo-as a sua forma mais básica. Apesar de outras técnicas de modelagem de tópicos adotarem essas tarefas como parte do seu processo de preparação dos dados, não utilizamos essas técnicas para este trabalho, pois os modelos de \textit{embedding} que usamos utilizam informações contextuais de cada palavra em uma sentença, e remover palavras ou modificá-las poderia prejudicar a performance de tais modelos~\parencite{stopwords}.
+
+\subsection{Geração de \textit{embeddings}}
+
 Depois da etapa de pré-processamento dos textos, geramos \textit{embeddings} para cada documento, utilizando modelos do tipo \textit{sentence embedders} pré-treinados. Os modelos usados para a geração desses \textit{embeddings} foram: \textit{sentence-transformers/LaBSE}, \textit{jinaai/jina-embeddings-v3}, \textit{intfloat/multilingual-e5-large-instruct}, \textit{nomic-ai/nomic-embed-text-v2-moe}. Estes modelos foram desenhados e treinados para que sentenças semanticamente similares em línguas diferentes, ou traduções, estejam próximas umas das outras em um espaço latente. Podemos usar estes modelos para comparar textos em diferentes idiomas e analisar suas conexões.
 
-\subsubsection{Redução de dimensionalidade}
+\subsection{Redução de dimensionalidade}
+
 A seguir, fizemos uma redução de dimensionalidade de cada um dos conjuntos de embeddings gerados.
 Para isso, utilizamos o UMAP, com os seguintes parâmetros:
 % Please add the following required packages to your document preamble:
@@ -82,10 +102,10 @@ A implementação usada foi a da biblioteca umap-learn\footnote{\url{https://uma
 A etapa de redução de dimensionalidade é importante para o desempenho da etapa posterior do método, de clusterização, por conta de um fenômeno conhecido como a Maldição da Dimensionalidade: em espaços de alta dimensionalidade, os conceitos de proximidade, distância, ou vizinhos mais próximos perdem sua significância~\citep{dimen_hubs}. Este fenômeno então acaba por prejudicar a performance de algoritmos e técnicas que utilizem esses conceitos, como algoritmos de clusterização populares \citep{dimen_hubs, dimen_distance_metrics}.\\
 Além disso, nessa etapa também computamos reduções desses embeddings a 2 dimensões, para serem utilizadas posteriormente em visualizações, também utilizando o UMAP. Fora o número de dimensões do espaço resultante, todos os outros parâmetros permanecem os mesmos.
 
-\subsubsection{Conjuntos de dados}
+\subsection{Conjuntos de dados}
 Após essas etapas iniciais, definimos nossos conjuntos de dados. Cada conjunto é definido por um modelo de embedding e um nível de granularidade, já explicado. TODO: exemplos, visualizações dos espaços de embeddings.
 
-\subsection{Persistência}
+\section{Persistência}
 Os embeddings gerados, suas reduções, e diversos metadados foram armazenados em um banco de dados do \textit{ChromaDB}, juntamente com cada documento.
 
 TODO: versão final do modelo de dados no ChromaDB.
@@ -130,3 +150,33 @@ Para melhorar a representação dos tópicos gerados, fizemos alguns ajustes nas
     \item Remoção de stop-words, no CountVectorizer
     \item Remoção de palavras comuns e uso de BM-25 weighting measure.
 \end{itemize}
+
+
+
+
+% Para o estudo de conexões e tópicos existentes na obra, serão utilizadas ferramentas como grandes modelos de linguagem para geração de \emph{embeddings}, como Jina V3~\parencite{jina}, bibliotecas de modelagem de tópicos baseadas em transformers, como BERTopic~\parencite{grootendorst2022bertopic}, e UMAP~\parencite{mcinnes2018umap} para visualização dos \emph{embeddings} em duas dimensões.
+
+% \noindent\textbf{Plano de trabalho e cronograma:}
+% As atividades a serem realizadas estão resumidas abaixo. Tanto a lista de atividades quanto o cronograma estão sujeitos a alterações.
+% \begin{enumerate}
+%     \item Conversas com especialistas para entender questões de interesse
+%     \item Estudo das ferramentas a serem utilizadas no projeto
+%     \item Preparação do texto para processamento
+%     \item Criação de ferramenta para modelagem de tópicos
+%     \item Análise dos resultados e validação com especialistas
+%     \item Apresentação do trabalho
+%     \item Produção do texto final
+
+% \end{enumerate}
+
+
+
+
+%     Estabelecidos os contextos do autores e das obras a serem analisadas, apresentamos a seguir o método proposto para o estudo em questão. Recapitulando o que foi apresentado anteriormente, os modelos de inteligência artificial possuem a capacidade de realizar o mapeamento semântico de textos, o que possibilita, entre outras coisas, a comparação de similaridade entre diferentes trechos com base nos seus significados. Há aqui uma distinção importante a ser feita: esta comparação é baseada na similaridade de conceitos, e não por meio da comparação por igualdade de termos ou frases. Por exemplo, se buscamos pelo termo “judeu” em um texto, apenas por igualdade de termos, provavelmente encontraremos palavras como “judeu” e “judeus”, que possuem os mesmos cinco caracteres iniciais. Por outro lado, se buscarmos por similaridade semântica do termo “judeu”, possivelmente encontraremos “judeu”, “judeus”, “judia”, “judaísmo”, “hebreu”, “hebraico”, entre outros termos relacionados. Esta ideia será explorada detalhadamente mais adiante.
+% Sobre o processo de mapeamento semântico, é importante enfatizar que esta interpretação é realizada de forma totalmente automática, sem intervenção humana, e com base apenas em observação de grandes quantidades de texto. Uma característica importante desta abordagem é que ela se baseia puramente na observação da prática de escrita, na forma de textos existentes sobre diversos temas, e não em regras pré-estabelecidas. A simplicidade de automação do processo de “leitura” e análise de milhões de obras rapidamente para a identificação de padrões pode ser considerada como uma grande vantagem desta abordagem. No entanto, como a curadoria destes milhões de textos é praticamente impossível, é quase certo de que a qualidade deste conteúdo será pouco uniforme, com um misto de obras de alta e baixa qualidade. A consequência prática disso é que os resultados obtidos não podem ser utilizados cegamente, mas sim precisam ser interpretados para que sua corretude e utilidade sejam avaliadas no contexto apropriado.
+% Uma vez que a fase de análise dos textos esteja concluída, o modelo deve ser capaz de realizar o mapeamento semântico de novos textos não necessariamente observados inicialmente. No jargão de inteligência artificial, esta fase inicial é chamada de treinamento, i.e., o modelo processa grande quantidade de dados para identificar padrões e formar uma base de conhecimento, e a fase seguinte é chamada de inferência, em que o modelo, de fato, infere algo sobre dados fornecidos com base no conhecimento prévio compilado durante o treinamento. No nosso caso, esta inferência implica na projeção do texto fornecido ao modelo em um espaço latente que representa toda a informação semântica capturada durante o treinamento. Na prática isso significa que textos com significado similar são colocados em posições do espaço mais próximas entre si do que textos com significados menos similares. Para demonstrar este conceito, realizamos a indexação do texto completo das Etimologias utilizando um modelo de mapeamento semântico já treinado. Para que esta indexação fosse útil para a nossa finaildade, foi preciso realizar um pré-processamento do texto das obras selecionadas, de modo a criar uma base de dados de sentenças. Por exemplo, se tomarmos as primeiras sentenças do livro I das Etimologias, temos a seguinte estrutura na forma livro.capítulo.tópico.sentença:
+
+% • 1.I.1.S1: "A discipline (disciplina) takes its name from 'learning' (discere), whence it can also be called 'knowledge' (scientia)."
+% • 1.I.1.S2: "Now 'know' (scire) is named from 'learn' (discere), because none of us knows unless we have learned."
+% • 1.I.1.S3: "A discipline is so named in another way, because 'the full thing is learned' (discitur plena)."
+% Desta forma, ao encontrarmos determinada sentença com base em uma busca por similaridade, podemos rapidamente recuperar sua origem e referenciar a seção correspondente do livro, desta forma obtendo seu contexto completo para análise.

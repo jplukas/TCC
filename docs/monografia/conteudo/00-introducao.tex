@@ -8,6 +8,22 @@
 % cria um capítulo sem número e não o coloca no sumário. A introdução não
 % deve ser numerada, mas deve aparecer no sumário. Por conta disso, este
 % modelo define o comando "\chapter**".
-\chapter**{Introdução}
+\chapter{Introdução}
 \label{cap:introducao}
 % Cap 0 (2 páginas): Introdução, objetivos e contribuição. A gente pode aproveitar parte do texto que está na proposta do TCC para isso.
+
+Tradicionalmente, pesquisadores das áreas de humanidades como história, filosofia, entre outras, dependem da análise de grandes quantidades de fontes para a realização do seu trabalho. Esta análise tipicamente é realizada de forma manual, e com grande custo, tanto em termos de tempo quanto de recursos humanos, custo este que pode se tornar um fator limitador da produção científica desses pesquisadores.
+
+A área de processamento de linguagem natural (NLP) possui métodos bem estabelecidos para análise semântica de textos, como por exemplo, modelagem de tópicos~\parencite{deerwester1990indexing,blei2003latent,jelodar2019latent}, que visa agrupar textos que tratam de assuntos semelhantes. Com o surgimento dos grandes modelos de linguagem (LLM) baseados em transformers~\parencite{vaswani2017attention,devlin2019bert}, é possível observar um grande salto em termos de qualidade das ferramentas e métodos para análise de texto, o que pode ser atribuído à maior capacidade de mapeamento de conceitos em um espaço latente de atributos, que, por sua vez, possibilita um melhor agrupamento de textos em termos de semântica. Em todo caso, o uso destas técnicas requer certa familiaridade com o seu funcionamento e com os textos analisados, de modo que sejam feitos os ajustes necessários para a obtenção de bons resultados.
+
+\section{Objetivos}
+
+Neste trabalho pretendemos, por meio do uso de técnicas computacionais de processamento de texto, estudar os tópicos existentes na obra conhecida como \emph{Etimologias}, de Isidoro de Sevilha (c.560-636). Esta obra, que é considerada como a primeira grande enciclopédia da Idade Média, é formada por 20 livros que tratam das origens das palavras agrupadas em diversos grandes temas. O autor, que viveu em uma época de grandes mudanças culturais, buscava registrar o conhecimento de escritores latinos da Antiguidade Clássica, como Varrão, Catão e Plínio o Velho, entre outros. A obra, que foi escrita em latim medieval, foi copiada exaustivamente ao longo de cerca de 700 anos, sendo utilizada como uma espécie de livro-texto básico nas instituições de ensino da época. Por conveniência, para este trabalho será utilizada uma tradução recente para a língua inglesa~\parencite{barney2006etymologies}.
+
+\section{Contribuições}
+
+A principal contribuição pretendida com este trabalho é conseguir mapear temas transversais discutidos na obra estudada, para além dos temas gerais propostos pelo autor. Adicionalmente, propomos um experimento de análise de similaridade semântica entre a obra estudada e possíveis fontes da antiguidade, para identificar potenciais citações sem atribuição.
+
+\section{Organização}
+
+O texto está organizado da seguinte forma: no Capítulo~\ref{cap:background} tratamos do background histórico dos autores estudados, bem como das ferramentas utilizadas; no Capítulo~\ref{cap:experimentos} apresentamos os dados analisados, o \emph{pipeline} de processamento criado para os dados, e a configuração dos experimentos realizados; no Capítulo~\ref{cap:resultados} apresentamos e discutimos os resultados obtidos para cada experimento realizado. O Capítulo~\ref{cap:conclusao} conclui o texto.
