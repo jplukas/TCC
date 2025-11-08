@@ -50,5 +50,8 @@ def getModelFilePath(conf:dict[str, Any]):
     n_topics = conf["n_topics"]
     return f"models/{granularity}_{coll_name}_{n_topics}"
 
+def createIfNotExist():
+    pass
+
 # __all__ = ["getCollBaseName", "getOpt", "getArg", "getDocs", "docCount", "granType", "dictIter", "iterConfigs", "getCollName"]
         
