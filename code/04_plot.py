@@ -21,6 +21,7 @@ import seaborn as sns
 import pandas as pd
 from html import escape
 from wordcloud import WordCloud
+import json
 
 def save_wordcloud(model, topic, filename):
     text = {word: value for word, value in model.get_topic(topic)}
@@ -71,58 +72,86 @@ if __name__ == "__main__":
     env = Environment(loader=FileSystemLoader("templates/"))
     template = env.get_template("template.html.jinja")
 
-    for conf in iterConfigs(["embedder"]):
-        # granularity = conf["granularity"]
-        granularity = "topics"
-        emb_name = conf["embedder"]
-        coll_name = getCollName(emb_name)
+    # Get topic model configurations
+    with open(selected_confs_json_path, 'r') as json_file:
+        confs = json.load(json_file)
+
+    for conf in confs:
+        print(conf)
+        reduction = {
+            "n_neighbors":conf["reduction.n_neighbors"],
+            "n_components":conf["reduction.n_components"],
+            "densmap": False
+        }
+        clustering = {
+            "min_cluster_size":conf["clustering.min_cluster_size"],
+            "min_samples":conf["clustering.min_samples"],
+        }
+
+        granularity = conf["granularity"]
+        embedder = conf["embedder"]
+        n_topics = None
+
+        conf = {
+            "reduction": reduction,
+            "clustering": clustering,
+            "embedder": embedder,
+            "granularity": granularity,
+            "n_topics": n_topics,
+        }
+
+        coll_name = getCollName(embedder)
         data = all_data[granularity]
         docs = data["documents"]
         assert docs is not None
-        X = pd.DataFrame(np.load(f"./reduced_embds/{granularity}_{coll_name}_2d.npy"), columns=["X", "Y"])
+
+        reduction_2d = {**reduction, "n_components": 2}
+        X_2d_filepath = getReductionFilePath({**conf, "reduction": reduction_2d})
+        X = pd.DataFrame(np.load(X_2d_filepath), columns=["X", "Y"])
         n_docs = X.shape[0]
 
-        for conf2 in iterConfigs(["reduction", "clustering", "n_topics"]):
-            n_topics = conf2["n_topics"]
-            topic_model = BERTopic.load(getModelFilePath({**conf, **conf2, "granularity":granularity}))
-            doc_info = topic_model.get_document_info(docs)
-            doc_info = pd.concat([doc_info, X], axis=1)
-            topic_info = topic_model.get_topic_info().set_index("Topic")
-            # topics = topic_model.topics_
-            fig, _ = plot(doc_info, topic_info, f"Topicos por documento", f"Embedder: {emb_name}; granularidade: {granularity}; Tópicos: {n_topics}")
-            fig.savefig(f"visualizations/images/{granularity}_{coll_name}_{n_topics}.png")
-            plt.close()
-            plt.clf()
-            plt.cla()
-            
-            svg = pd.Series([ create_wordcloud(topic_model, topic) for topic in topic_info.index ], name="svg", index=topic_info.index)
-            topic_info["svg"] = svg
+        topic_model = BERTopic.load(getModelFilePath({**conf}))
+        topic_model.reduce_topics(docs, nr_topics=10)
+        doc_info = topic_model.get_document_info(docs)
+        doc_info = pd.concat([doc_info, X], axis=1)
+        topic_info = topic_model.get_topic_info().set_index("Topic")
 
-            outlier_count: int = topic_info.loc[-1, "Count"].item() if -1 in topic_info.index else 0
-            outlier_pct = 100 * outlier_count / n_docs
-            topic_count = topic_info["Name"].count().item()
-            doc_datamap = topic_model.visualize_document_datamap(docs, reduced_embeddings=X.to_numpy(), interactive=True)
-            # h_topics = model.hierarchical_topics(docs)
-            # h_docs = model.visualize_hierarchical_documents(docs, h_topics, reduced_embeddings=reduced_embds, hide_document_hover=False)
-            # h_docs.write_html('v.html', include_plotlyjs='cdn')
+        # topics = topic_model.topics_
+        # fig, _ = plot(doc_info, topic_info, f"Topicos por documento", f"Embedder: {embedder}; granularidade: {granularity}; Tópicos: {n_topics}")
+        # fig.savefig(f"visualizations/images/{granularity}_{coll_name}_{n_topics}.png")
+        # plt.close()
+        # plt.clf()
+        # plt.cla()
+        
+        svg = pd.Series([ create_wordcloud(topic_model, topic) for topic in topic_info.index ], name="svg", index=topic_info.index)
+        topic_info["svg"] = svg
+
+        outlier_count: int = topic_info.loc[-1, "Count"].item() if -1 in topic_info.index else 0
+        outlier_pct = 100 * outlier_count / n_docs
+        topic_count = topic_info["Name"].count().item()
+        doc_datamap = topic_model.visualize_document_datamap(docs, reduced_embeddings=X.to_numpy(), interactive=True)
+        # h_topics = model.hierarchical_topics(docs)
+        # h_docs = model.visualize_hierarchical_documents(docs, h_topics, reduced_embeddings=reduced_embds, hide_document_hover=False)
+        # h_docs.write_html('v.html', include_plotlyjs='cdn')
 
 
-            data = {
-                'nome_embedder': coll_name,
-                'dmapplt': escape(str(doc_datamap)),
-                'n_topics': n_topics,
-                # 'hierarchical': h_docs.to_html(full_html=False, include_plotlyjs='cdn'),
-                'nivel': granularity,
-                'outlier_pct': outlier_pct,
-                'outlier_count': outlier_count,
-                'topic_count': topic_count,
-                'topics': topic_info,
-                **conf2["clustering"],
-                **conf2["reduction"]
-            }
+        data = {
+            'nome_embedder': coll_name,
+            'dmapplt': escape(str(doc_datamap)),
+            'n_topics': n_topics,
+            # 'hierarchical': h_docs.to_html(full_html=False, include_plotlyjs='cdn'),
+            'nivel': granularity,
+            'outlier_pct': outlier_pct,
+            'outlier_count': outlier_count,
+            'topic_count': topic_count,
+            'topics': topic_info,
+            **conf["clustering"],
+            **conf["reduction"]
+        }
 
-            with open(f"./visualizations/html/{granularity}_{coll_name}_{n_topics}.html", 'w') as vis_file:
-                print(template.render(data), file=vis_file)
+        HTMLFilePath = getHTMLFilePath(conf)
+        with open(HTMLFilePath, 'w') as vis_file:
+            print(template.render(data), file=vis_file)
 
     # for name, gran_dict in topic_models.items():
     #     for granularity, model in gran_dict.items():

@@ -12,28 +12,45 @@ logging.disable(logging.WARN)
 import os
 import numpy as np
 from umap import UMAP
+from umap.umap_ import nearest_neighbors
 from sentence_transformers import SentenceTransformer
 from tqdm import tqdm
 from utils import *
 
 
 if __name__ == '__main__':
-    reduction, embedders, granularities = getArg(["reduction", "granularity", "embedder"])
-    r1_args: dict = reduction[0]
-    r2_args = {**r1_args, "n_components":2}
+    # reduction, embedders, granularities = getArg(["reduction", "granularity", "embedder"])
+    # reduction = {
+    #     "n_neighbors": 10, "n_components":5, "min_dist":0.0,
+    #     "low_memory": False, "metric":"cosine", "random_state":42
+    # }
+    # embedders = ["sentence-transformers/LaBSE"]
+    # granularities = ["topics"]
 
-    p1 = UMAP(**r1_args)
-    p2 = UMAP(**r2_args)
-
-    for emb_name in tqdm(embedders):
+    for conf in tqdm(iterConfigs(["embedder", "granularity"])):
+        emb_name = conf["embedder"]
+        gran = conf["granularity"]
         coll_name = getCollName(emb_name)
-        for gran in granularities:
-            # embedder = SentenceTransformer(emb_name, trust_remote_code=True)
-            all_data = getDocs(coll_name, gran, ["embeddings"])["embeddings"]
-            data = []
-            data.append(all_data)
-            X = np.concat(data)
-            X_5d = p1.fit_transform(X)
-            X_2d = p2.fit_transform(X)
-            np.save(f"./reduced_embds/{gran}_{coll_name}.npy", X_5d)
-            np.save(f"./reduced_embds/{gran}_{coll_name}_2d.npy", X_2d)
+        all_data = getDocs(coll_name, gran, ["embeddings"])["embeddings"]
+        data = []
+        data.append(all_data)
+        X = np.concat(data)
+        max_k_nn = max(getArg("reduction")["n_neighbors"])
+        print(f"Pre-computing k-nearest neighbors for k_max={max_k_nn}...")
+        precomputed_knn = nearest_neighbors(
+            X, n_neighbors=max_k_nn, metric="cosine", metric_kwds=None, angular=True,
+            low_memory=False, random_state=42
+        )
+        print("Done!")
+
+        for conf2 in iterConfigs(["reduction"]):
+            reduction_filepath = getReductionFilePath({**conf, **conf2})
+            if not os.path.exists(reduction_filepath):
+                reduction = conf2["reduction"]
+                p1 = UMAP(**reduction, precomputed_knn=precomputed_knn)
+                dimens = reduction["n_components"]
+                X_reduced = p1.fit_transform(X)
+                np.save(reduction_filepath, X_reduced)
+            # for emb_name in tqdm(conf2):
+            #     for gran in granularities:
+                    # embedder = SentenceTransformer(emb_name, trust_remote_code=True)
