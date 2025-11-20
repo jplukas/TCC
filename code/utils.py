@@ -7,6 +7,9 @@ granType:TypeAlias = str
 
 _CHROMA_CLIENT:Final = chromadb.PersistentClient("isidb")
 
+dataframe_path = "./topic_modeling_results_df.pkl"
+selected_confs_json_path = "./selected_confs.json"
+
 with open('opts.json', 'r') as optsfile:
     _OPTS:Final[dict[str, Any]] = json.load(optsfile)
 
@@ -42,13 +45,35 @@ def dictIter(conf: dict):
         yield(dict(zip(conf.keys(), p)))
 
 def iterConfigs(argnames: List[str] | None = None):
-    return dictIter(getArg(argnames))
+    return dictIter({k: dictIter(v) if isinstance(v, dict) else v for k, v in getArg(argnames).items()})
 
 def getModelFilePath(conf:dict[str, Any]):
+    baseFilePath = getBaseFilePath(conf)
+    n_topics = conf["n_topics"]
+    clustering = conf["clustering"]
+    min_cluster_size = clustering["min_cluster_size"]
+    min_samples = clustering["min_samples"]
+    return f"./models/{baseFilePath}_{min_cluster_size}_{min_samples}_{n_topics}"
+
+def getReductionFilePath(conf:dict[str, Any]):
+    baseFilePath = getBaseFilePath(conf)
+    return f"./reduced_embds/{baseFilePath}.npy"
+
+def getHTMLFilePath(conf:dict[str, Any]):
+    modelFilePath = getModelFilePath(conf)
+    filename = modelFilePath.removeprefix("./models/")
+    return f"./visualizations/html/{filename}.html"
+
+
+def getBaseFilePath(conf:dict[str, Any]):
     granularity = conf["granularity"]
     coll_name = getCollName(conf["embedder"])
-    n_topics = conf["n_topics"]
-    return f"models/{granularity}_{coll_name}_{n_topics}"
+    reduction = conf["reduction"]
+    n_neighbors = reduction["n_neighbors"]
+    dimensionality = reduction["n_components"]
+    densmap = "dense" if reduction["densmap"] else "normal"
+    return f"{granularity}_{coll_name}_{n_neighbors}_{dimensionality}_{densmap}"
+
 
 def createIfNotExist():
     pass

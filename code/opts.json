@@ -35,9 +35,18 @@
             "intfloat/multilingual-e5-large-instruct",
             "nomic-ai/nomic-embed-text-v2-moe"
         ],
-        "granularity": ["topics", "sentences", "mixed"],
-        "reduction": [{"n_neighbors":10, "n_components":5, "min_dist":0.0, "low_memory": false, "metric":"cosine", "random_state":42}],
-        "clustering": [{"min_cluster_size": 10, "min_samples": 1}],
-        "n_topics": [10, 20, 50, 100]
+        "granularity": [
+            "topics",
+            "sentences"
+        ],        
+        "reduction": {
+            "n_neighbors": [5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60], "n_components":[40, 35, 30, 25, 20, 15, 10, 5, 2], "min_dist":[0.0],
+            "low_memory": [false], "metric":["cosine"], "random_state":[42], "densmap": [false]
+        },
+        "clustering": {
+            "min_cluster_size": [10, 15, 20, 25, 30, 35, 40], "min_samples": [1, 5, 10, 15, 20],
+            "cluster_selection_method": ["eom"]
+        },
+        "n_topics": [null]
     }
 }
