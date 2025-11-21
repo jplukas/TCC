@@ -22,6 +22,20 @@ import pandas as pd
 from html import escape
 from wordcloud import WordCloud
 import json
+import datamapplot
+
+def get_hierarchies(topics: dict, h_topics):
+    ts:dict = topics
+    r = [topics]
+    for level in h_topics.sort_values("Distance").itertuples():
+        topics_to_merge = level.Topics
+        l = ts.copy()
+        for t in topics_to_merge:
+            l[t] = level.Parent_Name
+        ts = l
+        r.append(ts)
+    return r
+
 
 def save_wordcloud(model, topic, filename):
     text = {word: value for word, value in model.get_topic(topic)}
@@ -111,7 +125,7 @@ if __name__ == "__main__":
         n_docs = X.shape[0]
 
         topic_model = BERTopic.load(getModelFilePath({**conf}))
-        topic_model.reduce_topics(docs, nr_topics=10)
+        # topic_model.reduce_topics(docs, nr_topics=10)
         doc_info = topic_model.get_document_info(docs)
         doc_info = pd.concat([doc_info, X], axis=1)
         topic_info = topic_model.get_topic_info().set_index("Topic")
@@ -123,15 +137,22 @@ if __name__ == "__main__":
         # plt.clf()
         # plt.cla()
         
-        svg = pd.Series([ create_wordcloud(topic_model, topic) for topic in topic_info.index ], name="svg", index=topic_info.index)
-        topic_info["svg"] = svg
+        # svg = pd.Series([ create_wordcloud(topic_model, topic) for topic in topic_info.index ], name="svg", index=topic_info.index)
+        # topic_info["svg"] = svg
 
         outlier_count: int = topic_info.loc[-1, "Count"].item() if -1 in topic_info.index else 0
         outlier_pct = 100 * outlier_count / n_docs
-        topic_count = topic_info["Name"].count().item()
-        doc_datamap = topic_model.visualize_document_datamap(docs, reduced_embeddings=X.to_numpy(), interactive=True)
-        # h_topics = model.hierarchical_topics(docs)
-        # h_docs = model.visualize_hierarchical_documents(docs, h_topics, reduced_embeddings=reduced_embds, hide_document_hover=False)
+        topic_count = topic_info.index.max().item() + 1
+        h_topics = topic_model.hierarchical_topics(docs)
+        hierarchy = get_hierarchies(topic_info["Name"], h_topics)
+        labels = [doc_info["Topic"].map(h) for h in hierarchy]
+        doc_datamap = datamapplot.create_interactive_plot(X.to_numpy(), *labels, hover_text=docs)
+
+        # h_topics["Child_Right_ID_num"] = h_topics["Child_Right_ID"].astype(int) - topic_count
+        # h_topics["Child_Left_ID_num"] = h_topics["Child_Left_ID"].astype(int) - topic_count
+        
+        h_docs = topic_model.visualize_hierarchy(hierarchical_topics=h_topics).to_html(full_html=False, include_plotlyjs='cdn')
+
         # h_docs.write_html('v.html', include_plotlyjs='cdn')
 
 
@@ -139,7 +160,7 @@ if __name__ == "__main__":
             'nome_embedder': coll_name,
             'dmapplt': escape(str(doc_datamap)),
             'n_topics': n_topics,
-            # 'hierarchical': h_docs.to_html(full_html=False, include_plotlyjs='cdn'),
+            'hierarchical': h_docs,
             'nivel': granularity,
             'outlier_pct': outlier_pct,
             'outlier_count': outlier_count,
