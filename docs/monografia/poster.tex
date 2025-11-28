@@ -53,13 +53,13 @@
   poster = {
     % showframe, % muito útil durante a preparação do poster
     rows = 6,
-    columns = 2,
+    columns = 11,
     colspacing = 1.2cm,
     rowspacing = .8cm,
   },
 ]
 
-\posterbox[titlebox]{name=titlebox, below=top, column=1, span=2}{
+\posterbox[titlebox]{name=titlebox, below=top, column=1, span=11}{
   \begin{center}
     \huge{\textbf{Análise de Textos Históricos utilizando LLMs e Modelagem de Tópicos}}
   \end{center}
@@ -74,7 +74,7 @@
   % \end{multicols}
 }
 
-\posterbox[footerbox]{name=footerbox, above=bottom, column=1, span=2}{
+\posterbox[footerbox]{name=footerbox, above=bottom, column=1, span=11}{
     linux.ime.usp.br/\textasciitilde jplukas/mac0499\par
     \small\ttfamily
     joao.lukasavicus.silva@usp.br\par
@@ -97,7 +97,7 @@
 
 \posterbox[adjusted title = Introdução,
           smallmargins]
-          {name=intro, below=titlebox, column=1, span=2}{
+          {name=intro, below=titlebox, column=1, span=11}{
 
   Neste trabalho, iremos investigar conexões entre tópicos de interesse de historiadores
 sobre a obra conhecida como "Etimologias", de Isidoro de Sevilha (c.560-636), que é uma
@@ -117,50 +117,48 @@ instituições de ensino da época.
   % A área de processamento de linguagem natural (NLP) possui métodos bem estabelecidos para análise semântica de textos, como por exemplo, modelagem de tópicos~\parencite{deerwester1990indexing,blei2003latent,jelodar2019latent}, que visa agrupar textos que tratam de assuntos semelhantes. Com o surgimento dos grandes modelos de linguagem (LLM) baseados em transformers~\parencite{vaswani2017attention,devlin2019bert}, é possível observar um grande salto em termos de qualidade das ferramentas e métodos para análise de texto, o que pode ser atribuído à maior capacidade de mapeamento de conceitos em um espaço latente de atributos, que, por sua vez, possibilita um melhor agrupamento de textos em termos de semântica. Em todo caso, o uso destas técnicas requer certa familiaridade com o seu funcionamento e com os textos analisados, de modo que sejam feitos os ajustes necessários para a obtenção de bons resultados.
 }
 
-\posterbox[adjusted title = BERTopic,
-          smallmargins]
-          {name=bertopic, below=intro, column=1, span=1, rowspan=1.5}{
+\posterbox[adjusted title = Modelagem de tópicos,
+          smallmargins, equal height group=primer]
+          {name=bertopic, below=intro, column=1, span=3}{
 
-    \centering
-    \includegraphics[width=.95\textwidth]{bertopic}
-
+  Para a modelagem dos tópicos, utilizamos o BERTopic...
+  \centering
+  \includegraphics[width=\textwidth]{bertopic}
 }
 
 \posterbox[adjusted title = Mapeamento semântico,
-          smallmargins]
-          {name=sem_map, below=bertopic, column=1, span=1}{
+          smallmargins, equal height group=primer]
+          {name=sem_map, below=intro, column=4, span=3}{
 
     Modelos de \textit{word embedding} e \textit{sentence embedding} são capazes de extrair informação semântica de palavras e frases em linguagem natural por meio de representações vetoriais...
 }
 
-\posterbox[adjusted title = UMAP,
+\posterbox[adjusted title = Redução de dimensionalidade,
           smallmargins]
-          {name=umap, below=sem_map, column=1}{
+          {name=umap, below=bertopic, column=1, span=3}{
 
     Escrever sobre redução de dimensionalidade e o UMAP
 }
 
-\posterbox[adjusted title = HDBSCAN,
+\posterbox[adjusted title = \textit{Clustering},
           smallmargins]
-          {name=hdbscan, below=intro, column=2, span=1}{
+          {name=hdbscan, below=bertopic, column=4, span=3}{
 
     Escrever sobre clustering e o HDBSCAN
 }
 
+\posterbox[adjusted title = Resultados, smallmargins]{name=resultados, below=intro, column=7, span=5}{
+  \centering
+  \includegraphics[width=\textwidth]{jina_embeddings}
+}
+
 \posterbox[adjusted title = Bibliografia,
           smallmargins]
-          {name=bibliografia, above=footerbox, column=2}{
+          {name=bibliografia, between=resultados and footerbox, column=7, span=5}{
 
     bibliografia
 }
 
-\posterbox[adjusted title = Resultados,
-          smallmargins]
-          {name=resultados, between=hdbscan and bibliografia, column=2, span=1}{
-
-     \centering
-    \includegraphics[width=\textwidth]{jina_embeddings}
-}
 
 
 
