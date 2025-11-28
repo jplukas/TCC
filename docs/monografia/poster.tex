@@ -11,7 +11,9 @@
 % Vários pacotes e opções de configuração genéricos
 \usepackage{imegoodies}
 \usepackage[poster,hidelinks, bluey]{imelooks}
-% \tcbposterset{fontsize = 32pt} % default, mude se necessário
+\usepackage{wrapfig}
+\usepackage{lipsum}
+\tcbposterset{fontsize = 22pt} % default, mude se necessário
 
 % Diretórios onde estão as figuras; com isso, não é necessário (mas
 % é permitido) colocar o caminho completo em \includegraphics. Note
@@ -53,13 +55,13 @@
   poster = {
     % showframe, % muito útil durante a preparação do poster
     rows = 6,
-    columns = 11,
+    columns = 12,
     colspacing = 1.2cm,
     rowspacing = .8cm,
   },
 ]
 
-\posterbox[titlebox]{name=titlebox, below=top, column=1, span=11}{
+\posterbox[titlebox]{name=titlebox, below=top, column=1, span=12}{
   \begin{center}
     \huge{\textbf{Análise de Textos Históricos utilizando LLMs e Modelagem de Tópicos}}
   \end{center}
@@ -74,7 +76,7 @@
   % \end{multicols}
 }
 
-\posterbox[footerbox]{name=footerbox, above=bottom, column=1, span=11}{
+\posterbox[footerbox]{name=footerbox, above=bottom, column=1, span=12}{
     linux.ime.usp.br/\textasciitilde jplukas/mac0499\par
     \small\ttfamily
     joao.lukasavicus.silva@usp.br\par
@@ -97,7 +99,7 @@
 
 \posterbox[adjusted title = Introdução,
           smallmargins]
-          {name=intro, below=titlebox, column=1, span=11}{
+          {name=intro, below=titlebox, column=1, span=12}{
 
   Neste trabalho, iremos investigar conexões entre tópicos de interesse de historiadores
 sobre a obra conhecida como "Etimologias", de Isidoro de Sevilha (c.560-636), que é uma
@@ -117,50 +119,84 @@ instituições de ensino da época.
   % A área de processamento de linguagem natural (NLP) possui métodos bem estabelecidos para análise semântica de textos, como por exemplo, modelagem de tópicos~\parencite{deerwester1990indexing,blei2003latent,jelodar2019latent}, que visa agrupar textos que tratam de assuntos semelhantes. Com o surgimento dos grandes modelos de linguagem (LLM) baseados em transformers~\parencite{vaswani2017attention,devlin2019bert}, é possível observar um grande salto em termos de qualidade das ferramentas e métodos para análise de texto, o que pode ser atribuído à maior capacidade de mapeamento de conceitos em um espaço latente de atributos, que, por sua vez, possibilita um melhor agrupamento de textos em termos de semântica. Em todo caso, o uso destas técnicas requer certa familiaridade com o seu funcionamento e com os textos analisados, de modo que sejam feitos os ajustes necessários para a obtenção de bons resultados.
 }
 
-\posterbox[adjusted title = Modelagem de tópicos,
-          smallmargins, equal height group=primer]
-          {name=bertopic, below=intro, column=1, span=3}{
+\posterbox[adjusted title = Modelagem de tópicos, smallmargins]{name=bertopic, below=intro, column=1, span=6}{
 
-  Para a modelagem dos tópicos, utilizamos o BERTopic...
-  \centering
-  \includegraphics[width=\textwidth]{bertopic}
+  \begin{wrapfigure}{r}{.3\textwidth}
+    \includegraphics[width=\linewidth]{bertopic}
+    \caption{Representação modular do BERTopic}
+  \end{wrapfigure}
+
+  Para a modelagem dos tópicos, utilizamos o BERTopic. Esta é uma técnica de modelagem de tópicos em linguagem natural que baseia-se (basicamente) em 4 passos:
+  \begin{enumerate}
+    \item Extração de representações semânticas vetoriais de sentenças (\textit{text embeddings});
+    \item Redução de dimensionalidade;
+    \item \textit{Clustering} das projeções de baixa dimensionalidade dos \textit{embeddings};
+    \item Extração de representações textuais dos \textit{clusters}.
+  \end{enumerate}
 }
 
-\posterbox[adjusted title = Mapeamento semântico,
-          smallmargins, equal height group=primer]
-          {name=sem_map, below=intro, column=4, span=3}{
+% \posterbox[adjusted title = 1. Mapeamento semântico,
+%           smallmargins]
+%           {name=sem_map, below=intro, column=4, span=3}{
 
-    Modelos de \textit{word embedding} e \textit{sentence embedding} são capazes de extrair informação semântica de palavras e frases em linguagem natural por meio de representações vetoriais...
-}
+%     Modelos de \textit{word embedding} e \textit{sentence embedding} são capazes de extrair informação semântica de palavras e frases em linguagem natural por meio de representações vetoriais...
+% }
 
-\posterbox[adjusted title = Redução de dimensionalidade,
+\posterbox[adjusted title = 1. Mapeamento semântico,
           smallmargins]
-          {name=umap, below=bertopic, column=1, span=3}{
+          {name=sem_map, below=bertopic, column=1, span=6}{
 
-    Escrever sobre redução de dimensionalidade e o UMAP
+    Modelos de redes neurais artificiais denominados \textit{word} e \textit{sentence embedders} são capazes de extrair informação semântica de palavras e frases em linguagem natural, criando representações vetoriais.
+    \begin{figure}[H]
+      \begin{subfigure}[c]{.40\textwidth}
+        \includegraphics[width=\textwidth]{embedding}
+      \end{subfigure}
+      \begin{subfigure}[c]{.40\textwidth}
+        \includegraphics[width=\textwidth]{semantics}
+      \end{subfigure}
+      \caption{Exemplos de embeddings}
+    \end{figure}
+    Essas representações são construídas de tal maneira que sentenças (ou palavras) com significados análogos têm suas representações vetoriais próximas em um espaço latente de \textit{embeddings}.
 }
 
-\posterbox[adjusted title = \textit{Clustering},
-          smallmargins]
-          {name=hdbscan, below=bertopic, column=4, span=3}{
+\posterbox[adjusted title = 2. Redução de dimensionalidade: UMAP,smallmargins]{name=umap, below=sem_map, column=1, span=6}{
 
-    Escrever sobre clustering e o HDBSCAN
+  Os modelos de embedding tipicamente projetam sentenças em espaços de alta dimensionalidade (\(d = 1000\), tipicamente). Devido à \textbf{maldição da dimensionalidade}, aplicamos uma técnica de redução de dimensionalidade denominada UMAP, para viabilizar a etapa posterior de \textit{clustering} (e também para visualização).\\
+  \begin{figure}[H]
+    \begin{subfigure}[c]{.40\textwidth}
+      \includegraphics[width=\textwidth]{mammoth_3d}
+      \caption{Original em 3D}
+    \end{subfigure}
+    \begin{subfigure}[c]{.40\textwidth}
+      \includegraphics[width=\textwidth]{mammoth_2d}
+      \caption{Representação em 2D, reduzida}
+    \end{subfigure}
+      \caption{Exemplo de visualização do UMAP}
+  \end{figure}
 }
 
-\posterbox[adjusted title = Resultados, smallmargins]{name=resultados, below=intro, column=7, span=5}{
+\posterbox[adjusted title = 3. \textit{Clustering}: HDBSCAN, smallmargins]{name=hdbscan, below=umap, column=1, span=6}{
+  Para a etapa de aglomeração dos documentos, utilizamos o HDBSCAN, que é um algoritmo de \textit{clustering} hierárquico baseado em densidade. Utilizamos essa abordagem para sermos capazes de detectar \textit{clusters} de formatos variados, não-convexos.
+  \begin{figure}[H]
+    \includegraphics[width=.40\textwidth]{hdbscan}
+    \caption{Exemplo de clusterização pelo HDBSCAN. Observe os clusters (coloridos) de diferentes formas e densidades. Observe também a presença de pontos classificados como ruído}
+  \end{figure}
+}
+
+% \posterbox[adjusted title = 4. Representação,smallmargins]{name=representacao, below=hdbscan, column=1, span=6}{
+
+%     Escrever sobre vetorização, cTF-IDF, etc...
+% }
+
+\posterbox[adjusted title = Resultados, smallmargins]{name=resultados, below=intro, column=7, span=6}{
   \centering
   \includegraphics[width=\textwidth]{jina_embeddings}
 }
 
-\posterbox[adjusted title = Bibliografia,
-          smallmargins]
-          {name=bibliografia, between=resultados and footerbox, column=7, span=5}{
+\posterbox[adjusted title = Bibliografia,smallmargins]{name=bibliografia, between=resultados and footerbox, column=7, span=6}{
 
     bibliografia
 }
-
-
-
 
 
 \end{tcbposter}
