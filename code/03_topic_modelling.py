@@ -9,7 +9,7 @@ logging.disable(logging.WARN)
 
 import os
 import numpy as np
-from hdbscan import HDBSCAN
+from hdbscan import HDBSCAN, flat
 
 from bertopic.representation import KeyBERTInspired, PartOfSpeech, MaximalMarginalRelevance
 from bertopic.vectorizers import ClassTfidfTransformer
@@ -24,22 +24,27 @@ import pandas as pd
 
 
 def createTopicModel(docs: List[Any], # embedder: str, coll_name: str, granularity: granType,
-    clustering: dict[str, Any], vectorizer_model, ctfidf_model, n_topics: int,
+    clustering: dict[str, Any], n_topics: int,
     embeddings: Any, reduction:dict[str, Any] | None = None, topic_reduction_strategy: str | None = None,
     outlier_reduction_strategy: str | None = None, embedder: Any | None = None,
     granularity: Any | None = None):
 
     from bertopic import BERTopic
     
-    hdbscan_model = HDBSCAN(core_dist_n_jobs=-1, **clustering)
+    hdbscan_model = HDBSCAN(core_dist_n_jobs=-1, prediction_data=True, **clustering)
+    # hdbscan_model = flat.HDBSCAN_flat(X=embeddings, core_dist_n_jobs=-1, prediction_data=True, n_clusters=n_topics, **clustering)
+    
+    vectorizer_model = CountVectorizer(stop_words='english', ngram_range=(1, 2))
+    ctfidf = ClassTfidfTransformer(True, True)
 
     return BERTopic(
                 top_n_words=100,
                 hdbscan_model=hdbscan_model,
                 vectorizer_model=vectorizer_model,
-                ctfidf_model=ctfidf_model,
+                ctfidf_model=ctfidf,
                 umap_model=BaseDimensionalityReduction(),
-                nr_topics=n_topics
+                nr_topics=None,
+                calculate_probabilities=True,
             ).fit(docs, embeddings)
 
 if __name__ == "__main__":
@@ -51,9 +56,6 @@ if __name__ == "__main__":
             granularity: getDocs("nomic_ai_nomic_embed_text_v2_moe__en", granularity, include=["documents", "metadatas"])
             for granularity in getArg("granularity")
         }
-
-        vectorizer_model = CountVectorizer(stop_words='english')
-        ctfidf = ClassTfidfTransformer(True, True)
             
         # chosen_embedder = "sentence-transformers/LaBSE"
         # chosen_granularity = "topics"
@@ -88,8 +90,7 @@ if __name__ == "__main__":
                             if min_cluster_size < min_samples: continue
                             
                             topic_model = createTopicModel(
-                                docs, embeddings=embeddings, **{"vectorizer_model": vectorizer_model,
-                                "ctfidf_model":ctfidf, **config}
+                                docs, embeddings=embeddings, **config
                             )
                             topic_model.save(model_filepath, serialization='safetensors', save_ctfidf=True)
                         else:

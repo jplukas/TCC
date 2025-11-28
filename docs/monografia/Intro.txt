@@ -1,0 +1,15 @@
+Intro
+Motivacao
+Método
+	LLM, embeddings, mapeamento semântico
+	Projeção para visualização
+	BERTopic
+		Overview
+		Embeddings (?)
+		UMAP
+		HDBSCAN
+		Representações finais (cTF-IDF e afins)
+Resultados
+	pinçar bons exemplos de modelagem de tópicos
+	pinçar bons exemplos do experimento de linhagem/procedência
+Conclusão
