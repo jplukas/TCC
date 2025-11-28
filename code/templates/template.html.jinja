@@ -1,13 +1,53 @@
-<html>
-    <head>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
-        <style>
-            body{ margin:0 100; background:whitesmoke; }
-        </style>
-    </head>
-    <body>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container">
+        <a class="navbar-brand" href="#">Navbar</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Link</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Dropdown
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="#">Action</a></li>
+                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="#">Something else here</a></li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link disabled">Disabled</a>
+            </li>
+          </ul>
+          <form class="d-flex" role="search">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+          </form>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container">
         <h1>Resumo do modelo</h1>
-        <table>
+        <table style="width:100%">
             <tr>
                 <th>Embedder</th>
                 <td>{{ nome_embedder }}</td>
@@ -51,42 +91,76 @@
                 </td>
             </tr>
         </table>
-
+        <h2>Tópicos por livro</h2>
+        {% for book, plot in topics_per_book.items() %}
+        <div class="row">
+          <h3>{{ book }}</h3>
+          <div class="col">
+          {{ plot | safe }}
+          </div>
+        </div>
+        {% endfor %}
         <h2>Tópicos</h2>
-        <ul>
-            <li>Número de tópicos: {{ topic_count }}</li>
-            <li># de outliers: {{ outlier_count }}</li>
-            <li>% de outliers: {{ outlier_pct }}</li>
-        </ul>
+        <div class="row">
+          <div class="col">
+            <ul>
+                <li>Número de tópicos: {{ topic_count }}</li>
+                <li># de outliers: {{ outlier_count }}</li>
+                <li>% de outliers: {{ outlier_pct }}</li>
+            </ul>
+          </div>
+          <div class="col">
+          {{ distribution | safe }}
+          </div>
+        </div>
 
-        <table>
-            <thead>
-                <tr>
-                    <th>Nome</th> <th>Qtde. documentos</th> <th>Doc. Representativo</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for index, topic in topics.iterrows() %}
-                    <tr>
-                        <td>{{ topic['Name'] }}</td> <td>{{ topic['Count'] }}</td>
-                        <td>
-                            {{ topic['svg'] | safe }}
-                        </td>
-                    </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+        {% for index, topic in topics.iterrows() %}
+            <div class="row">
+                <div class="row">
+                    <div class="col-3">
+                        <p>Nome: {{ topic['Name'] }}</p>
+                        <p>Quantidade de documentos: {{ topic['Count'] }}</p>
+                    </div>
+                    <div class="col text-center">
+                        {{ topic['svg'] | safe }}
+                    </div>
+                    <div class="col-5">
+                        {{ topic['book_dist'] | safe }}
+                    </div>
+                </div>
+                <div class="row">
+                    <h3>Documentos representativos</h3>
+                    {% for doc in topic['Representative_Docs'].itertuples() %}
+                    <div class="col-4">
+                      <h4>
+                        Livro: {{ doc.book_title }}; capítulo {{ doc.chapter }}:
+                      </h4>
+                      <p>{{ doc.Document }}</p>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            
+        {% endfor %}
 
         <h3>Datamap plot</h3>
-        <iframe width="1000" height="550" frameborder="0" seamless="seamless" scrolling="no" srcdoc="{{ dmapplt }}">
+        <iframe width="100%" height="1000" frameborder="0" seamless="seamless" scrolling="no" srcdoc="{{ dmapplt }}">
             Not supported
         </iframe>
         
-    
+
         <h3>Hierarchical</h3>
         <div>
             {{ hierarchical }}
         </div>
-        
-    </body>
+
+        <h3>Barchart</h3>
+        <div>
+            {{ barchart }}
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+    <script src="main.js"></script>
+  </body>
 </html>
