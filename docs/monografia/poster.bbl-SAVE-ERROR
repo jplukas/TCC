@@ -16,5 +16,156 @@
   {}
 \endgroup
 
+
+\refsection{0}
+  \datalist[entry]{nyt/global//global/global/global}
+    \entry{hdbscan}{inproceedings}{}{}
+      \name{author}{3}{}{%
+        {{un=0,uniquepart=base,hash=382d8e986b9afdbfedb661be5cf9ce33}{%
+           family={Campello},
+           familyi={C\bibinitperiod},
+           given={Ricardo\bibnamedelimb J.\bibnamedelimi G.\bibnamedelimi B.},
+           giveni={R\bibinitperiod\bibinitdelim J\bibinitperiod\bibinitdelim G\bibinitperiod\bibinitdelim B\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=8608b4a10cbfee7eb81b652407a3305a}{%
+           family={Moulavi},
+           familyi={M\bibinitperiod},
+           given={Davoud},
+           giveni={D\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=e155d1575870b682f3029b1ee02ff893}{%
+           family={Sander},
+           familyi={S\bibinitperiod},
+           given={Joerg},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+      }
+      \name{editor}{5}{}{%
+        {{hash=56af930e1f5e2c9a791b71e7b347c0ba}{%
+           family={Pei},
+           familyi={P\bibinitperiod},
+           given={Jian},
+           giveni={J\bibinitperiod}}}%
+        {{hash=42b42d9d10bbc93b4d7dbd5b26a8cfdf}{%
+           family={Tseng},
+           familyi={T\bibinitperiod},
+           given={Vincent\bibnamedelima S.},
+           giveni={V\bibinitperiod\bibinitdelim S\bibinitperiod}}}%
+        {{hash=259f81b9fe9f9737014c9eb11c08df15}{%
+           family={Cao},
+           familyi={C\bibinitperiod},
+           given={Longbing},
+           giveni={L\bibinitperiod}}}%
+        {{hash=d26f438bb203e0655769b9af6932fe72}{%
+           family={Motoda},
+           familyi={M\bibinitperiod},
+           given={Hiroshi},
+           giveni={H\bibinitperiod}}}%
+        {{hash=06023c96555b95e222d92ae0de2c2291}{%
+           family={Xu},
+           familyi={X\bibinitperiod},
+           given={Guandong},
+           giveni={G\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Berlin, Heidelberg}%
+      }
+      \list{publisher}{1}{%
+        {Springer Berlin Heidelberg}%
+      }
+      \strng{namehash}{94fdd8ebcd18f5033949784c42c9c2ba}
+      \strng{fullhash}{84276f8f7e0bd597fd1ee130e754f627}
+      \strng{fullhashraw}{84276f8f7e0bd597fd1ee130e754f627}
+      \strng{bibnamehash}{94fdd8ebcd18f5033949784c42c9c2ba}
+      \strng{authorbibnamehash}{94fdd8ebcd18f5033949784c42c9c2ba}
+      \strng{authornamehash}{94fdd8ebcd18f5033949784c42c9c2ba}
+      \strng{authorfullhash}{84276f8f7e0bd597fd1ee130e754f627}
+      \strng{authorfullhashraw}{84276f8f7e0bd597fd1ee130e754f627}
+      \strng{editorbibnamehash}{0f7210bb6168b72933fbd7a462c750c1}
+      \strng{editornamehash}{0f7210bb6168b72933fbd7a462c750c1}
+      \strng{editorfullhash}{c4e66fdf2ee9ba6df93fd5fff6f7da5e}
+      \strng{editorfullhashraw}{c4e66fdf2ee9ba6df93fd5fff6f7da5e}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{We propose a theoretically and practically improved density-based, hierarchical clustering method, providing a clustering hierarchy from which a simplified tree of significant clusters can be constructed. For obtaining a ``flat'' partition consisting of only the most significant clusters (possibly corresponding to different density thresholds), we propose a novel cluster stability measure, formalize the problem of maximizing the overall stability of selected clusters, and formulate an algorithm that computes an optimal solution to this problem. We demonstrate that our approach outperforms the current, state-of-the-art, density-based clustering methods on a wide variety of real world data.}
+      \field{booktitle}{Advances in Knowledge Discovery and Data Mining}
+      \field{isbn}{978-3-642-37456-2}
+      \field{title}{Density-Based Clustering Based on Hierarchical Density Estimates}
+      \field{year}{2013}
+      \field{pages}{160\bibrangedash 172}
+      \range{pages}{13}
+    \endentry
+    \entry{grootendorst2022bertopic}{article}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=a07dee61406b9c48310bff46188c983b}{%
+           family={Grootendorst},
+           familyi={G\bibinitperiod},
+           given={Maarten},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{a07dee61406b9c48310bff46188c983b}
+      \strng{fullhash}{a07dee61406b9c48310bff46188c983b}
+      \strng{fullhashraw}{a07dee61406b9c48310bff46188c983b}
+      \strng{bibnamehash}{a07dee61406b9c48310bff46188c983b}
+      \strng{authorbibnamehash}{a07dee61406b9c48310bff46188c983b}
+      \strng{authornamehash}{a07dee61406b9c48310bff46188c983b}
+      \strng{authorfullhash}{a07dee61406b9c48310bff46188c983b}
+      \strng{authorfullhashraw}{a07dee61406b9c48310bff46188c983b}
+      \field{sortinit}{G}
+      \field{sortinithash}{32d67eca0634bf53703493fb1090a2e8}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{arXiv preprint arXiv:2203.05794}
+      \field{title}{BERTopic: Neural topic modeling with a class-based TF-IDF procedure}
+      \field{year}{2022}
+    \endentry
+    \entry{mcinnes2018umap}{article}{}{}
+      \name{author}{3}{}{%
+        {{un=0,uniquepart=base,hash=f3edd0ee6ca72eca5c532b9c1fcee621}{%
+           family={McInnes},
+           familyi={M\bibinitperiod},
+           given={Leland},
+           giveni={L\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=2a653f5c3174b96798d6336399101032}{%
+           family={Healy},
+           familyi={H\bibinitperiod},
+           given={John},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=542b470ec223367aba58d9d095e4e340}{%
+           family={Melville},
+           familyi={M\bibinitperiod},
+           given={James},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{3341d13f7f8011d4c09baee830a3a666}
+      \strng{fullhash}{9bc0813b09f8460b9f60233db84de773}
+      \strng{fullhashraw}{9bc0813b09f8460b9f60233db84de773}
+      \strng{bibnamehash}{3341d13f7f8011d4c09baee830a3a666}
+      \strng{authorbibnamehash}{3341d13f7f8011d4c09baee830a3a666}
+      \strng{authornamehash}{3341d13f7f8011d4c09baee830a3a666}
+      \strng{authorfullhash}{9bc0813b09f8460b9f60233db84de773}
+      \strng{authorfullhashraw}{9bc0813b09f8460b9f60233db84de773}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{arXiv preprint arXiv:1802.03426}
+      \field{title}{Umap: Uniform manifold approximation and projection for dimension reduction}
+      \field{year}{2018}
+    \endentry
+  \enddatalist
+\endrefsection
 \endinput
 

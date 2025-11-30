@@ -208,16 +208,16 @@ if __name__ == "__main__":
         outlier_count: int = topic_info.loc[-1, "Count"].item() if -1 in topic_info.index else 0
         outlier_pct = 100 * outlier_count / n_docs
         topic_count = topic_info.index.max().item() + 1
-        h_topics = topic_model.hierarchical_topics(docs)
-        hierarchy = get_hierarchies(topic_info["Name"], h_topics)
-        labels = [doc_info["Topic"].map(h) for h in hierarchy]
-        doc_datamap = datamapplot.create_interactive_plot(
-            X.to_numpy(), *labels, hover_text=docs,
-            noise_label=topic_info.loc[-1, "Name"],
-            colormaps={
-                "Books": doc_info["book_title"]
-            }
-        )
+        # h_topics = topic_model.hierarchical_topics(docs)
+        # hierarchy = get_hierarchies(topic_info["Name"], h_topics)
+        # labels = [doc_info["Topic"].map(h) for h in hierarchy]
+        # doc_datamap = datamapplot.create_interactive_plot(
+        #     X.to_numpy(), *labels, hover_text=docs,
+        #     noise_label=topic_info.loc[-1, "Name"],
+        #     colormaps={
+        #         "Books": doc_info["book_title"]
+        #     }
+        # )
 
         topic_distribution = px.bar(topic_info, x="Name", y="Count").to_html(full_html=False, include_plotlyjs='cdn')
         # rep_docs = {topic: get_repres_docs(topic, doc_info) for topic in topic_info.index}
@@ -228,7 +228,7 @@ if __name__ == "__main__":
         data = {
             'nome_embedder': coll_name,
             'topics_per_book': topics_per_book,
-            'dmapplt': escape(str(doc_datamap)),
+            # 'dmapplt': escape(str(doc_datamap)),
             'n_topics': n_topics,
             'nivel': granularity,
             'outlier_pct': outlier_pct,
