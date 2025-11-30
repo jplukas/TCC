@@ -23,7 +23,7 @@ def plot(X_2d, names, words_2d, words):
     fig, ax = plt.subplots(1, 1, figsize=(20, 20))
 
     for c, cl in enumerate(np.unique(names)):
-        ax.scatter(X_2d[names==cl,0], X_2d[names==cl,1], label=cl, s=10, marker='o', alpha=0.2)
+        ax.scatter(X_2d[names==cl,0], X_2d[names==cl,1], label=cl, s=20, marker='o', alpha=0.2)
         ax.axis('off')
 
     for w in words:
@@ -39,10 +39,15 @@ def plot(X_2d, names, words_2d, words):
     plt.tight_layout()
     plt.show()  
 
+def formatEllipsis(s:str, max:int = 25)-> str:
+    if len(s) <= max:
+        return s
+    return s[:max - 3] + "..."
+
 if __name__ == "__main__":
     # granularities = getArg("granularity")
     # embedders = getArg("embedder")
-    book_titles = {str(i + 1): d["title_en"] for i, d in enumerate(getOpt("book_struct"))}
+    book_titles = {str(i + 1): formatEllipsis(d["title_en"]) for i, d in enumerate(getOpt("book_struct"))}
 
     granularities = ["topics"]
     embedders = ["jinaai/jina-embeddings-v3"]
@@ -66,15 +71,4 @@ if __name__ == "__main__":
             book_names = np.array([book_titles[d["book"]] for d in meta])
             
             plot(X_2d, book_names, words_2d, words)
-    # # Get topic model configurations
-    # with open(selected_confs_json_path, 'r') as json_file:
-    #     confs = json.load(json_file)
-
-    # for conf in confs:
-    #     print(conf)
-    #     reduction = {
-    #         "n_neighbors":conf["reduction.n_neighbors"],
-    #         "n_components":conf["reduction.n_components"],
-    #         "densmap": False
-    #     }
         

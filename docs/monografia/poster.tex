@@ -13,7 +13,7 @@
 \usepackage[poster,hidelinks, bluey]{imelooks}
 \usepackage{wrapfig}
 \usepackage{lipsum}
-\tcbposterset{fontsize = 22pt} % default, mude se necessário
+\tcbposterset{fontsize = 21pt} % default, mude se necessário
 
 % Diretórios onde estão as figuras; com isso, não é necessário (mas
 % é permitido) colocar o caminho completo em \includegraphics. Note
@@ -77,9 +77,14 @@
 }
 
 \posterbox[footerbox]{name=footerbox, above=bottom, column=1, span=12}{
-    linux.ime.usp.br/\textasciitilde jplukas/mac0499\par
-    \small\ttfamily
-    joao.lukasavicus.silva@usp.br\par
+    % linux.ime.usp.br/\textasciitilde jplukas/mac0499\par
+    Autor: João Pedro Lukasavicus Silva\quad
+    {\small\ttfamily
+    joao.lukasavicus.silva@usp.br}\par
+    Orientador: Mateus Espadoto\quad
+    {\small\ttfamily
+    mespadot@ime.usp.br}\par
+    \par
     \vspace{4pt}
     \footnotesize\rmfamily
     \textcolor{imesoftblue!30!white}
@@ -126,7 +131,7 @@ instituições de ensino da época.
     \caption{Representação modular do BERTopic}
   \end{wrapfigure}
 
-  Para a modelagem dos tópicos, utilizamos o BERTopic. Esta é uma técnica de modelagem de tópicos em linguagem natural que baseia-se (basicamente) em 4 passos:
+  Para a modelagem dos tópicos, utilizamos o BERTopic~\parencite{grootendorst2022bertopic}. Esta é uma técnica de modelagem de tópicos em linguagem natural que baseia-se (basicamente) em 4 passos:
   \begin{enumerate}
     \item Extração de representações semânticas vetoriais de sentenças (\textit{text embeddings});
     \item Redução de dimensionalidade;
@@ -161,7 +166,7 @@ instituições de ensino da época.
 
 \posterbox[adjusted title = 2. Redução de dimensionalidade: UMAP,smallmargins]{name=umap, below=sem_map, column=1, span=6}{
 
-  Os modelos de embedding tipicamente projetam sentenças em espaços de alta dimensionalidade (\(d = 1000\), tipicamente). Devido à \textbf{maldição da dimensionalidade}, aplicamos uma técnica de redução de dimensionalidade denominada UMAP, para viabilizar a etapa posterior de \textit{clustering} (e também para visualização).\\
+  Os modelos de embedding tipicamente projetam sentenças em espaços de alta dimensionalidade (\(d = 1000\), tipicamente). Devido à \textbf{maldição da dimensionalidade}, aplicamos uma técnica de redução de dimensionalidade denominada UMAP~\parencite{mcinnes2018umap}, para viabilizar a etapa posterior de \textit{clustering} (e também para visualização).\\
   \begin{figure}[H]
     \begin{subfigure}[c]{.40\textwidth}
       \includegraphics[width=\textwidth]{mammoth_3d}
@@ -176,10 +181,17 @@ instituições de ensino da época.
 }
 
 \posterbox[adjusted title = 3. \textit{Clustering}: HDBSCAN, smallmargins]{name=hdbscan, below=umap, column=1, span=6}{
-  Para a etapa de aglomeração dos documentos, utilizamos o HDBSCAN, que é um algoritmo de \textit{clustering} hierárquico baseado em densidade. Utilizamos essa abordagem para sermos capazes de detectar \textit{clusters} de formatos variados, não-convexos.
+  Para a etapa de aglomeração dos documentos, utilizamos o HDBSCAN~\parencite{hdbscan}, que é um algoritmo de \textit{clustering} hierárquico baseado em densidade. Utilizamos essa abordagem para sermos capazes de detectar \textit{clusters} de formatos variados, não-convexos.
   \begin{figure}[H]
-    \includegraphics[width=.40\textwidth]{hdbscan}
-    \caption{Exemplo de clusterização pelo HDBSCAN. Observe os clusters (coloridos) de diferentes formas e densidades. Observe também a presença de pontos classificados como ruído}
+    \begin{subfigure}[c]{.40\textwidth}
+      \includegraphics[width=\textwidth]{hdbscan}
+      \caption{Clusters (coloridos) de diferentes formas e densidades. Observe a presença de pontos classificados como ruído}
+    \end{subfigure}
+    \begin{subfigure}[c]{.40\textwidth}
+      \includegraphics[width=\textwidth]{hdbscan_tree}
+      \caption{Hierarquia de clusters}
+    \end{subfigure}
+    \caption{Exemplo de clusterização com HDBSCAN}
   \end{figure}
 }
 
@@ -189,13 +201,21 @@ instituições de ensino da época.
 % }
 
 \posterbox[adjusted title = Resultados, smallmargins]{name=resultados, below=intro, column=7, span=6}{
-  \centering
-  \includegraphics[width=\textwidth]{jina_embeddings}
+  \begin{figure}[H]
+    \begin{subfigure}[c]{\textwidth}
+      \includegraphics[width=\textwidth]{jina_embeddings}
+      \caption{Visualização 2D do espaço latente de embeddings}
+    \end{subfigure}
+    \begin{subfigure}[c]{\textwidth}
+      \includegraphics[width=\textwidth]{dist_livros}
+      \caption{Distribuição de tópicos por livro}
+    \end{subfigure}
+  \end{figure}
 }
 
-\posterbox[adjusted title = Bibliografia,smallmargins]{name=bibliografia, between=resultados and footerbox, column=7, span=6}{
+\posterbox[adjusted title = Bibliografia,smallmargins]{name=bibliografia, below=resultados, column=7, span=6}{
 
-    bibliografia
+    \printbibliography
 }
 
 
