@@ -10,10 +10,10 @@
 
 % Vários pacotes e opções de configuração genéricos
 \usepackage{imegoodies}
-\usepackage[poster,hidelinks, bluey]{imelooks}
+\usepackage[poster, hidelinks, bluey]{imelooks}
 \usepackage{wrapfig}
 \usepackage{lipsum}
-\tcbposterset{fontsize = 21pt} % default, mude se necessário
+\tcbposterset{fontsize = 20pt} % default, mude se necessário
 
 % Diretórios onde estão as figuras; com isso, não é necessário (mas
 % é permitido) colocar o caminho completo em \includegraphics. Note
@@ -56,8 +56,8 @@
     % showframe, % muito útil durante a preparação do poster
     rows = 6,
     columns = 12,
-    colspacing = 1.2cm,
-    rowspacing = .8cm,
+    colspacing = .2cm,
+    rowspacing = .2cm,
   },
 ]
 
@@ -128,7 +128,7 @@ instituições de ensino da época.
 
   \begin{wrapfigure}{r}{.3\textwidth}
     \includegraphics[width=\linewidth]{bertopic}
-    \caption{Representação modular do BERTopic}
+    \caption{Representação modular do BERTopic.}
   \end{wrapfigure}
 
   Para a modelagem dos tópicos, utilizamos o BERTopic~\parencite{grootendorst2022bertopic}. Esta é uma técnica de modelagem de tópicos em linguagem natural que baseia-se (basicamente) em 4 passos:
@@ -159,24 +159,24 @@ instituições de ensino da época.
       \begin{subfigure}[c]{.40\textwidth}
         \includegraphics[width=\textwidth]{semantics}
       \end{subfigure}
-      \caption{Exemplos de embeddings}
+      \caption{Exemplos de embeddings.}
     \end{figure}
     Essas representações são construídas de tal maneira que sentenças (ou palavras) com significados análogos têm suas representações vetoriais próximas em um espaço latente de \textit{embeddings}.
 }
 
 \posterbox[adjusted title = 2. Redução de dimensionalidade: UMAP,smallmargins]{name=umap, below=sem_map, column=1, span=6}{
 
-  Os modelos de embedding tipicamente projetam sentenças em espaços de alta dimensionalidade (\(d = 1000\), tipicamente). Devido à \textbf{maldição da dimensionalidade}, aplicamos uma técnica de redução de dimensionalidade denominada UMAP~\parencite{mcinnes2018umap}, para viabilizar a etapa posterior de \textit{clustering} (e também para visualização).\\
+  Os modelos de embedding tipicamente projetam sentenças em espaços de alta dimensionalidade (\(d \approx 1000\), tipicamente). Devido à \textbf{maldição da dimensionalidade}, aplicamos uma técnica de redução de dimensionalidade denominada UMAP~\parencite{mcinnes2018umap}, para viabilizar a etapa posterior de \textit{clustering} (e também para visualização).\\
   \begin{figure}[H]
     \begin{subfigure}[c]{.40\textwidth}
       \includegraphics[width=\textwidth]{mammoth_3d}
-      \caption{Original em 3D}
+      \caption{Original em 3D.}
     \end{subfigure}
     \begin{subfigure}[c]{.40\textwidth}
-      \includegraphics[width=\textwidth]{mammoth_2d}
-      \caption{Representação em 2D, reduzida}
+      \includegraphics[width=\textwidth]{mammoth}
+      \caption{Representação em 2D, reduzida. Observe a preservação de estruturas locais.}
     \end{subfigure}
-      \caption{Exemplo de visualização do UMAP}
+      \caption{Exemplo de visualização do UMAP.}
   \end{figure}
 }
 
@@ -185,36 +185,37 @@ instituições de ensino da época.
   \begin{figure}[H]
     \begin{subfigure}[c]{.40\textwidth}
       \includegraphics[width=\textwidth]{hdbscan}
-      \caption{Clusters (coloridos) de diferentes formas e densidades. Observe a presença de pontos classificados como ruído}
+      \caption{Clusters (coloridos) de diferentes formas e densidades. Observe a presença de pontos classificados como ruído (cinza).}
     \end{subfigure}
     \begin{subfigure}[c]{.40\textwidth}
       \includegraphics[width=\textwidth]{hdbscan_tree}
-      \caption{Hierarquia de clusters}
+      \caption{Hierarquia de clusters.}
     \end{subfigure}
-    \caption{Exemplo de clusterização com HDBSCAN}
+    \caption{Exemplo de clusterização com HDBSCAN.}
   \end{figure}
 }
 
-% \posterbox[adjusted title = 4. Representação,smallmargins]{name=representacao, below=hdbscan, column=1, span=6}{
-
-%     Escrever sobre vetorização, cTF-IDF, etc...
-% }
+\posterbox[adjusted title = 4. Representação,smallmargins]{name=representacao, below=hdbscan, column=1, span=6}{
+  Ao final, calculamos uma variação da métrica TF-IDF~\parencite{tfidf}, denominada cTF-IDF, e selecionamos os termos com maior pontuação para representar cada cluster:
+  \[ W_{t, c} = {tf}_{t, c} \cdot \log(1 + \dfrac{A}{{tf}_t}) \]
+  Onde \({tf}_{t, c}\) é a frequência do termo \(t\) no cluster \(c\), \({tf}_{t}\) é a frequência geral do termo \(t\) no corpus, e \(A\) é o número médio de termos por cluster.
+}
 
 \posterbox[adjusted title = Resultados, smallmargins]{name=resultados, below=intro, column=7, span=6}{
   \begin{figure}[H]
     \begin{subfigure}[c]{\textwidth}
       \includegraphics[width=\textwidth]{jina_embeddings}
-      \caption{Visualização 2D do espaço latente de embeddings}
+      \caption{Visualização 2D do espaço latente de embeddings.}
     \end{subfigure}
     \begin{subfigure}[c]{\textwidth}
       \includegraphics[width=\textwidth]{dist_livros}
-      \caption{Distribuição de tópicos por livro}
+      \caption{Distribuição de tópicos por livro.}
     \end{subfigure}
   \end{figure}
 }
 
 \posterbox[adjusted title = Bibliografia,smallmargins]{name=bibliografia, below=resultados, column=7, span=6}{
-
+    \nocite{wordembeddingimg, distsemanticsimg, paircode_umap, hdbscan_advanced, bertopic_algorithm}
     \printbibliography
 }
 

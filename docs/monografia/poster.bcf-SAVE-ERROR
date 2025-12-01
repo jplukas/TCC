@@ -2373,3 +2373,12 @@
     <bcf:datasource type="file" datatype="bibtex" glob="false">bibliografia.bib</bcf:datasource>
   </bcf:bibdata>
   <bcf:section number="0">
+    <bcf:citekey order="1" intorder="1">grootendorst2022bertopic</bcf:citekey>
+    <bcf:citekey order="2" intorder="1">mcinnes2018umap</bcf:citekey>
+    <bcf:citekey order="3" intorder="1">hdbscan</bcf:citekey>
+    <bcf:citekey order="4" intorder="1">tfidf</bcf:citekey>
+    <bcf:citekey order="5" intorder="1" nocite="1">wordembeddingimg</bcf:citekey>
+    <bcf:citekey order="6" intorder="2" nocite="1">distsemanticsimg</bcf:citekey>
+    <bcf:citekey order="7" intorder="3" nocite="1">paircode_umap</bcf:citekey>
+    <bcf:citekey order="8" intorder="4" nocite="1">hdbscan_advanced</bcf:citekey>
+    <bcf:citekey order="9" intorder="5" nocite="1">bertopic_algorithm</bcf:citekey>
