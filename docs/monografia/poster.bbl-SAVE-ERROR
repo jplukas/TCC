@@ -101,12 +101,36 @@
     \endentry
     \entry{grootendorst2022bertopic}{article}{}{}
       \name{author}{1}{}{%
-        {{un=0,uniquepart=base,hash=a07dee61406b9c48310bff46188c983b}{%
+        {{un=0,uniquepart=base,hash=2420ed2396c9e73d96be136779a70eed}{%
+           family={Grootendorst},
+           familyi={G\bibinitperiod}}}%
+      }
+      \strng{namehash}{2420ed2396c9e73d96be136779a70eed}
+      \strng{fullhash}{2420ed2396c9e73d96be136779a70eed}
+      \strng{fullhashraw}{2420ed2396c9e73d96be136779a70eed}
+      \strng{bibnamehash}{2420ed2396c9e73d96be136779a70eed}
+      \strng{authorbibnamehash}{2420ed2396c9e73d96be136779a70eed}
+      \strng{authornamehash}{2420ed2396c9e73d96be136779a70eed}
+      \strng{authorfullhash}{2420ed2396c9e73d96be136779a70eed}
+      \strng{authorfullhashraw}{2420ed2396c9e73d96be136779a70eed}
+      \field{sortinit}{G}
+      \field{sortinithash}{32d67eca0634bf53703493fb1090a2e8}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{arXiv preprint arXiMaartenv:2203.05794}
+      \field{title}{BERTopic: Neural topic modeling with a class-based TF-IDF procedure}
+      \field{year}{2022}
+    \endentry
+    \entry{bertopic_algorithm}{online}{}{}
+      \name{author}{1}{}{%
+        {{un=1,uniquepart=given,hash=a07dee61406b9c48310bff46188c983b}{%
            family={Grootendorst},
            familyi={G\bibinitperiod},
            given={Maarten},
            giveni={M\bibinitperiod},
-           givenun=0}}%
+           givenun=1}}%
       }
       \strng{namehash}{a07dee61406b9c48310bff46188c983b}
       \strng{fullhash}{a07dee61406b9c48310bff46188c983b}
@@ -122,12 +146,73 @@
       \field{labeldatesource}{}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{journaltitle}{arXiv preprint arXiv:2203.05794}
-      \field{title}{BERTopic: Neural topic modeling with a class-based TF-IDF procedure}
-      \field{year}{2022}
+      \field{note}{Página oficial da documentação.}
+      \field{title}{{BERTopic} Algorithm}
+      \field{urlday}{28}
+      \field{urlmonth}{10}
+      \field{urlyear}{2025}
+      \field{year}{2024}
+      \field{urldateera}{ce}
+      \true{nocite}
+      \verb{urlraw}
+      \verb https://maartengr.github.io/BERTopic/algorithm/algorithm.html
+      \endverb
+      \verb{url}
+      \verb https://maartengr.github.io/BERTopic/algorithm/algorithm.html
+      \endverb
+    \endentry
+    \entry{hdbscan_advanced}{online}{}{}
+      \name{author}{3}{ul=3}{%
+        {{un=0,uniquepart=base,hash=f3edd0ee6ca72eca5c532b9c1fcee621}{%
+           family={McInnes},
+           familyi={M\bibinitperiod},
+           given={Leland},
+           giveni={L\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=2a653f5c3174b96798d6336399101032}{%
+           family={Healy},
+           familyi={H\bibinitperiod},
+           given={John},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=10400f3328f6eda4992cf4941e3c7180}{%
+           family={Astels},
+           familyi={A\bibinitperiod},
+           given={Steve},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{4a39a62794faa463eff626f6e3f57f94}
+      \strng{fullhash}{4a39a62794faa463eff626f6e3f57f94}
+      \strng{fullhashraw}{4a39a62794faa463eff626f6e3f57f94}
+      \strng{bibnamehash}{4a39a62794faa463eff626f6e3f57f94}
+      \strng{authorbibnamehash}{4a39a62794faa463eff626f6e3f57f94}
+      \strng{authornamehash}{4a39a62794faa463eff626f6e3f57f94}
+      \strng{authorfullhash}{4a39a62794faa463eff626f6e3f57f94}
+      \strng{authorfullhashraw}{4a39a62794faa463eff626f6e3f57f94}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{Documentação oficial do pacote HDBSCAN para Python.}
+      \field{title}{{HDBSCAN} - How it works}
+      \field{urlday}{28}
+      \field{urlmonth}{10}
+      \field{urlyear}{2025}
+      \field{year}{2016}
+      \field{urldateera}{ce}
+      \true{nocite}
+      \verb{urlraw}
+      \verb https://hdbscan.readthedocs.io/en/latest/advanced_hdbscan.html
+      \endverb
+      \verb{url}
+      \verb https://hdbscan.readthedocs.io/en/latest/advanced_hdbscan.html
+      \endverb
     \endentry
     \entry{mcinnes2018umap}{article}{}{}
-      \name{author}{3}{}{%
+      \name{author}{3}{ul=3}{%
         {{un=0,uniquepart=base,hash=f3edd0ee6ca72eca5c532b9c1fcee621}{%
            family={McInnes},
            familyi={M\bibinitperiod},
@@ -147,12 +232,12 @@
            giveni={J\bibinitperiod},
            givenun=0}}%
       }
-      \strng{namehash}{3341d13f7f8011d4c09baee830a3a666}
+      \strng{namehash}{9bc0813b09f8460b9f60233db84de773}
       \strng{fullhash}{9bc0813b09f8460b9f60233db84de773}
       \strng{fullhashraw}{9bc0813b09f8460b9f60233db84de773}
-      \strng{bibnamehash}{3341d13f7f8011d4c09baee830a3a666}
-      \strng{authorbibnamehash}{3341d13f7f8011d4c09baee830a3a666}
-      \strng{authornamehash}{3341d13f7f8011d4c09baee830a3a666}
+      \strng{bibnamehash}{9bc0813b09f8460b9f60233db84de773}
+      \strng{authorbibnamehash}{9bc0813b09f8460b9f60233db84de773}
+      \strng{authornamehash}{9bc0813b09f8460b9f60233db84de773}
       \strng{authorfullhash}{9bc0813b09f8460b9f60233db84de773}
       \strng{authorfullhashraw}{9bc0813b09f8460b9f60233db84de773}
       \field{sortinit}{M}
@@ -164,6 +249,160 @@
       \field{journaltitle}{arXiv preprint arXiv:1802.03426}
       \field{title}{Umap: Uniform manifold approximation and projection for dimension reduction}
       \field{year}{2018}
+    \endentry
+    \entry{paircode_umap}{online}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=a95be72876588e739ba82d1127f40786}{%
+           family={{PAIR Code, Google Research}},
+           familyi={P\bibinitperiod}}}%
+      }
+      \strng{namehash}{a95be72876588e739ba82d1127f40786}
+      \strng{fullhash}{a95be72876588e739ba82d1127f40786}
+      \strng{fullhashraw}{a95be72876588e739ba82d1127f40786}
+      \strng{bibnamehash}{a95be72876588e739ba82d1127f40786}
+      \strng{authorbibnamehash}{a95be72876588e739ba82d1127f40786}
+      \strng{authornamehash}{a95be72876588e739ba82d1127f40786}
+      \strng{authorfullhash}{a95be72876588e739ba82d1127f40786}
+      \strng{authorfullhashraw}{a95be72876588e739ba82d1127f40786}
+      \field{sortinit}{P}
+      \field{sortinithash}{ff3bcf24f47321b42cb156c2cc8a8422}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Understanding {UMAP}}
+      \field{urlday}{28}
+      \field{urlmonth}{10}
+      \field{urlyear}{2025}
+      \field{year}{2019}
+      \field{urldateera}{ce}
+      \true{nocite}
+      \verb{urlraw}
+      \verb https://pair-code.github.io/understanding-umap/
+      \endverb
+      \verb{url}
+      \verb https://pair-code.github.io/understanding-umap/
+      \endverb
+    \endentry
+    \entry{tfidf}{article}{}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=7cce77040cccf3822126400b46318ab3}{%
+           family={Salton},
+           familyi={S\bibinitperiod},
+           given={Gerard},
+           giveni={G\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=f7a94089d1cd6ebfcb0d920eb84e9778}{%
+           family={Buckley},
+           familyi={B\bibinitperiod},
+           given={Christopher},
+           giveni={C\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{75a55b37777743097cff63dc3e13508c}
+      \strng{fullhash}{75a55b37777743097cff63dc3e13508c}
+      \strng{fullhashraw}{75a55b37777743097cff63dc3e13508c}
+      \strng{bibnamehash}{75a55b37777743097cff63dc3e13508c}
+      \strng{authorbibnamehash}{75a55b37777743097cff63dc3e13508c}
+      \strng{authornamehash}{75a55b37777743097cff63dc3e13508c}
+      \strng{authorfullhash}{75a55b37777743097cff63dc3e13508c}
+      \strng{authorfullhashraw}{75a55b37777743097cff63dc3e13508c}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{The experimental evidence accumulated over the past 20 years indicates that text indexing systems based on the assignment of appropriately weighted single terms produce retrieval results that are superior to those obtainable with other more elaborate text representations. These results depend crucially on the choice of effective termweighting systems. This article summarizes the insights gained in automatic term weighting, and provides baseline single-term-indexing models with which other more elaborate content analysis procedures can be compared.}
+      \field{issn}{0306-4573}
+      \field{journaltitle}{{Information Processing & Management}}
+      \field{number}{5}
+      \field{title}{Term-weighting approaches in automatic text retrieval}
+      \field{volume}{24}
+      \field{year}{1988}
+      \field{pages}{513\bibrangedash 523}
+      \range{pages}{11}
+      \verb{doi}
+      \verb https://doi.org/10.1016/0306-4573(88)90021-0
+      \endverb
+      \verb{urlraw}
+      \verb https://www.sciencedirect.com/science/article/pii/0306457388900210
+      \endverb
+      \verb{url}
+      \verb https://www.sciencedirect.com/science/article/pii/0306457388900210
+      \endverb
+    \endentry
+    \entry{distsemanticsimg}{online}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=e0dedb40dda8df32fd056b6b6551502b}{%
+           family={{Wikimedia Commons}},
+           familyi={W\bibinitperiod}}}%
+      }
+      \strng{namehash}{e0dedb40dda8df32fd056b6b6551502b}
+      \strng{fullhash}{e0dedb40dda8df32fd056b6b6551502b}
+      \strng{fullhashraw}{e0dedb40dda8df32fd056b6b6551502b}
+      \strng{bibnamehash}{e0dedb40dda8df32fd056b6b6551502b}
+      \strng{authorbibnamehash}{e0dedb40dda8df32fd056b6b6551502b}
+      \strng{authornamehash}{e0dedb40dda8df32fd056b6b6551502b}
+      \strng{authorfullhash}{e0dedb40dda8df32fd056b6b6551502b}
+      \strng{authorfullhashraw}{e0dedb40dda8df32fd056b6b6551502b}
+      \field{extraname}{1}
+      \field{sortinit}{W}
+      \field{sortinithash}{4315d78024d0cea9b57a0c6f0e35ed0d}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{Licença: Creative Commons Attribution-Share Alike 4.0 International.}
+      \field{title}{{Distributional semantics}}
+      \field{urlday}{28}
+      \field{urlmonth}{10}
+      \field{urlyear}{2025}
+      \field{year}{2007}
+      \field{urldateera}{ce}
+      \true{nocite}
+      \verb{urlraw}
+      \verb https://commons.wikimedia.org/wiki/File:Distributional_semantics.png
+      \endverb
+      \verb{url}
+      \verb https://commons.wikimedia.org/wiki/File:Distributional_semantics.png
+      \endverb
+    \endentry
+    \entry{wordembeddingimg}{online}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=e0dedb40dda8df32fd056b6b6551502b}{%
+           family={{Wikimedia Commons}},
+           familyi={W\bibinitperiod}}}%
+      }
+      \strng{namehash}{e0dedb40dda8df32fd056b6b6551502b}
+      \strng{fullhash}{e0dedb40dda8df32fd056b6b6551502b}
+      \strng{fullhashraw}{e0dedb40dda8df32fd056b6b6551502b}
+      \strng{bibnamehash}{e0dedb40dda8df32fd056b6b6551502b}
+      \strng{authorbibnamehash}{e0dedb40dda8df32fd056b6b6551502b}
+      \strng{authornamehash}{e0dedb40dda8df32fd056b6b6551502b}
+      \strng{authorfullhash}{e0dedb40dda8df32fd056b6b6551502b}
+      \strng{authorfullhashraw}{e0dedb40dda8df32fd056b6b6551502b}
+      \field{extraname}{2}
+      \field{sortinit}{W}
+      \field{sortinithash}{4315d78024d0cea9b57a0c6f0e35ed0d}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{Licença: Creative Commons Attribution-Share Alike 4.0 International.}
+      \field{title}{{Word embedding illustration}}
+      \field{urlday}{28}
+      \field{urlmonth}{10}
+      \field{urlyear}{2025}
+      \field{year}{2020}
+      \field{urldateera}{ce}
+      \true{nocite}
+      \verb{urlraw}
+      \verb https://commons.wikimedia.org/wiki/File:Word_embedding_illustration.svg
+      \endverb
+      \verb{url}
+      \verb https://commons.wikimedia.org/wiki/File:Word_embedding_illustration.svg
+      \endverb
     \endentry
   \enddatalist
 \endrefsection
