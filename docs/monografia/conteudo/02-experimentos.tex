@@ -31,15 +31,14 @@ No caso das Etimologias, o texto foi extraído do arquivo \emph{pdf} do livro e 
 
 Primeiramente, pelo modo como cada livro está formatado, fizemos um processamento inicial para separar cada livro em capítulos, e juntar palavras com hífen. Em seguida, cada capítulo foi subdividido em sentenças usando o módulo \emph{SentenceRecognizer} da biblioteca Spacy~\parencite{Honnibal2020Industrialstrength}, que possui diversos recursos para processamento de linguagem natural (NLP).
 
-Uma particularidade da edição escolhida das Etimologias é que cada capítulo é subdividido em seções relativamente curtas, a maioria tendo somente uma oração. Com isso, podemos fazer a modelagem dos tópicos usando três níveis diferentes de granularidade, a depender de como definimos um ``documento'', unidade básica de nossa análise:
+Uma particularidade da edição escolhida das Etimologias é que cada capítulo é subdividido em seções relativamente curtas, a maioria tendo somente uma oração. Com isso, podemos fazer a modelagem dos tópicos usando dois níveis diferentes de granularidade, a depender de como definimos um ``documento'', unidade básica de nossa análise:
 
 \begin{itemize}
     \item \textbf{Seções}, já presentes no texto;
     \item \textbf{Sentenças}, delimitadas automaticamente;
-    \item \textbf{Misto}, com ambas seções e sentenças;
 \end{itemize}
 
-Em nossa análise, utilizamos as três abordagens e comparamos os resultados.
+Em nossa análise, utilizamos as duas abordagens e comparamos os resultados.
 
 TODO: Exemplos das seções.
 
@@ -50,6 +49,19 @@ Tarefas rotineiras de pré-processamento de linguagem natural incluem: remoção
 \subsection{Geração de \textit{embeddings}}
 
 Depois da etapa de pré-processamento dos textos, geramos \textit{embeddings} para cada documento, utilizando modelos do tipo \textit{sentence embedders} pré-treinados. Os modelos usados para a geração desses \textit{embeddings} foram: \textit{sentence-transformers/LaBSE}, \textit{jinaai/jina-embeddings-v3}, \textit{intfloat/multilingual-e5-large-instruct}, \textit{nomic-ai/nomic-embed-text-v2-moe}. Estes modelos foram desenhados e treinados para que sentenças semanticamente similares em línguas diferentes, ou traduções, estejam próximas umas das outras em um espaço latente. Podemos usar estes modelos para comparar textos em diferentes idiomas e analisar suas conexões.
+
+\subsection{Conjuntos de dados}
+Após essas etapas iniciais, definimos nossos conjuntos de dados. Cada conjunto é definido por um modelo de embedding e um nível de granularidade, já explicado. TODO: exemplos, visualizações dos espaços de embeddings.
+
+\section{Persistência}
+Os embeddings gerados, suas reduções, e diversos metadados foram armazenados em um banco de dados do \textit{ChromaDB}, juntamente com cada documento.
+
+TODO: versão final do modelo de dados no ChromaDB.
+
+Dessa forma, podemos fazer diversos tipos de busca, como busca por similaridade, busca textual, filtrar resultados baseados em metadados de cada documento, como autor, idioma, etc.
+
+\section{Experimentos}
+Como já foi explicado, a técnica de modelagem de tópicos usada (BERTopic) é composta de diferentes etapas, com várias possibilidades de escolha de algoritmos para cada etapa, e hiperparâmetros para estes algoritmos. Neste trabalho, foram usados o UMAP para redução de dimensionalidade, e o HDBSCAN para o clustering dos documentos e deteção dos tópicos.
 
 \subsection{Redução de dimensionalidade}
 
@@ -99,21 +111,8 @@ Para isso, utilizamos o UMAP, com os seguintes parâmetros:
 TODO: normalmente o BERTopic usa \verb|n_neighbors = 15|, então por que eu mudei esse valor?
 A implementação usada foi a da biblioteca umap-learn\footnote{\url{https://umap-learn.readthedocs.io/en/latest/}}.
 
-A etapa de redução de dimensionalidade é importante para o desempenho da etapa posterior do método, de clusterização, por conta de um fenômeno conhecido como a Maldição da Dimensionalidade: em espaços de alta dimensionalidade, os conceitos de proximidade, distância, ou vizinhos mais próximos perdem sua significância~\citep{dimen_hubs}. Este fenômeno então acaba por prejudicar a performance de algoritmos e técnicas que utilizem esses conceitos, como algoritmos de clusterização populares \citep{dimen_hubs, dimen_distance_metrics}.\\
-Além disso, nessa etapa também computamos reduções desses embeddings a 2 dimensões, para serem utilizadas posteriormente em visualizações, também utilizando o UMAP. Fora o número de dimensões do espaço resultante, todos os outros parâmetros permanecem os mesmos.
 
-\subsection{Conjuntos de dados}
-Após essas etapas iniciais, definimos nossos conjuntos de dados. Cada conjunto é definido por um modelo de embedding e um nível de granularidade, já explicado. TODO: exemplos, visualizações dos espaços de embeddings.
-
-\section{Persistência}
-Os embeddings gerados, suas reduções, e diversos metadados foram armazenados em um banco de dados do \textit{ChromaDB}, juntamente com cada documento.
-
-TODO: versão final do modelo de dados no ChromaDB.
-
-Dessa forma, podemos fazer diversos tipos de busca, como busca por similaridade, busca textual, filtrar resultados baseados em metadados de cada documento, como autor, idioma, etc.
-
-\section{Experimentos}
-Cada experimento consistiu em aplicar o BERTopic, utilizando os diferentes conjuntos de dados mencionados anteriormente, variando o número de tópicos a serem descobertos: 10, 20, 50 e 100 tópicos.
+\subsection{Clustering}
 
 Com os embeddings gerados e suas reduções já computadas, inicializamos o BERTopic de modo a pular essas etapas iniciais e começar pela etapa de clustering. O algoritmo utilizado foi o HDBSCAN, disponível na biblioteca Scikit-learn\footnote{\url{https://scikit-learn.org/stable/modules/generated/sklearn.cluster.HDBSCAN.html}}, e utilizamos os seguintes parâmetros:
 

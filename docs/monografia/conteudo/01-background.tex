@@ -24,8 +24,36 @@ Modelos baseados em transformers possuem grande capacidade de mapeamento semânt
 TODO: escrever +- 0.5 pagina sobre como transformers funcionam, em termos gerais. É bom ter algumas figuras.
 
 \section{Modelagem de Tópicos}
-
 TODO: escrever +- 0.5 pagina sobre modelagem de tópicos. É bom ter algumas figuras.
+
+\subsection{BERTopic}
+O BERTopic é uma técnica de modelagem de tópicos baseada em modelos de sentence embedding. Mais especificamente, ele usa agrupamentos de representações vetoriais semânticas de trechos de documentos para representar tópicos subjacentes no texto.
+
+Ele é constituído, basicamente, de 4 etapas:
+\begin{enumerate}
+    \item Extração de text embeddings
+    \item Redução de dimensionalidade
+    \item Clustering
+    \item Extração de representações dos tópicos
+\end{enumerate}
+
+Primeiramente, extrai-se representações vetoriais das sentenças do corpus, utilizando modelos de \textit{sentence embedding}. Esses modelos são capazes de capturar o sentido de frases em linguagem natural, projetando-as em um espaço latente. Essas representações, ou \textit{embeddings}, possuem diversas propriedades interessantes e úteis. Uma delas é que textos com significado similar ficam próximos no espaço latente. Podemos então encontrar agrupamentos de frases similares semanticamente nesse espaço latente, e naturalmente, interpretar esses agrupamentos como assuntos presentes no texto.
+
+A etapa de redução de dimensionalidade é importante para o desempenho da etapa posterior do método, de clusterização, por conta de um fenômeno conhecido como a Maldição da Dimensionalidade: em espaços de alta dimensionalidade, os conceitos de proximidade, distância, ou vizinhos mais próximos perdem sua significância~\citep{dimen_hubs}. Este fenômeno então acaba por prejudicar a performance de algoritmos e técnicas que utilizem esses conceitos, como algoritmos de clusterização populares \citep{dimen_hubs, dimen_distance_metrics}.\\
+Além disso, nessa etapa também computamos reduções desses embeddings a 2 dimensões, para serem utilizadas posteriormente em visualizações, também utilizando o UMAP. Fora o número de dimensões do espaço resultante, todos os outros parâmetros permanecem os mesmos.
+
+\subsection{Sentence embeddings}
+\cite{harris54} e \cite{firth57synopsis} argumentam que o sentido de uma palavra pode ser deduzido, em parte, a partir dos contextos onde ela é comumente utilizada - "conhecerás uma palavra pela compania que ela mantém". Essa ideia, que podemos chamar de Hipótese Distribucional, direta ou indiretamente, guiou inúmeros avanços em diferentes campos na área de Processamento de Linguagem Natural.\\
+\cite{deerwester90lsa}, com seu modelo de Análise Semântica Latente (LSA), foi um dos pioneiros em operacionalizar essa ideia, obtendo resultados promissores na área de indexação e recuperação de informação. Neste modelo, aplica-se uma técnica de álgebra linear, denominada Decomposição em Valores Singulares (SVD), a uma matriz de frequência (ou alguma outra métrica, como TF-IDF) termo-documento, para se obter uma representação mais densa desta matriz. Essa representação, como demonstra Deerwester, é capaz de capturar relações de sentido entre termos, e lidar bem com sinônimos. Entretanto, o modelo possuía diversas limitações: Documentos eram caracterizados somente pelo seu conteúdo em palavras (modelo \textit{bag-of-words}), sem levar em conta a ordem destas palavras; O modelo não lida bem com palavras raras ou fora do vocabulário do "treinamento"; O modelo somente era capaz de capturar relações "lineares" entre palavras no espaço latente.
+
+\cite{bengio2003anp} propõe o uso de redes neurais arificiais para modelar distribuições de probabilidade conjunta de sequências de palavras em um determinado idioma. Na arquitetura proposta, uma rede neural é treinada para executar duas tarefas simultaneamente: Associar cada palavra de um vocabulário a um vetor de \(R^m\), e determinar a distribuição de probabilidade conjunta de sequências de palavras do vocabulário, expressas em termos de suas representações vetoriais (isto é, dada uma sequência de palavras, determinar a distribuição de probabilidade da próxima palavra). Esta abordagem é capaz de superar as limitações listadas do modelo LSA, representando um grande salto no seu poder de generalização. Embora poderosa, essa abordagem ainda tinha uma grande complexidade computacional, inviabilizando o seu uso em grandes conjuntos de dados.\\
+Um grande avanço na área, que possibilitou a criação de modelos de embedding com um número bem maior de dimensões, e o uso de volumes muito maiores de dados no treinamento desses modelos, foi a chegada dos modelos \textit{Continuous Skip-gram} e \textit{Continuous Bag-of-Words} (CBOW)~\parencite{mikolov2013word2vec}. Estas arquiteturas dispensaram o uso de camadas ocultas na rede neural, e tinham como objetivo simplesmente prever uma palavra dadas as palavras ao seu redor (arquitetura CBOW), ou, dada uma palavra, prever as palavras ao seu redor (arquitetura Skip-gram), usando uma janela deslizante de contexto, cujo tamanho é dado como parâmetro da arquitetura. Embora, nessa arquitetura, a ordem das palavras na janela de contexto deixasse de ter importância (no caso do CBOW, usa-se a média dos vetores dessas palavras, por exemplo), os embeddings gerados conseguiam capturar bem melhor o sentido global das palavras, principalmente devido à baixa complexidade computacional do modelo, em relação ao proposto por Bengio, o que possibilitou o uso de um volume muito grande de dados em seu treinamento, e a criação de embeddings de dimensionalidades muito maiores (até 1000 dimensões, comparados com as 50-100 do modelo proposto por Bengio). Posteriormente, usando técnicas como subamostragem e amostragem negativa, Mikolov mostrou como acelerar o processo de aprendizado e inferência do modelo, e criar melhores representações~\parencite{mikolov2013dist_representations}.
+
+\subsection{UMAP}
+
+\subsection{HDBSCAN}
+
+\subsection{Representação dos tópicos}
 
 \section{Obras e autores estudados}
 
