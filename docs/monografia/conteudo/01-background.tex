@@ -92,29 +92,33 @@ A chegada dos Transformers representou um novo paradigma para o uso de redes neu
 Apesar de alcançar bons resultados, o modelo BERT se torna computacionalmente inviável para algumas tarefas, como busca por similaridade semântica em um grande corpus, ou clustering de documentos. Para essas tarefas, é desejável um modelo capaz de gerar embeddings de frases, o que o BERT não foi projetado para fazer. Para mitigar essa limitação surgiu o SBERT~\parencite{reimers2019sbert}, que é uma modificação dos modelos BERT pré-treinados, usando redes neurais siamesas e estruturas de rede do tipo triplet para gerar boas representações semânticas de frases. Essas representações então podem ser comparadas usando distância de cosseno, por exemplo. Os embeddings usados neste trabalho são gerados por descendentes desse modelo.
 
 \section{Modelagem de Tópicos}
-TODO: escrever +- 0.5 pagina sobre modelagem de tópicos. É bom ter algumas figuras.
+Modelos de tópicos são ferramentas computacionais para descobrir automaticamente estruturas temáticas comuns em grandes quantidades de documentos, permitindo que sejam organizados e sumarizados de acordo com os assuntos presentes \parencite{blei2012topicmodels}. Modelos de tópicos são muito úteis na prospecção de documentos de interesse, em sistemas de recomendação, e em análises de séries de documentos. Existem diferentes abordagens para essa tarefa, como \textit{Latent Dirichlet Allocation} (LDA), \textit{Non-negative Matrix Factorization} (NMF) e modelos baseados em redes neurais. No LDA~\parencite{blei2003latent}, tratamos um tópico como uma distribuição de probabilidade sobre um vocabulário, e assumimos que cada documento contém uma mistura de tópicos, diferentes documentos contendo diferentes proporções dos tópicos. O modelo então supõe que os documentos são gerados de acordo com essas distribuições, que são tratadas como variáveis ocultas, e aproxima a distribuição posterior de probabilidade, dada a distribuição observada de palavras por documento.
+
+Modelos neurais de tópicos geralmente envolvem \textit{embeddings} de palavras ou frases gerados por redes neurais, como o BERTopic, que utilizamos neste trabalho.
 
 \subsection{BERTopic}
-O BERTopic é uma técnica de modelagem de tópicos baseada em modelos de sentence embedding. Mais especificamente, ele usa agrupamentos de representações vetoriais semânticas de trechos de documentos para representar tópicos subjacentes no texto.
+No BERTopic~\parencite{grootendorst2022bertopic}, usamos agrupamentos de \textit{embeddings} de trechos de documentos para representar tópicos subjacentes no texto.
 
 Ele é constituído, basicamente, de 4 etapas:
 \begin{enumerate}
-    \item Extração de text embeddings
+    \item Extração de \text{embeddings}
     \item Redução de dimensionalidade
     \item Clustering
     \item Extração de representações dos tópicos
 \end{enumerate}
 
-Primeiramente, extrai-se representações vetoriais das sentenças do corpus, utilizando modelos de \textit{sentence embedding}. Esses modelos são capazes de capturar o sentido de frases em linguagem natural, projetando-as em um espaço latente. Essas representações, ou \textit{embeddings}, possuem diversas propriedades interessantes e úteis. Uma delas é que textos com significado similar ficam próximos no espaço latente. Podemos então encontrar agrupamentos de frases similares semanticamente nesse espaço latente, e naturalmente, interpretar esses agrupamentos como assuntos presentes no texto.
+Primeiramente, extrai-se representações vetoriais das sentenças do corpus, utilizando algum modelo de \textit{sentence embedding}. Utilizamos então um clustering desses embeddings como nosso modelo de tópicos. Entretanto, a alta dimensionalidade dos embeddings gerados acaba por prejudicar a performance de algoritmos e técnicas baseados em conceitos como proximidade, distância, ou vizinhos mais próximos, como diversos algoritmos de clustering \citep{dimen_hubs, dimen_distance_metrics, steinbach2003highdim}. Técnicas de redução de dimensionalidade se demonstraram eficazes para mitigar esse efeito, e melhorar a qualidade de clusterings \parencite{herrmann2022cluster, allaoui2020drclus}.
 
-A etapa de redução de dimensionalidade é importante para o desempenho da etapa posterior do método, de clusterização, por conta de um fenômeno conhecido como a Maldição da Dimensionalidade: em espaços de alta dimensionalidade, os conceitos de proximidade, distância, ou vizinhos mais próximos perdem sua significância~\citep{dimen_hubs}. Este fenômeno então acaba por prejudicar a performance de algoritmos e técnicas que utilizem esses conceitos, como algoritmos de clusterização populares \citep{dimen_hubs, dimen_distance_metrics}.\\
-Além disso, nessa etapa também computamos reduções desses embeddings a 2 dimensões, para serem utilizadas posteriormente em visualizações, também utilizando o UMAP. Fora o número de dimensões do espaço resultante, todos os outros parâmetros permanecem os mesmos.
+Por fim, depois de obter aglomerados de sentenças (ou trechos arbitrários de documentos), correspondendo aos tópicos detectados, precisamos extrair representações interpretáveis destes tópicos. Alguns modelos de tópicos baseados em embeddings utilizam termos próximos do centróide de um cluster como representação dos tópicos \parencite{sia2020tiredtopicmodels, angelov2020top2vec}. No BERTopic, utilizamos os termos com maior poder discriminante entre os documentos de um cluster, calculando uma variante da métrica TF-IDF (\textit{Term Frequency - Inverse Document Frequency}), denominada cTF-IDF (o `c' vem de ``classe''):
+\begin{equation*}
+    \operatorname{cTF-IDF}_{t, c} = {f}_{t, c} \cdot \log\left(1 + \dfrac{A}{{f}_t}\right)
+\end{equation*}
+Onde \({f}_{t, c}\) é a frequência do termo \(t\) na classe (ou tópico, cluster) \(c\), \({f}_{t}\) é a frequência geral do termo \(t\) no corpus, e \(A\) é o número médio de termos por classe. As palavras com pontuações altas em um determinado tópico são justamente aquelas que, simultaneamente, aparecem muito nesse tópico, e pouco em outros tópicos.
 
 \subsection{UMAP}
+O UMAP é um algoritmo de redução de dimensionalidade que visa equilibrar
 
 \subsection{HDBSCAN}
-
-\subsection{Representação dos tópicos}
 
 \section{Obras e autores estudados}
 
