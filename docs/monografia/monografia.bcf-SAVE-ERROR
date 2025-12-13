@@ -2397,3 +2397,21 @@
     <bcf:citekey order="20" intorder="1">bengio2003anp</bcf:citekey>
     <bcf:citekey order="20" intorder="2">sutskever2014seqtoseq</bcf:citekey>
     <bcf:citekey order="20" intorder="3">bahdanau2016</bcf:citekey>
+    <bcf:citekey order="21" intorder="1">Radford2018ImprovingLU</bcf:citekey>
+    <bcf:citekey order="22" intorder="1">geminiteam2025</bcf:citekey>
+    <bcf:citekey order="23" intorder="1">devlin2019bert</bcf:citekey>
+    <bcf:citekey order="24" intorder="1">reimers2019sbert</bcf:citekey>
+    <bcf:citekey order="25" intorder="1">blei2012topicmodels</bcf:citekey>
+    <bcf:citekey order="26" intorder="1">blei2003latent</bcf:citekey>
+    <bcf:citekey order="27" intorder="1">grootendorst2022bertopic</bcf:citekey>
+    <bcf:citekey order="28" intorder="1">dimen_hubs</bcf:citekey>
+    <bcf:citekey order="28" intorder="2">dimen_distance_metrics</bcf:citekey>
+    <bcf:citekey order="28" intorder="3">steinbach2003highdim</bcf:citekey>
+    <bcf:citekey order="29" intorder="1">herrmann2022cluster</bcf:citekey>
+    <bcf:citekey order="29" intorder="2">allaoui2020drclus</bcf:citekey>
+    <bcf:citekey order="30" intorder="1">sia2020tiredtopicmodels</bcf:citekey>
+    <bcf:citekey order="30" intorder="2">angelov2020top2vec</bcf:citekey>
+    <bcf:citekey order="31" intorder="1">jolliffe2016pca</bcf:citekey>
+    <bcf:citekey order="32" intorder="1">maaten2008tsne</bcf:citekey>
+    <bcf:citekey order="33" intorder="1">mcinnes2018umap</bcf:citekey>
+    <bcf:citekey order="34" intorder="1">hdbscan</bcf:citekey>
