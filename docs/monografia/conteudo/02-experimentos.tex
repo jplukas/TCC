@@ -21,7 +21,7 @@ Como conjunto de dados a ser explorado neste trabalho, temos as seguintes obras:
 No caso das Etimologias, foi utilizada a tradução~\parencite{barney2006etymologies} do latim para o inglês em formato \emph{pdf}. Para os textos de Catão e Varrão foram utilizadas edições da \emph{Loeb Classical Library}~\parencite{Cato1934Agriculture}, atualmente em domínio público e disponíveis \emph{online}~\parencite{ThayerLacusCurtius} em formato \emph{html}.
 
 \section{Preparação dos dados}
-(TODO: Adicionar figura do esquema geral do processo)
+% (TODO: Adicionar figura do esquema geral do processo)
 
 \subsection{Limpeza}
 
@@ -40,7 +40,7 @@ Uma particularidade da edição escolhida das Etimologias é que cada capítulo 
 
 Em nossa análise, utilizamos as duas abordagens e comparamos os resultados.
 
-TODO: Exemplos das seções.
+% TODO: Exemplos das seções.
 
 \subsection{\textit{Stop words}, \textit{stemming} e lematização}
 
@@ -51,12 +51,12 @@ Tarefas rotineiras de pré-processamento de linguagem natural incluem: remoção
 Depois da etapa de pré-processamento dos textos, geramos \textit{embeddings} para cada documento, utilizando modelos do tipo \textit{sentence embedders} pré-treinados. Os modelos usados para a geração desses \textit{embeddings} foram: \textit{sentence-transformers/LaBSE}, \textit{jinaai/jina-embeddings-v3}, \textit{intfloat/multilingual-e5-large-instruct}, \textit{nomic-ai/nomic-embed-text-v2-moe}. Estes modelos foram desenhados e treinados para que sentenças semanticamente similares em línguas diferentes, ou traduções, estejam próximas umas das outras em um espaço latente. Podemos usar estes modelos para comparar textos em diferentes idiomas e analisar suas conexões.
 
 \subsection{Conjuntos de dados}
-Após essas etapas iniciais, definimos nossos conjuntos de dados. Cada conjunto é definido por um modelo de embedding e um nível de granularidade, já explicado. TODO: exemplos, visualizações dos espaços de embeddings.
+Após essas etapas iniciais, definimos nossos conjuntos de dados. Cada conjunto é definido por um modelo de embedding e um nível de granularidade, já explicado.
+% TODO: exemplos, visualizações dos espaços de embeddings.
 
 \section{Persistência}
 Os embeddings gerados, suas reduções, e diversos metadados foram armazenados em um banco de dados do \textit{ChromaDB}, juntamente com cada documento.
-
-TODO: versão final do modelo de dados no ChromaDB.
+% TODO: versão final do modelo de dados no ChromaDB.
 
 Dessa forma, podemos fazer diversos tipos de busca, como busca por similaridade, busca textual, filtrar resultados baseados em metadados de cada documento, como autor, idioma, etc.
 
@@ -108,9 +108,8 @@ Para isso, utilizamos o UMAP, com os seguintes parâmetros:
 \end{xltabular}
 % \end{table}
 
-TODO: normalmente o BERTopic usa \verb|n_neighbors = 15|, então por que eu mudei esse valor?
+% TODO: normalmente o BERTopic usa \verb|n_neighbors = 15|, então por que eu mudei esse valor?
 A implementação usada foi a da biblioteca umap-learn\footnote{\url{https://umap-learn.readthedocs.io/en/latest/}}.
-
 
 \subsection{Clustering}
 

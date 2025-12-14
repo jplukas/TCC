@@ -14,6 +14,7 @@ def plot_model_results(m, subf, title):
         (embedder, granularity), n_topics, outliers, max_cluster_size, n_neighbors, n_components, min_cluster_size,min_samples, sizes = row
         if -1 in sizes: del sizes[-1]
         clusters = list(sizes.keys())
+        n_clusters = len(clusters)
         count_vals = list(sizes.values())
         j = 0 if granularity=="topics" else 1;
         ax = axs[i//2][j]
@@ -22,7 +23,8 @@ def plot_model_results(m, subf, title):
         
         textstr = \
 f"""
-Outliers: {outliers:.2f}%
+n_clusters {n_clusters}
+outliers: {outliers:.2f}%
 n_neighbors: {n_neighbors}
 n_components: {n_components}
 min_cluster_size: {min_cluster_size}

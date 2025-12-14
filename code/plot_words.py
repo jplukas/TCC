@@ -20,15 +20,15 @@ def plot(X_2d, names, words_2d, words):
     texts=[]
     cmap = plt.get_cmap('tab10')
 
-    fig, ax = plt.subplots(1, 1, figsize=(20, 20))
+    fig, ax = plt.subplots(1, 1, figsize=(11.69, 8.27))
 
     for c, cl in enumerate(np.unique(names)):
-        ax.scatter(X_2d[names==cl,0], X_2d[names==cl,1], label=cl, s=20, marker='o', alpha=0.2)
+        ax.scatter(X_2d[names==cl,1], X_2d[names==cl,0], label=cl, s=20, marker='o', alpha=0.2)
         ax.axis('off')
 
     for w in words:
-        ax.scatter(words_2d[words==w,0], words_2d[words==w,1], c='orange', marker='o', s=360, alpha=0.2)
-        texts.append(ax.text(words_2d[words==w,0], words_2d[words==w,1], w))
+        ax.scatter(words_2d[words==w,1], words_2d[words==w,0], c='orange', marker='o', s=360, alpha=0.2)
+        texts.append(ax.text(words_2d[words==w,1], words_2d[words==w,0], w))
         # ax.annotate(w, (words_2d[words==w,0], words_2d[words==w,1]))
         ax.axis('off')
 
