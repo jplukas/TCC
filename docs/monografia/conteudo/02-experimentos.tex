@@ -29,7 +29,7 @@ No caso das Etimologias, o texto foi extraído do arquivo \emph{pdf} do livro e 
 
 \subsection{Pré-processamento}
 
-Primeiramente, pelo modo como cada livro está formatado, fizemos um processamento inicial para separar cada livro em capítulos, e juntar palavras com hífen. Em seguida, cada capítulo foi subdividido em sentenças usando o módulo \emph{SentenceRecognizer} da biblioteca Spacy~\parencite{Honnibal2020Industrialstrength}, que possui diversos recursos para processamento de linguagem natural (PLN).
+Primeiramente, pelo modo como cada livro está formatado, fizemos um processamento inicial para separar cada livro em capítulos, e juntar palavras com hífen. Em seguida, cada capítulo foi subdividido em sentenças usando o módulo \emph{SentenceRecognizer} da biblioteca Spacy~\parencite{Honnibal2020Industrialstrength}, que possui diversos recursos para PLN.
 
 Uma particularidade da edição escolhida das Etimologias é que cada capítulo é subdividido em seções relativamente curtas, a maioria tendo somente uma oração. Com isso, podemos fazer a modelagem dos tópicos usando dois níveis diferentes de granularidade, a depender de como definimos um ``documento'', unidade básica de nossa análise:
 

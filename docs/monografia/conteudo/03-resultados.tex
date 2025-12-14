@@ -7,30 +7,36 @@
 % Cap 3 (5 páginas): Resultados. Aqui você pode começar a colocar figuras com os resultados dos experimentos do Cap 3, explicando basicamente o que você fez de variar os diferentes parâmetros e como isso influenciou no resultado, essas coisas. Depois podemos colocar também resultados obtidos com as buscas e potenciais cruzamentos interessantes do ponto de vista dos historiadores.
 A seguir relataremos os resultados dos experimentos realizados.
 
-\begin{figure}[h]
-    \includegraphics[width=\textwidth]{embspace}
-    \caption{Visualização 2D do espaço de embeddings.}
-\end{figure}
-
-Ao executar o algoritmo do BERTopic com diferentes parâmetros, obtivemos diferentes resultados. Em geral, o número de pontos classificados como ruído, ou outliers, foi alto. Porém, ao inspecionar as configurações que minimizaram essa quantidade, descobrimos que algumas geravam agrupamentos muito concentrados em poucos clusters, misturando temas diferentes. A solução adotada foi escolher as configurações que nos dessem clusters mais homogêneos, minimizando o tamanho máximo de um cluster. Essa abordagem também acabou gerando um número reduzido de outliers, como pode-se ver nas figuras \ref{fig:outliers} e \ref{fig:maxclus}.
-
-A segmentação do texto em seções gerou tópicos mais coerentes na maioria dos casos. Porém, algumas seções de maior comprimento contribuíram para clusters impuros, com temas mistos. Em contrapartida, as configurações que segmentaram o texto em sentenças criaram mais clusters, com maior concentração das palavras em clusters dominantes.
+Ao executar o algoritmo do BERTopic com diferentes parâmetros, obtivemos diferentes resultados. Em geral, o número de pontos classificados como ruído, ou outliers, foi alto. Porém, ao inspecionar as configurações que minimizaram essa quantidade, descobrimos que algumas geravam agrupamentos muito concentrados em poucos clusters, misturando temas diferentes. A solução adotada foi escolher as configurações que geraram clusters mais homogêneos, minimizando o tamanho máximo de um cluster. Essa abordagem também acabou gerando um número reduzido de outliers, como pode-se ver nas figuras \ref{fig:outliers} e \ref{fig:maxclus}.
 
 \begin{figure}[h]
-    \includegraphics[width=\textwidth]{comp-outliers}
+    \includegraphics[width=\textwidth, height=.425\textheight]{comp-outliers}
     \caption{Contagem de documentos por tópico - minimização de outliers.}
     \label{fig:outliers}
 \end{figure}
 
+A segmentação do texto em seções gerou tópicos mais coerentes do que a segmentação em sentenças, na maioria dos casos. Porém, algumas seções de maior comprimento contribuíram para clusters impuros, com temas mistos. Em contrapartida, as configurações que segmentaram o texto em sentenças criaram mais clusters, com maior concentração das palavras em clusters dominantes. A quantidade de ruído também foi significativa e consistentemente maior nas modelagens usando sentenças, o que pode-se atribuir a dificuldades na extração do texto dos PDFs e na deteção de sentenças, no pré-processamento. Porém, essa abordagem foi capaz de detectar uma quantidade maior de temas, além de temas mais distribuídos na obra. Isso nos mostra que ambas abordagens não são mutuamente exclusivas, mas complementares, e podem ser usadas em conjunto a depender do objetivo da análise.
+
 \begin{figure}[h]
-    \includegraphics[width=\textwidth]{comp-maxclus}
+    \includegraphics[width=\textwidth, height=.425\textheight]{comp-maxclus}
     \caption{Contagem de documentos por tópico - minimização de cluster máximo.}
     \label{fig:maxclus}
 \end{figure}
 
-Na figura \ref{fig:livro-topico}, podemos observar a presença tanto de temas concentrados, como o primeiro, que contém temas de gramática, dialética e retórica, quanto temas mais transversais, distribuídos em diferentes livros.
+Na figura \ref{fig:embspace}, vemos uma visualização do espaço latente de \textit{embeddings}, projetada para um plano 2D pelo UMAP, com cada ponto correspondendo a uma passagem (no caso, a uma seção) de um livro, e colorido de acordo com o livro ao qual a passagem pertence. Os círculos em amarelo transparente são projeções de palavras nesse espaço. Podemos ver que as projeções tendem a agrupar palavras relacionadas, como \textit{jewish, Abraham, hebrew, Muhammad, muslim}, relacionadas a religiões abraâmicas, \textit{rye, sorghum, yeast, wheat, harvest, plough, farm, bread, milk}, relacionadas a agricultura, \textit{dog, sheep, cattle}, relacionadas a animais, \textit{earth, start, moon, sun, weather}, relacionados a corpos celestes e fenômenos atmosféricos, e \textit{war, fight, battle}, projetados muito próximos uns aos outros, pelo seu alto grau de similaridade semântica.
+
+\begin{figure}[H]
+    \includegraphics[width=\textwidth]{embspace}
+    \caption{Visualização 2D do espaço de embeddings.}
+    \label{fig:embspace}
+\end{figure}
+Vemos também grupos passagens de um mesmo livro, o que é esperado, mas também a presença de sub-agrupamentos de passagens dentro de um livro. Note, por exemplo, a presença de dois aglomerados de passagens do livro \textit{God, angels and saints} - um no canto inferior esquerdo, relacionado de maneira geral a religiões abraâmicas, e um na parte central-superior da imagem, perto das palavras \textit{Christ} e \textit{God}, o que pode indicar uma subdivisão temática mais específica ao cristianismo.
+
+
+Ao observar a distribuição dos tópicos pelos livros, na figura \ref{fig:livro-topico}, podemos observar a presença tanto de temas concentrados, como o primeiro, presente majoritariamente nos livros \textit{Grammar} e \textit{Rhetoric and dialectic} (contendo as disciplinas do \textit{Trivium}), o quarto, praticamente exclusivo ao livro \textit{Stones and metals}, com passagens sobre materiais, metais, e cores, quanto temas mais transversais, distribuídos em diferentes livros, como o terceiro, distribuído principalmente entre os livros \textit{The earth and its parts}, \textit{Languages, nations, reigns, the military, citizens, family relationships}, \textit{Buildings and fields} e \textit{The cosmos and its parts}, tratando de origens e características de diferentes povos, cidades e nações.
 \begin{figure}[h]
     \includegraphics[width=\textwidth]{dist_livros}
     \caption{Composição de livros por tópico.}
     \label{fig:livro-topico}
 \end{figure}
+
