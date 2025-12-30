@@ -24,10 +24,10 @@ import pandas as pd
 
 
 def createTopicModel(docs: List[Any], # embedder: str, coll_name: str, granularity: granType,
-    clustering: dict[str, Any], n_topics: int,
-    embeddings: Any, reduction:dict[str, Any] | None = None, topic_reduction_strategy: str | None = None,
+    clustering: dict[str, Any],
+    embeddings: Any, reduction:dict[str, Any] | None = None, topic_reduction_strategy: str | None = None, n_topics: int = None,
     outlier_reduction_strategy: str | None = None, embedder: Any | None = None,
-    granularity: Any | None = None):
+    granularity: Any | None = None, **kwargs):
 
     from bertopic import BERTopic
     
@@ -49,7 +49,8 @@ def createTopicModel(docs: List[Any], # embedder: str, coll_name: str, granulari
 
 if __name__ == "__main__":
 
-    if not os.path.exists(dataframe_path):
+    #if not os.path.exists(dataframe_path):
+    if True:
         from bertopic import BERTopic
 
         all_data = {
@@ -63,9 +64,10 @@ if __name__ == "__main__":
         res = []
         size_vec = []
         
-        for c in iterConfigs(["embedder", "granularity"]):
+        for c in iterConfigs(["granularity", "coll_name"]):
             granularity = c["granularity"]
-            embedder = c["embedder"]
+            
+            #embedder = c["embedder"]
 
             # if granularity != chosen_granularity or embedder != chosen_embedder: continue
             
@@ -84,6 +86,8 @@ if __name__ == "__main__":
                 for conf in iterConfigs(["clustering", "n_topics"]):
                         config = {**cc, **conf}
                         model_filepath = getModelFilePath(config)
+                        print(model_filepath)
+                        #model_filepath = "naoexiste"
                         if not os.path.exists(model_filepath):
                             min_samples = config["clustering"]["min_samples"]
                             min_cluster_size = config["clustering"]["min_cluster_size"]
@@ -112,7 +116,7 @@ if __name__ == "__main__":
                         })
                         size_vec.append(sizes)
 
-        df = pd.json_normalize(res)
+        df = pd.json_normalize(res, sep="_")
         df["sizes"] = size_vec
         df.to_pickle(dataframe_path)
 

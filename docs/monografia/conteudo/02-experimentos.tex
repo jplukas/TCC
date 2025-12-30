@@ -40,7 +40,18 @@ Uma particularidade da edição escolhida das Etimologias é que cada capítulo 
 
 Em nossa análise, utilizamos as duas abordagens e comparamos os resultados.
 
-% TODO: Exemplos das seções.
+\begin{figure}[H]
+    \begin{subfigure}[c]{.45\textwidth}
+        \includegraphics[width=\textwidth]{sections}
+        \caption{Seções.}
+    \end{subfigure}
+    \begin{subfigure}[c]{.45\textwidth}
+        \includegraphics[width=\textwidth]{sentences}
+        \caption{Sentenças.}
+    \end{subfigure}
+    
+    \caption{Diferentes formas de separar os textos.}
+\end{figure}
 
 \subsection{\textit{Stop words}, \textit{stemming} e lematização}
 
@@ -48,7 +59,7 @@ Tarefas rotineiras de pré-processamento de linguagem natural incluem: remoção
 
 \subsection{Geração de \textit{embeddings}}
 
-Depois da etapa de pré-processamento dos textos, geramos \textit{embeddings} para cada documento, utilizando modelos do tipo \textit{sentence embedders} pré-treinados. Os modelos usados para a geração desses \textit{embeddings} foram: \textit{sentence-transformers/LaBSE}, \textit{jinaai/jina-embeddings-v3}, \textit{intfloat/multilingual-e5-large-instruct}, \textit{nomic-ai/nomic-embed-text-v2-moe}. Estes modelos foram desenhados e treinados para que sentenças semanticamente similares em línguas diferentes, ou traduções, estejam próximas umas das outras em um espaço latente. Podemos usar estes modelos para comparar textos em diferentes idiomas e analisar suas conexões.
+Depois da etapa de pré-processamento dos textos, geramos \textit{embeddings} para cada documento, utilizando modelos do tipo \textit{sentence embedders} pré-treinados. Os modelos usados para a geração desses \textit{embeddings} foram: \textit{sentence-transformers/LaBSE}~\parencite{feng2022labse}, \textit{jinaai/jina-embeddings-v3}~\parencite{jina}, \textit{intfloat/multilingual-e5-large-instruct}~\parencite{wang2024multilingual}, \textit{nomic-ai/nomic-embed-text-v2-moe}~\parencite{nussbaum2025nomic}. Estes modelos foram desenhados e treinados para que sentenças semanticamente similares em línguas diferentes, ou traduções, estejam próximas umas das outras em um espaço latente. Podemos usar estes modelos para comparar textos em diferentes idiomas e analisar suas conexões.
 
 \subsection{Conjuntos de dados}
 Após essas etapas iniciais, definimos nossos conjuntos de dados. Cada conjunto é definido por um modelo de embedding e um nível de granularidade, já explicado.
@@ -61,12 +72,15 @@ Os embeddings gerados, suas reduções, e diversos metadados foram armazenados e
 Dessa forma, podemos fazer diversos tipos de busca, como busca por similaridade, busca textual, filtrar resultados baseados em metadados de cada documento, como autor, idioma, etc.
 
 \section{Experimentos}
-Como já foi explicado, a técnica de modelagem de tópicos usada (BERTopic) é composta de diferentes etapas, com várias possibilidades de escolha de algoritmos para cada etapa, e hiperparâmetros para estes algoritmos. Neste trabalho, foram usados o UMAP para redução de dimensionalidade, e o HDBSCAN para o clustering dos documentos e deteção dos tópicos.
+Como já foi explicado, a técnica de modelagem de tópicos usada (BERTopic) é composta de diferentes etapas, com várias possibilidades de escolha de algoritmos para cada etapa, e hiperparâmetros para estes algoritmos. Neste trabalho, foram usados o UMAP para redução de dimensionalidade, e o HDBSCAN para o clustering dos documentos e detecção dos tópicos.
+
+Uma particularidade de interesse do HDBSCAN é que ele pode classificar pontos em um dataset como não pertencentes a nenhum cluster, como ``ruído''. Essa característica é útil para detecção de anomalias em um dataset e para dar uma maior confiabilidade nas classificações dos pontos que pertencem de fato a um cluster, mas pode também ser prejudicial, caso o número outliers detectados seja muito grande. Experimentos preliminares com valores padrão para os hiperparâmetros dos algoritmos mostraram uma forte tendência em classificar pontos como outliers. Com uma grande quantidade de escolhas de hiperparâmetros e modelos de embedding, realizamos uma espécie de busca de grade nesse espaço de parâmetros, para obter melhores resultados.
+
+A seguir apresentamos uma explicação dos parâmetros testados para cada algoritmo.
 
 \subsection{Redução de dimensionalidade}
 
-A seguir, fizemos uma redução de dimensionalidade de cada um dos conjuntos de embeddings gerados.
-Para isso, utilizamos o UMAP, com os seguintes parâmetros:
+Para a etapa de redução de dimensionalidade, utilizamos o UMAP. Este algoritmo conta com os seguintes parâmetros:
 % Please add the following required packages to your document preamble:
 % \usepackage{booktabs}
 % \begin{table}[H]
@@ -112,30 +126,30 @@ Para isso, utilizamos o UMAP, com os seguintes parâmetros:
 
 \begin{table}[ht]
     \centering
-    \footnotesize % Makes text smaller than \small
-    \setlength{\tabcolsep}{3pt} % Tighter columns
-    \renewcommand{\arraystretch}{1.1} % Comfortable but tight spacing
+    \footnotesize
+    \setlength{\tabcolsep}{3pt}
+    \renewcommand{\arraystretch}{1.1}
     
     \caption{Parâmetros usados para o UMAP}
     \label{tab:umap_params}
     
-    \begin{tabular}{|l|l|l|l|}
+    \adjustbox{tabular=|l|l|l|l|, center}{
         \hline
-        \textbf{Parâmetro} & \textbf{Descrição} & \textbf{Valor} & \textbf{Nota} \\
+        \textbf{Parâmetro} & \textbf{Descrição} & \textbf{Valores testados} & \textbf{Padrão do BERTopic} \\
         \hline
-        \texttt{n\_neighbors} & Controla o equilíbrio entre estrutura local e global. & \texttt{10} & Padrão: 15 \\
+        \texttt{n\_neighbors} & Controla o equilíbrio entre estrutura local e global. & de \texttt{5} a \texttt{60}, incrementos de \texttt{5} & \texttt{15} \\
         \hline
-        \texttt{n\_components} & Dimensionalidade resultante. & \texttt{5} & Padrão BERTopic \\
+        \texttt{n\_components} & Dimensionalidade resultante. & de \texttt{5} a \texttt{40}, incrementos de \texttt{5} & \texttt{5}\\
         \hline
-        \texttt{min\_dist} & Controla dispersão de pontos. & \texttt{0} & Padrão BERTopic \\
+        \texttt{min\_dist} & Controla dispersão de pontos. & \texttt{0} & \texttt{0} \\
         \hline
-        \texttt{low\_memory} & Menor uso de memória. & \texttt{false} & -- \\
+        \texttt{low\_memory} & Menor uso de memória. & \texttt{false} & \texttt{false} \\
         \hline
-        \texttt{metric} & Métrica de distância. & \texttt{cosine} & Padrão BERTopic \\
+        \texttt{metric} & Métrica de distância. & \texttt{cosine} & \texttt{cosine} \\
         \hline
         \texttt{random\_state} & Semente determinística. & \texttt{42} & -- \\
         \hline
-    \end{tabular}
+    }
 \end{table}
 
 
@@ -176,32 +190,74 @@ Com os embeddings gerados e suas reduções já computadas, inicializamos o BERT
 
 \begin{table}[ht]
     \centering
-    \footnotesize % Fonte ainda menor
+    \footnotesize
     \setlength{\tabcolsep}{3pt}
     \renewcommand{\arraystretch}{1.1}
     
     \caption{Parâmetros usados para o HDBSCAN}
     \label{tab:hdbscan_params}
     
-    \begin{tabular}{|l|l|l|l|}
+    \adjustbox{tabular=|l|l|l|l|, center}{
         \hline
-        \textbf{Parâmetro} & \textbf{Descrição} & \textbf{Valor} & \textbf{Nota} \\
+        \textbf{Parâmetro} & \textbf{Descrição} & \textbf{Valores testados} & \textbf{Padrão do BERTopic} \\
         \hline
-        \texttt{min\_cluster\_size} & Controla tamanho mínimo e qtd. de \textit{clusters}. & \texttt{10} & Padrão BERTopic. \\
+        \texttt{min\_cluster\_size} & Controla tamanho mínimo e qtd. de \textit{clusters}. & de \texttt{10} a \texttt{40}, incrementos de \texttt{5} & \texttt{10} \\
         \hline
-        \texttt{min\_samples} & Controla pontos de ruído. & \texttt{1} & Reduz \textit{outliers}. \\
+        \texttt{min\_samples} & Controla quantidade de pontos de ruído. & de \texttt{5} a \texttt{20}, com incrementos de \texttt{5} & \texttt{10} \\
         \hline
-    \end{tabular}
+    }
 \end{table}
 
+\subsection{Representação}
+Como já explicado, dados clusters de documentos como tópicos, o BERTopic calcula o score cTF-IDF para cada palavra em um cluster, elege as palavras mais representativas de um tópico baseado nesses scores e cria uma representação sucinta usando essas palavras.
+Para melhorar a representação dos tópicos gerados, fizemos alguns ajustes nestas etapas finais do método:
 
-Para melhorar a representação dos tópicos gerados, fizemos alguns ajustes nas etapas finais do método:
-\begin{itemize}
-    \item Remoção de stop-words, no CountVectorizer
-    \item Remoção de palavras comuns e uso de BM-25 weighting measure.
-\end{itemize}
+\subsubsection{Vetorização}
+Para calcular o cTF-IDF, primeiramente precisamos calcular a frequência de cada palavra, por documento e por tópico. Para isso usamos a classe \lstinline{CountVectorizer}, do próprio BERTopic. Nessa etapa podemos fazer uso da remoção de stop words, pois os embeddings já foram gerados, para que eles não acabem entrando nas representações dos tópicos. Além disso, usamos também bigramas como termos candidatos para representação.
 
+% \begin{table}[ht]
+%     \centering
+%     \footnotesize % Fonte ainda menor
+%     \setlength{\tabcolsep}{3pt}
+%     \renewcommand{\arraystretch}{1.1}
+    
+%     \caption{Parâmetros usados para o CountVectorizer}
+%     \label{tab:countvec_params}
+    
+%     \begin{tabular}{|l|l|l|l|}
+%         \hline
+%         \textbf{Parâmetro} & \textbf{Descrição} & \textbf{Valor adotado} & \textbf{Padrão do BERTopic} \\
+%         \hline
+%         \texttt{min\_cluster\_size} & Controla tamanho mínimo e qtd. de \textit{clusters}. & de \texttt{10} a \texttt{40}, incrementos de \texttt{5} & \texttt{10} \\
+%         \hline
+%         \texttt{min\_samples} & Controla quantidade de pontos de ruído. & \texttt{1} & \texttt{10} \\
+%         \hline
+%     \end{tabular}
+% \end{table}
 
+\subsubsection{cTF-IDF}
+Ao calcular as pontuações cTF-IDF das palavras (e bigramas) no texto, utilizamos duas modificações da métrica original. Fazemos isso passando parâmetros específicos ao instanciar a classe \lstinline{ClassTfidfTransformer}, do BERTopic: \lstinline{ClassTfidfTransformer(True, True)}. Recobrando a fórmula original:
+\begin{equation*}
+    \operatorname{cTF-IDF}_{t, c} = {f}_{t, c} \cdot \log\left(1 + \dfrac{A}{{f}_t}\right)
+\end{equation*}
+A versão modificada é dada então pela fórmula:
+\begin{equation*}
+    \operatorname{cTF-IDF}_{t, c} = \sqrt{{f}_{t, c}} \cdot \log\left(1 + \dfrac{A - {f}_t + 0.5}{{f}_t + 0.5}\right)
+\end{equation*}
+
+\subsection{Busca por similaridade semântica}
+Uma outra possível aplicação de embeddings semânticos é, dado um conjunto de documentos e um exemplo, encontrar os documentos no conjunto que tenham um conteúdo semântico mais próximo possível do exemplo, baseado nas distâncias entre o embedding do exemplo e cada documento do conjunto: o documento mais parecido com o exemplo será o documento cujo embedding estiver mais próximo da projeção do exemplo no espaço latente. Podemos usar isso para fazer cruzamentos entre diferentes autores, e descobrir citações diretas ou indiretas, por exemplo.
+
+Neste trabalho, também fazemos um mini experimento de similaridade semântica: Buscamos, entre as sentenças presentes em Etimologias, as sentenças mais parecidas com dois trechos do livro Sobre Ciência Agrícola \textit{(De Re Rustica)}, de Varrão (em inglês):
+
+\begin{quote}
+    \textbf{varrao\_en.1.48.2.S2}: The beard is called arista from the fact that it is the first part to dry (arescere).
+\end{quote}
+\begin{quote}
+    \textbf{varrao\_en.1.64.1.S0}: Amurca, which is a watery fluid, after it is pressed from the olives is stored along with the dregs in an earthenware vessel.
+\end{quote}
+
+Os resultados dos experimentos são apresentados no próximo capítulo.
 
 
 % Para o estudo de conexões e tópicos existentes na obra, serão utilizadas ferramentas como grandes modelos de linguagem para geração de \emph{embeddings}, como Jina V3~\parencite{jina}, bibliotecas de modelagem de tópicos baseadas em transformers, como BERTopic~\parencite{grootendorst2022bertopic}, e UMAP~\parencite{mcinnes2018umap} para visualização dos \emph{embeddings} em duas dimensões.

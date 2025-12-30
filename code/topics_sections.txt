@@ -1,0 +1,333 @@
+Topic: 0
+Representative words: words, letter, letters, aen, vergil aen, speech, vergil, cicero, nouns, syllable.
+
+Book: 2 - Rhetoric and dialectic; (85.78%)
+Chapter I; section 1; sentence all
+``1. Rhetoric is the art of speaking well in civil cases, [and eloquence (eloquentia) is fluency (copia)] for the purpose of persuading people toward the just and good. Rhetoric is named from the Greek term p?top(c)S?tv, that is, fluency of speech, for p?otç in Greek means "speech," p?tYp means "orator." ´´
+
+Chapter II; section 2; sentence all
+``2. For while one has a treatise on rhetoric in hand, the sequence of its content as it were clings to the memory, but when it is set aside all recollection of it soon slips away. Accomplished knowledge of this discipline makes one an orator. ´´
+
+Chapter III; section 1; sentence all
+``1. An orator therefore is a good man, skilled in speaking. A man's goodness is based on his nature, his behavior, his training in the arts. One skilled in speaking is grounded in artful eloquence, which consists of five parts: invention, arrangement, style, memory, pronunciation (inventio, dispositio, elocutio, memoria, pronuntiatio), and of the goal of this office, which is to persuade of something. ´´
+
+--------------------------------------------------------------------------------------------------------------------
+Book: 1 - Grammar; (82.79%)
+Chapter II; section 1; sentence all
+``1. There are seven disciplines of the liberal arts. The first is grammar, that is, skill in speaking. The second is rhetoric, which, on account of the brilliance and fluency of its eloquence, is considered most necessary in public proceedings. The third is dialectic, otherwise known as logic, which separates the true from the false by very subtle argumentation. ´´
+
+Chapter III; section 1; sentence all
+``1. The common letters of the alphabet are the primary elements of the art of grammar, and are used by scribes and accountants. The teaching of these letters is, as it were, the infancy of grammar, whence Varro also calls this discipline 'literacy' (litteratio). Indeed, letters are tokens of things, the signs of words, and they have so much force that the utterances of those who are absent speak to us without a voice, [for they present words through the eyes, not through the ears]. ´´
+
+Chapter IV; section 6; sentence all
+``6. Now they are vowels, and now semivowels, and now medials (i.e. glides). They are vowels because they make syllables when they are positioned alone or when they are joined to consonants. They are considered consonants in that they sometimes have a vowel set down after them in the same syllable, as Ianus, vates, and they are considered as consonants. ´´
+
+--------------------------------------------------------------------------------------------------------------------
+Book: 6 - Books and ecclesiastical offices; (7.43%)
+Chapter IX; section 2; sentence all
+``2. Hence it was said among scribes, "You shall not strike wax with iron." Afterwards it was established that they would write on wax tablets with bones, as Atta indicates in his Satura, saying (12): Let us turn the plowshare and plow in the wax with a point of bone. The Greek term graphium is scriptorium in Latin, for ypa??? is "writing." ´´
+
+Chapter VIII; section 7; sentence all
+``7. A panegyric (panegyricum) is an extravagant and immoderate form of discourse in praise of kings; in its composition people fawn on them with many lies. This wickedness had its origin among the Greeks, whose practised glibness in speaking has with its ease and incredible fluency stirred up many clouds of lies. ´´
+
+Chapter XIV; section 2; sentence all
+``2. The scribe (scriba) got his name from writing (scribere), expressing his function by the character of his title. ´´
+
+--------------------------------------------------------------------------------------------------------------------
+Book: 5 - Laws and times; (4.35%)
+Chapter XXV; section 32; sentence all
+``32. Cessio is a concession (concessio) of one's own property, such as this: "I cede by right of affinity," for we say 'cede' (cedere) as if it were 'concede' (concedere), that is, those things that are our own; for we 'restore' the property of another, we do not 'cede' it. In fact, technically speaking, someone is said to cede when he gives in to another in spite of the truth, as Cicero (Defense of Ligarius 7.22): "He ceded," he says, "to the authority of a very distinguished man, or rather, he obeyed." ´´
+
+Chapter XXVI; section 9; sentence all
+``9. Deceit (falsitas) is so called from saying (fari, ppl. fatus) something other than the truth. ´´
+
+Chapter XXVII; section 27; sentence all
+``27. Report does not possess a trustworthy name, because it is especially untruthful, either adding many things to the truth, or distorting the truth. It lasts just as long as it is not put to the test, but whenever you put it to the test, it ceases to be, and after that is called fact, not report. ´´
+
+--------------------------------------------------------------------------------------------------------------------
+Book: 8 - The Church and sects; (1.98%)
+Chapter IX; section 29; sentence all
+``29. The salisatores are so called because whenever any part of their limbs leaps (salire), they proclaim that this means something fortunate or something unfortunate for them thereafter. ´´
+
+Chapter VII; section 5; sentence all
+``5. Tragedians (tragoedus) are so called, because at first the prize for singers was a goat, which the Greeks call tp?yoç. Hence also Horace (Art of Poetry 220): Who with a tragic song vied for a paltry goat. Now the tragedians following thereafter attained great honor, excelling in the plots of their stories, composed in the image of truth. ´´
+
+--------------------------------------------------------------------------------------------------------------------
+********************************************************************************************************************
+
+Topic: 1
+Representative words: city, river, sea, founded, east, region, west, north, south, island.
+
+Book: 14 - The earth and its parts; (87.17%)
+Chapter II; section 3; sentence all
+``3. Whence it is clear that two of them, Europe and Africa, occupy half of the globe, Asia the other half by itself. But the former pair are divided into two regions, because from the Ocean the Mediterranean enters in between them and separates them. Wherefore, if you divide the globe into two parts, the east and the west, Asia will be in one, Europe and Africa in the other. ´´
+
+Chapter III; section 46; sentence all
+``46. Lycia is so called because in the east it borders on Cilicia, for Cilicia borders on it in the east and it has the sea to the west and the south; in the north lies Caria. There lies Mount Chimera, which exhales fire in nightly surges, like Etna in Sicily and Vesuvius in Campania. ´´
+
+Chapter IV; section 30; sentence all
+``30. Furthermore there are two Spains: Inner Spain, whose area extends in the north from the Pyrenees to Cartagena; and Outer Spain, which in the south extends from Celtiberia to the straits of Cadiz. Inner (citerior) and Outer (ulterior) are so called as if it were citra (on this side) and ultra (beyond); but citra is formed as if the term were 'around the earth' (circa terras), and ultra either because it is the last (ultimus), or because after it there is not 'any' (ulla), that is, any other, land. ´´
+
+--------------------------------------------------------------------------------------------------------------------
+Book: 9 - Languages, nations, reigns, the military, citizens, family relationships; (41.58%)
+Chapter II; section 2; sentence all
+``2. Now, of the nations into which the earth is divided, fifteen are from Japheth, thirty-one from Ham, and twenty-seven from Shem, which adds up to seventythree - or rather, as a proper accounting shows, seventytwo. And there are an equal number of languages, which arose across the lands and, as they increased, filled the provinces and islands. ´´
+
+Chapter III; section 2; sentence all
+``2. Every nation has had its own reign in its own times - like the Assyrians, the Medes, the Persians, the Egyptians, the Greeks - and fate has so rolled over their allotments of time that each successive one would dissolve the former. Among all the reigns on earth, however, two reigns are held to be glorious above the rest - first the Assyrians, then the Romans - as they are constituted differently from one another in location as much as time. ´´
+
+Chapter IV; section 28; sentence all
+``28. Burghers (burgarius) are so called from 'fortified villages' (burgus), because in common speech people call the many dwelling-places established along the frontiers burgi. Hence also the nation of Burgundians got their name: formerly, when Germania was subdued, the Romans scattered them among their camps, and so they took their name from these places. ´´
+
+--------------------------------------------------------------------------------------------------------------------
+Book: 13 - The cosmos and its parts; (38.17%)
+Chapter XIII; section 9; sentence all
+``9. There is a lake in the country of the Troglodytes; three times a day it becomes bitter, and then, just as often, sweet again. The Siloan spring at the foot of Mount Zion has no continuous flow of water, but bubbles forth at certain hours and days. In Judea a certain river used to go dry every Sabbath. ´´
+
+Chapter XIX; section 4; sentence all
+``4. People say that a lighted lamp floats on top, but when its light is extinguished, it sinks. This is also called the Salt Sea, or Lake Asphalti, that is, 'of bitumen,' and it is in Judea between Jericho and Zoara. In length it stretches 780 stades (i.e. about ninety miles) to Zoara in Arabia and its width is 150 stades, up to the neighborhood of Sodom. ´´
+
+Chapter XV; section 1; sentence all
+``1. Greek and Latin speakers so name the 'Ocean' (oceanus) because it goes around the globe (orbis) in the manner of a circle (circulus), [or from its speed, because it runs quickly (ocius)]. Again, because it gleams with a deep blue color like the sky: oceanus as if the word were mU?v?oç ("blue"). This is what encircles the edges of the land, advancing and receding with alternate tides, for when the winds blow over the deep, the Ocean either disgorges the seas or swallows them back. ´´
+
+--------------------------------------------------------------------------------------------------------------------
+Book: 15 - Buildings and fields; (28.57%)
+Chapter I; section 53; sentence all
+``53. But Ascanius, after he had left his kingdom to his stepmother Lavinia, built Alba Longa. It was called Alba, 'White,' because of the color of a sow, and Longa because the town is elongated, in keeping with the great extent of the hill on which it is sited. From the name of this city the kings of the Albans took their names. ´´
+
+Chapter II; section 31; sentence all
+``31. The Capitolium of Rome is so called because it was the highest head (caput) of the Roman city and its religion. Others say that when Tarquinius Priscus was uncovering the foundations of the Capitolium in Rome, he found on the site of the foundation the head (caput) of a human marked with Etruscan writing, and hence he named it the Capitolium. ´´
+
+--------------------------------------------------------------------------------------------------------------------
+Book: 11 - The human being and portents; (3.14%)
+Chapter III; section 20; sentence all
+``20. The Artabatitans of Ethiopia are said to walk on all fours, like cattle; none passes the age of forty. ´´
+
+--------------------------------------------------------------------------------------------------------------------
+********************************************************************************************************************
+
+Topic: 2
+Representative words: sun, sky, stars, air, day, moon, earth, constellations, star, month.
+
+Book: 3 - Mathematics, music, astronomy; (58.46%)
+Chapter L; section 2; sentence all
+``2. Wandering farther to the south it makes winter, so that the earth grows fertile with wintry moisture and frost. When it approaches closer to the north, it brings summer back, so that crops grow firm in ripeness, and what was unripened in damp weather mellows in its warmth. ´´
+
+Chapter LI; section 2; sentence all
+``2. When the sun runs across the south, it is the closer to the earth; but when it is near the north, it is raised higher in the sky. [Thus God made diverse locations and seasons for the sun's course, so that it does not consume everything with its daily heat by always tarrying in the same place. But, as Clement said, "The sun takes diverse paths, by means of which the temperature of the air is meted out according to the pattern of the seasons, and the order of its changes and permutations is preserved. Thus when the sun ascends to the higher reaches, it tempers the spring air; when it reaches its zenith, it kindles the summer heat; dropping again it brings back the temperance of autumn. But when it goes back to the lowest orbit, it bequeaths to us from the icy framework of the sky the rigor of winter cold."]  ´´
+
+Chapter LIII; section 2; sentence all
+``2. Others maintain on the contrary that the moon does not have its own light, but is illuminated by the rays of the sun, and for this reason undergoes an eclipse when the earth's shadow comes between it and the sun. [For the sun is located higher than the moon. Hence it happens that when the moon is beneath the sun, the upper part of the moon is lighted, but the lower part, which is facing the earth, is dark.] ´´
+
+--------------------------------------------------------------------------------------------------------------------
+Book: 13 - The cosmos and its parts; (53.44%)
+Chapter I; section 3; sentence all
+``3. There are four zones in the world, that is, four regions: the East and the West, the North and the South. ´´
+
+Chapter II; section 4; sentence all
+``4. In number, take for example eight divided into four, and four into two, and then two into one. But one is an atom, because it is indivisible. Thus also with letters (i.e. speech-sounds), for speech is divided into words, words into syllables, syllables into letters. But a letter, the smallest part, is an atom and cannot be divided. Therefore an atom is whatever cannot be divided, like a point in geometry, for tóµoç means "division" in Greek, and ?toµoç means "non-division." ´´
+
+Chapter III; section 3; sentence all
+``3. For this reason, all the elements are present in all, but each one has taken its name from whichever element is more abundant in it. The elements are assigned by Divine Providence to the appropriate living beings, for the Creator himself has filled heaven (i.e. the fiery realm) with angels, air with birds, water with fish, and earth with humans and the rest of the living things. ´´
+
+--------------------------------------------------------------------------------------------------------------------
+Book: 5 - Laws and times; (33.15%)
+Chapter XXIX; section 1; sentence all
+``1. Intervals of time are divided into moments, hours, days, months, years, lustrums, centuries, and ages. A moment (momentum) is the least and shortest bit of time, so called from the movement (motus) of the stars. ´´
+
+Chapter XXVII; section 38; sentence all
+``38. For that reason the Romans forbade water and fire to certain condemned people - because air and water are free to all and given to everyone - so that the condemned might not enjoy what is given by nature to everyone. ´´
+
+Chapter XXX; section 16; sentence all
+``16. Evening (suprema) is the last part of the day, when the sun turns its course toward its setting - so called because it 'still exists' (superesse) up to the final part of the day. ´´
+
+--------------------------------------------------------------------------------------------------------------------
+Book: 8 - The Church and sects; (28.97%)
+Chapter IX; section 17; sentence all
+``17. Haruspices are so named as if the expression were 'observers (inspector) of the hours (hora)'; they watch over the days and hours for doing business and other works, and they attend to what a person ought to watch out for at any particular time. They also examine the entrails of animals and predict the future from them. ´´
+
+Chapter VI; section 21; sentence all
+``21. Whence also Varro says that fire is the soul of the world; just as fire governs all things in the world, so the soul governs all things in us. As he says most vainly, "When it is in us, we exist; when it leaves us, we perish." Thus also when fire departs from the world through lightning, the world perishes. ´´
+
+Chapter XI; section 45; sentence all
+``45. Mercury (Mercurius) is translated as "speech," for Mercury is said to be named as if the word were mediuscurrens ("go-between"), because speech is the gobetween for people. In Greek he is called `Epµ?ç, because 'speech' or 'interpretation,' which pertains especially to speech, is called spµ?v?(c)a. ´´
+
+--------------------------------------------------------------------------------------------------------------------
+Book: 6 - Books and ecclesiastical offices; (8.91%)
+Chapter II; section 3; sentence all
+``3. The book of Genesis is so called because the beginning of the world and the begetting (generatio) of living creatures are contained in it. ´´
+
+Chapter XIX; section 2; sentence all
+``2. The office of Vespers takes place at the beginning of night, and is named for the evening star Vesper, which rises when night falls. ´´
+
+Chapter XVII; section 3; sentence all
+``3. It is calleda cycle (cyclum) because it is set out in the form of a wheel, and arranged as if it were in a circle (circulum) it comprises the order of the years without variation and without any artifice. ´´
+
+--------------------------------------------------------------------------------------------------------------------
+********************************************************************************************************************
+
+Topic: 3
+Representative words: person, mind, term, ones, ppl, dead, does, sense, body, ancients.
+
+Book: 10 - Vocabulary; (83.64%)
+Chapter A; section 11; sentence all
+``11. Indecisive (anceps), wavering this way and that and doubting whether to choose this or that, and distressed (anxius) about which way to lean. Abominable (atrox), because one has loathsome (taeter) conduct. Abstemious (abstemius), from temetum, that is, 'wine,' as if abstaining (abstinere) from wine. [Neighboring (affinis) . . .] Weaned (ablactatus), because one is 'withdrawn from milk' (a lacte ablatus). ´´
+
+Chapter B; section 31; sentence all
+``31. Baburrus, "stupid, inept." Biothanatus (i.e. a martyr who dies a violent death), because he is 'twice dead,' for death is 9?vatoç in Greek.  ´´
+
+Chapter C; section 40; sentence all
+``40. Constant (constans) is so called because one 'stands firm' (stare, present participle stans) in every situation, and cannot deviate in any direction. Trusting (confidens), one full of faith (fiducia) in all matters. Whence Caecilius (fr. 246): If you summon Confidence, confide (confidere) everything to her. ´´
+
+--------------------------------------------------------------------------------------------------------------------
+Book: 5 - Laws and times; (13.59%)
+Chapter XXVI; section 1; sentence all
+``1. Crime (crimen) has its name from lacking (carere) - like theft, deceit, and other actions that do not kill, but cause disgrace. ´´
+
+Chapter XXVII; section 1; sentence all
+``1. Harm (malum) is defined in two ways: one definition being what a person does; the other, what he suffers. What he does is wrongdoing (peccatum), what he suffers is punishment. And harm is at its full extent when it is both past and also impending, so that it includes both grief and dread. ´´
+
+--------------------------------------------------------------------------------------------------------------------
+Book: 11 - The human being and portents; (10.47%)
+Chapter I; section 1; sentence all
+``1. Nature (natura) is so called because itcauses something to be born (nasci, ppl. natus), for it has the power of engendering and creating. Some people say that this is God, by whom all things have been created and exist. ´´
+
+Chapter II; section 31; sentence all
+``31. Death (mors) is so called, because it is bitter (amarus), or by derivation from Mars, who is the author of death; [or else, death is derived from the bite (morsus) of the first human, because when he bit the fruit of the forbidden tree, he incurred death]. ´´
+
+Chapter III; section 27; sentence all
+``27. They claim also that in the same India is a race of women who conceive when they are five years old and do not live beyond eight. ´´
+
+--------------------------------------------------------------------------------------------------------------------
+Book: 6 - Books and ecclesiastical offices; (9.90%)
+Chapter XIX; section 35; sentence all
+``35. A holocaust (holocaustum) is a sacrifice in which all that is offered is consumed by fire, for when the ancients would perform their greatest sacrifices, they would consume the whole sacrificial victim in the flame of the rites, and those were holocausts, for o2oç in Greek means "whole," mauotç means "burning," and holocaust, "wholly burnt." ´´
+
+--------------------------------------------------------------------------------------------------------------------
+Book: 8 - The Church and sects; (4.37%)
+Chapter II; section 7; sentence all
+``7. It is greater than the other two, because he who loves also believes and hopes. But he who does not love, although he may do many good things, labors in vain. Moreover every carnal love (dilectio carnalis) is customarily called not love (dilectio) but 'desire' (amor). We usually use the term dilectio only with regard to better things. ´´
+
+Chapter III; section 6; sentence all
+``6. Superstition (superstitio) is so called because it is a superfluous or superimposed (superinstituere) observance. Others say it is from the aged, because those who have lived (superstites) for many years are senile with age and go astray in some superstition through not being aware of which ancient practices they are observing or which they are adding in through ignorance of the old ones. ´´
+
+Chapter IV; section 11; sentence all
+``11. The Hemerobaptistae [who wash their bodies and home and domestic utensils daily,] [so called because they wash their clothes and body daily (cf. ¡µspa, "day," and ßapt(c)S?tv, "to wash")]. ´´
+
+--------------------------------------------------------------------------------------------------------------------
+********************************************************************************************************************
+
+Topic: 4
+Representative words: tree, grows, fruit, root, leaves, plant, flower, herb, olive, leaves like.
+
+Book: 17 - Rural matters; (79.26%)
+Chapter III; section 15; sentence all
+``15. We speak improperly of the 'ear' (spica) of ripe fruit, for properly the ear exists when the beards, still thin like spear-tips (spiculum), project through the husk of the stalk, that is the swelling tip. ´´
+
+Chapter IV; section 6; sentence all
+``6. 'French bean' (faselum; cf. ???o?2oç) and chickpea (cicer; cf. mptóç) are Greek names. But faselum . . . ´´
+
+Chapter IX; section 105; sentence all
+``105.A fern (filix) is so called from the singleness of its leaf (folium, cf. filum, "a single strand"), for from one stalk a cubit high grows one divided leaf, with an intricate structure like a feather's. Oats (avena) . . . Darnel (lolium) .  ´´
+
+--------------------------------------------------------------------------------------------------------------------
+Book: 4 - Medicine; (9.38%)
+Chapter IX; section 9; sentence all
+``9. Catapotia, because a little is drunk (potare) or swallowed down. Diamoron got its name from the juice of the mulberry (morum), from which it is made; likewise diacodion, because it is made from the poppy-head (codia; cf. mÛ6?ta, "poppyhead"), that is, from the poppy; and similarly diaspermaton, because it is made from seeds (cf. opspµa, "seed"). ´´
+
+Chapter X; section 3; sentence all
+``3. A dinamidia describes the power of herbs, that is, their force and capability. In herbal medicine, potency itself is called 6ávaµtç, whence also the books where herbal remedies are inscribed are called dinamidia.A 'botanical treatise' (butanicum, i.e. botanicum, cf. ßot?v?, "herb") about plants is so called because plants are described in it. ´´
+
+Chapter XII; section 2; sentence all
+``2. It is called incense (thymiama) in the Greek language, because it is scented, for a flower that bears a scent is called thyme (thymum). With regard to this, Vergil (Geo. 4.169): And (the honey) is redolent with thyme. ´´
+
+--------------------------------------------------------------------------------------------------------------------
+Book: 16 - Stones and metals; (1.59%)
+Chapter II; section 8; sentence all
+``8. The Greek term aphronitrum is 'foam of natron,' spuma nitri in Latin. Concerning this a certain poet says (Martial, Epigrams 14.58): Are you a bumpkin? You don't know what my Greek name is. I am called 'foam of natron.' Are you Greek? It is aphronitrum. It is gathered in Asia where it distills in caves; from there it is dried in the sun. It is thought to be best if it has as little weight and is as easily crumbled as possible, and is almost purple in color. ´´
+
+Chapter IV; section 14; sentence all
+``14. Memphitis is named from a place in Egypt (i.e. Memphis); it has the nature of a gem. When ground and mixed with vinegar and smeared on those parts of the body that have to be burned or cut it makes them so numb that they do not feel pain. ´´
+
+Chapter VII; section 14; sentence all
+``14. Myrrhites is so named because it has the color of myrrh. When it is compressed until it becomes warm it exudes the sweet smell of nard. Aromatitis is found in Arabia and Egypt; it has the color and scent of myrrh, whence it takes its name (cf. aroma, "spice"). ´´
+
+--------------------------------------------------------------------------------------------------------------------
+Book: 12 - Animals; (1.37%)
+Chapter VI; section 37; sentence all
+``37. The squatus is named because it has 'sharp scales' (squamis acutus). For this reason wood is polished with its skin. ´´
+
+Chapter VII; section 23; sentence all
+``23. The cinnamolgus is also a bird of Arabia, called thus because in tall trees it constructs nests out of cinnamon (cinnamum) shrubs, and since humans are unable to climb up there due to the height and fragility of the branches, they go after the nests using lead-weighted missiles. Thus they dislodge these cinnamon nests and sell them at very high prices, for merchants value cinnamon more than other spices. ´´
+
+Chapter VIII; section 8; sentence all
+``8. Butterflies (papilio) are small flying creatures that are very abundant when mallows bloom, and they cause small worms to be generated from their own dung. ´´
+
+--------------------------------------------------------------------------------------------------------------------
+Book: 20 - Provisions and various implements; (1.22%)
+Chapter II; section 36; sentence all
+``36. Honey (mel) is froma Greek term (i.e. µs2t), which is shown to have its name from bees, for a bee in Greek is called µs2tooa. Formerly honey was from dew and was found in the leaves of reeds. Hence Vergil (Geo. 4.1): Forthwith, the celestial gifts of honey from the air. Indeed in India and Arabia honey is still found attached to branches, clinging like grains of salt. Nevertheless, all honey is sweet; Sardinian honey is bitter because of wormwood, with whose abundance the bees of that region are fed. The honeycomb (favus) is so called because it is eaten rather than drunk, for the Greeks say ??ay?±v for "eat." ´´
+
+Chapter VII; section 3; sentence all
+``3. A pyx (pyxis) is a little container for ointment made of boxwood, for what we call 'boxwood' the Greeks call pá(oç. ´´
+
+--------------------------------------------------------------------------------------------------------------------
+********************************************************************************************************************
+
+Topic: 5
+Representative words: stone, color, bronze, white, iron, gold, red, black, lead, silver.
+
+Book: 16 - Stones and metals; (84.92%)
+Chapter I; section 10; sentence all
+``10. There are four kinds of sulfur. The 'living' kind, which is dug up, is translucent and green; physicians use it alone of all the kinds of sulfur. The second kind, which people call 'lump sulfur' (i.e. fuller's earth), is used only by fullers. The third kind is 'liquid'; it is used for fumigating wool because it gives whiteness and softness. The fourth kind is particularly suitable for preparing lamp-wicks. The power of sulfur is so great that it cures the 'comitial sickness' (see IV.vii.7) through its vapor when it is set on the fire and burns. When a person puts sulfur in a goblet of wine and carries it around with hot coals beneath he glows with the eerie pallor of a corpse from the reflection of the blaze. ´´
+
+Chapter II; section 10; sentence all
+``10. But it is now produced elsewhere in caves, because, having collected as a liquid, it drips down there and solidifies into 'grape clusters.' It also occurs in hollow trenches, from whose sides the hanging drops coalesce; it is also made, like salt, under the most blazing sun. Its power is so concentrated that, when sprinkled into the mouths of lions and bears, they are unable to bite because of its astringent force. ´´
+
+Chapter III; section 11; sentence all
+``11. Sand (arena, i.e. harena) is named from 'dryness' (ariditas), not from 'cementing' (adhaerere) building materials, as some people would have it. The test of its quality is if it grates when squeezed in one's hand, or if it leaves behind no stain when sprinkled on white cloth. ´´
+
+--------------------------------------------------------------------------------------------------------------------
+Book: 19 - Ships, buildings, and clothing; (18.00%)
+Chapter X; section 3; sentence all
+``3. Stones that are suitable for building: white stone, Tiburtine, columbinus, river stone, porous, red, and the others. ´´
+
+Chapter XVII; section 5; sentence all
+``5. Syrian (Syricum) is a pigment with a red color, with which the chapter-heads in books are written. It is also known as Phoenician, so called because it is collected in Syria on the shores of the Red Sea, where the Phoenicians live. ´´
+
+Chapter XXVIII; section 1; sentence all
+``1. Dying (tinctura) is so named because cloth is 'soaked in color' (tinguere), tinted to another appearance, and colored for the sake of beauty. What we call red or vermilion (vermiculus), the Greeks call mómmoç; it is a small grub (vermiculus) from the foliage of the forest. ´´
+
+--------------------------------------------------------------------------------------------------------------------
+Book: 13 - The cosmos and its parts; (3.05%)
+Chapter X; section 1; sentence all
+``1. The celestial rainbow (arcus) is named for its likeness to the curve of a bow (also arcus). Iris is its proper name. It is called iris as if the word were aeris, that is, something that descends to earth through the air (aer). It takes its light from the sun, whenever hollow clouds receive the sun's rays from the opposite side and make the shape of a bow. This circumstance gives it various colors, because the thinned water, bright air, and misty clouds, when illuminated, create various colors. ´´
+
+Chapter XVII; section 2; sentence all
+``2. The Red Sea is so named because it is colored with reddish waves; however, it does not possess this quality by its nature, but its currents are tainted and stained by the neighboring shores because all the land surrounding that sea is red and close to the color of blood. From there a very intense vermilion may be separated out, as well as other pigments with which the coloring of paintings is varied. ´´
+
+Chapter XX; section 5; sentence all
+``5.A drop (gutta) is that which stands hanging, stilla (i.e. another word for 'drop') is that which falls. Hence the word stillicidium (i.e. drippings from eaves), as if it were 'falling drop' (stilla cadens). Stiria (lit. "frozen drop, icicle," here simply "drop") is a Greek word, that is 'drop' (gutta); from it the diminutive that we call stilla is formed. As long as it stands or hangs suspended from roofs or trees, it is a gutta, as if 'glutinous' (glutinosus), but when it has fallen it is a stilla. ´´
+
+--------------------------------------------------------------------------------------------------------------------
+Book: 20 - Provisions and various implements; (3.05%)
+Chapter II; section 31; sentence all
+``31. Galatica is named for its milky color, for the Greeks call milk y?2a. Meatballs (sphera) are named with this Greek word for their roundness, for whatever is round in shape is called o??a±pa in Greek. ´´
+
+Chapter IV; section 8; sentence all
+``8. Chrysendetus vessels are those inlaid with gold; the term is Greek (cf. ypUoóç, "gold"; sv6?±v "bind on"). Vessels in bas-relief (anaglypha) are those carved on top, for the Greek ?vY means "above," y2U???, "carving," that is, carved above. ´´
+
+Chapter VII; section 2; sentence all
+``2. An alabastrum isa vessel for ointments, and is named from the kind of stone of which it is made, which they call alabaster (alabastrites), which keeps ointments unspoiled. ´´
+
+--------------------------------------------------------------------------------------------------------------------
+Book: 4 - Medicine; (1.56%)
+Chapter VI; section 16; sentence all
+``16. A carbuncle (carbunculus) is so called because at first it glows red, like fire, and then turns black, like an extinguished coal (carbo). ´´
+
+Chapter VII; section 32; sentence all
+``32. A cauculus is a stone that occurs in the bladder, and it took its name from that (i.e. calculus, "pebble"). It is formed from phlegmatic matter. ´´
+
+--------------------------------------------------------------------------------------------------------------------
+********************************************************************************************************************
+

@@ -10,8 +10,20 @@ _CHROMA_CLIENT:Final = chromadb.PersistentClient("isidb")
 dataframe_path = "./topic_modeling_results_df.pkl"
 selected_confs_json_path = "./selected_confs.json"
 
+class OPTSObj:
+    def __init__(self, optsfile):
+        self.data = json.load(optsfile)
+
+    def __getitem__(self, item):
+        if type(item) is tuple:
+            if item[1] == "coll_name":
+                return getColnames()
+            return self.data[item[0]][item[1]]
+        
+        return self.data[item]
+
 with open('opts.json', 'r') as optsfile:
-    _OPTS:Final[dict[str, Any]] = json.load(optsfile)
+    _OPTS = OPTSObj(optsfile)
 
 def getCollBaseName(emb_name: str) -> str:
     return emb_name.replace('-', '_').replace(':', '_').replace('/', '_')
@@ -23,9 +35,11 @@ def getOpt(optName: str):
     return _OPTS[optName]
 
 def getArg(argname: str | List[str] | None = None):
-    if argname is None: return _OPTS["args"]
-    if isinstance(argname, str): return _OPTS["args"][argname]
-    return {k: _OPTS["args"][k] for k in argname}
+    if argname is None:
+        collections = getColnames()
+        return {**_OPTS["args"], "collections": collections if len(collections) > 0 else None}
+    if isinstance(argname, str): return _OPTS["args", argname]
+    return {k: _OPTS["args", k] for k in argname}
 
 def getDocs(collName: str, granularity: granType, include):
     collection = _CHROMA_CLIENT.get_collection(collName)
@@ -67,16 +81,29 @@ def getHTMLFilePath(conf:dict[str, Any]):
 
 def getBaseFilePath(conf:dict[str, Any]):
     granularity = conf["granularity"]
-    coll_name = getCollName(conf["embedder"])
+    coll_name = getCollName(conf["embedder"]) if "coll_name" not in conf else conf["coll_name"]
     reduction = conf["reduction"]
     n_neighbors = reduction["n_neighbors"]
     dimensionality = reduction["n_components"]
     densmap = "dense" if reduction["densmap"] else "normal"
     return f"{granularity}_{coll_name}_{n_neighbors}_{dimensionality}_{densmap}"
 
+def getCollections(embedders:List[str]=None):
+    if embedders is None: embedders = getArg("embedder")
+    return {embedder: getCollection(embedder) for embedder in embedders}
+
+def getColnames():
+    return [col.name for col in getCollections().keys()]
+
+def getCollection(embedder):
+    colname = getCollName(embedder)
+    return _CHROMA_CLIENT.get_collection(name=colname)
 
 def createIfNotExist():
     pass
+
+def getClient():
+    return _CHROMA_CLIENT
 
 # __all__ = ["getCollBaseName", "getOpt", "getArg", "getDocs", "docCount", "granType", "dictIter", "iterConfigs", "getCollName"]
         

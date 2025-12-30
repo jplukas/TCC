@@ -108,6 +108,12 @@ def create_wordcloud(model, topic):
     return wc.generate_from_frequencies(text)
     # return wc.to_svg(embed_font=True, optimize_embedded_font=False)
 
+def func(x, prefixes):
+    masks = {prefix: x.index.str.startswith(prefix) for prefix in prefixes}
+    not_selected = ~np.logical_or(*masks.values())
+    t = {prefix: {k.removeprefix(prefix + "_"): v for k, v in x[mask].items()} for prefix, mask in masks.items()}
+    return pd.Series({**x[not_selected], **t})
+
 # def plot(doc_info: pd.DataFrame, topics:pd.DataFrame, title: str, subtitle: str | None = None):
 #     fig, ax = plt.subplots(1, 1, figsize=(20, 20))
 #     n_clusters = topics.shape[0]
@@ -137,31 +143,15 @@ if __name__ == "__main__":
     }
 
     # Get topic model configurations
-    # with open(selected_confs_json_path, 'r') as json_file:
-    #     confs = json.load(json_file)
+    with open(selected_confs_json_path, 'r') as json_file:
+        confs = json.load(json_file)
 
-    embedder = 'jinaai/jina-embeddings-v3'
-    granularity = 'topics'
+    coll_name = 'jinaai_jina_embeddings_v3__en_2'
+    granularity = 'sentences'
 
-    conf = {'embedder': embedder, 'granularity': granularity, 'reduction.n_neighbors': 5, 'reduction.n_components': 20, 'clustering.min_cluster_size': 35, 'clustering.min_samples': 5}
-    reduction = {
-        "n_neighbors":conf["reduction.n_neighbors"],
-        "n_components":conf["reduction.n_components"],
-        "densmap": False
-    }
-    clustering = {
-        "min_cluster_size":conf["clustering.min_cluster_size"],
-        "min_samples":conf["clustering.min_samples"],
-    }
-    n_topics = 20
+    df = pd.DataFrame(confs).agg(func, "columns", ["reduction", "clustering"])
+    config = df[(df["coll_name"] == coll_name) & (df["granularity"] == granularity)].iloc[0].to_dict()
 
-    config = {
-        "reduction": reduction,
-        "clustering": clustering,
-        "embedder": embedder,
-        "granularity": granularity,
-        "n_topics": n_topics,
-    }
     data = all_data[granularity]
     docs = data["documents"]
     embeddings = np.load(getReductionFilePath(config))
@@ -182,14 +172,7 @@ if __name__ == "__main__":
     topic_info.drop(-1, inplace=True)
     wcs = [ create_wordcloud(topic_model, topic) for topic in topic_info.index ]
     
-    # fig, ax = plt.subplots(6, 2, sharex="col")
-
-    # for i, (book, counts) in enumerate(topics_per_book.items()):
-    #     if i >=10: break
-    #     sns.barplot(x=counts.index, y=counts.values, ax=ax[i])
-
-
-
+    
     N_ROWS = 6
     IMAGE_WIDTH_INCHES = 2.5 # Define the fixed width of the image column in inches
     COUNT_PLOT_WIDTH_SCALED = 1.0 # This column can scale

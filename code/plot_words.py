@@ -49,18 +49,18 @@ if __name__ == "__main__":
     # embedders = getArg("embedder")
     book_titles = {str(i + 1): formatEllipsis(d["title_en"]) for i, d in enumerate(getOpt("book_struct"))}
 
-    granularities = ["topics"]
+    granularities = ["sentences"]
     embedders = ["jinaai/jina-embeddings-v3"]
 
     all_data = {
-        embedder: {granularity: getDocs(getCollName(embedder), granularity, include=["documents", "metadatas", "embeddings"])
+        embedder: {granularity: getDocs(getCollName(embedder) + "_2", granularity, include=["documents", "metadatas", "embeddings"])
         for granularity in granularities} for embedder in embedders
     }
     words = np.array(getOpt("words"))
 
     for embedder in embedders:
         embedder_model = SentenceTransformer(embedder, trust_remote_code=True)
-        word_embs = embedder_model.encode(words, normalize_embeddings=True)
+        word_embs = embedder_model.encode(words, normalize_embeddings=True, task="separation", prompt_name="separation")
         for granularity in granularities:
             embeddings = all_data[embedder][granularity]["embeddings"]
             docs = all_data[embedder][granularity]["documents"]

@@ -27,10 +27,13 @@ if __name__ == '__main__':
     # embedders = ["sentence-transformers/LaBSE"]
     # granularities = ["topics"]
 
-    for conf in tqdm(iterConfigs(["embedder", "granularity"])):
-        emb_name = conf["embedder"]
+
+
+    for conf in tqdm(iterConfigs(["granularity"])):
+        # emb_name = conf["embedder"]
         gran = conf["granularity"]
-        coll_name = getCollName(emb_name)
+        coll_name = "jinaai_jina_embeddings_v3__en_2"
+        # coll_name = getCollName(emb_name)
         all_data = getDocs(coll_name, gran, ["embeddings"])["embeddings"]
         data = []
         data.append(all_data)
@@ -44,7 +47,7 @@ if __name__ == '__main__':
         print("Done!")
 
         for conf2 in iterConfigs(["reduction"]):
-            reduction_filepath = getReductionFilePath({**conf, **conf2})
+            reduction_filepath = getReductionFilePath({**conf, **conf2, "coll_name": coll_name})
             if not os.path.exists(reduction_filepath):
                 reduction = conf2["reduction"]
                 p1 = UMAP(**reduction, precomputed_knn=precomputed_knn)

@@ -10,33 +10,121 @@ A seguir relataremos os resultados dos experimentos realizados.
 Ao executar o algoritmo do BERTopic com diferentes parâmetros, obtivemos diferentes resultados. Em geral, o número de pontos classificados como ruído, ou outliers, foi alto. Porém, ao inspecionar as configurações que minimizaram essa quantidade, descobrimos que algumas geravam agrupamentos muito concentrados em poucos clusters, misturando temas diferentes. A solução adotada foi escolher as configurações que geraram clusters mais homogêneos, minimizando o tamanho máximo de um cluster. Essa abordagem também acabou gerando um número reduzido de outliers, como pode-se ver nas figuras \ref{fig:outliers} e \ref{fig:maxclus}.
 
 \begin{figure}[h]
-    \includegraphics[width=\textwidth, height=.425\textheight]{comp-outliers}
+    \includegraphics[width=.9\textwidth, height=.33\textheight]{min_outliers}
     \caption{Contagem de documentos por tópico - minimização de outliers.}
     \label{fig:outliers}
 \end{figure}
-
-A segmentação do texto em seções gerou tópicos mais coerentes do que a segmentação em sentenças, na maioria dos casos. Porém, algumas seções de maior comprimento contribuíram para clusters impuros, com temas mistos. Em contrapartida, as configurações que segmentaram o texto em sentenças criaram mais clusters, com maior concentração das palavras em clusters dominantes. A quantidade de ruído também foi significativa e consistentemente maior nas modelagens usando sentenças, o que pode-se atribuir a dificuldades na extração do texto dos PDFs e na deteção de sentenças, no pré-processamento. Porém, essa abordagem foi capaz de detectar uma quantidade maior de temas, além de temas mais distribuídos na obra. Isso nos mostra que ambas abordagens não são mutuamente exclusivas, mas complementares, e podem ser usadas em conjunto a depender do objetivo da análise.
-
 \begin{figure}[h]
-    \includegraphics[width=\textwidth, height=.425\textheight]{comp-maxclus}
+    \includegraphics[width=.9\textwidth, height=.33\textheight]{min_max_cluster}
     \caption{Contagem de documentos por tópico - minimização de cluster máximo.}
     \label{fig:maxclus}
 \end{figure}
 
-Na figura \ref{fig:embspace}, vemos uma visualização do espaço latente de \textit{embeddings}, projetada para um plano 2D pelo UMAP, com cada ponto correspondendo a uma passagem (no caso, a uma seção) de um livro, e colorido de acordo com o livro ao qual a passagem pertence. Os círculos em amarelo transparente são projeções de palavras nesse espaço. Podemos ver que as projeções tendem a agrupar palavras relacionadas, como \textit{jewish, Abraham, hebrew, Muhammad, muslim}, relacionadas a religiões abraâmicas, \textit{rye, sorghum, yeast, wheat, harvest, plough, farm, bread, milk}, relacionadas a agricultura, \textit{dog, sheep, cattle}, relacionadas a animais, \textit{earth, start, moon, sun, weather}, relacionados a corpos celestes e fenômenos atmosféricos, e \textit{war, fight, battle}, projetados muito próximos uns aos outros, pelo seu alto grau de similaridade semântica.
+A segmentação do texto em seções gerou tópicos mais coerentes do que a segmentação em sentenças, na maioria dos casos. Porém, algumas seções de maior comprimento contribuíram para clusters impuros, com temas mistos. Em contrapartida, as configurações que segmentaram o texto em sentenças criaram mais clusters, com maior concentração das palavras em clusters dominantes. A quantidade de ruído também foi significativa e consistentemente maior nas modelagens usando sentenças, o que pode-se atribuir a dificuldades na extração do texto dos PDFs e na deteção de sentenças, no pré-processamento. Porém, essa abordagem foi capaz de detectar uma quantidade maior de temas, além de temas mais distribuídos na obra. Isso nos mostra que ambas abordagens não são mutuamente exclusivas, mas complementares, e podem ser usadas em conjunto a depender do objetivo da análise.
+
+No geral, o modelo de embedding que gerou melhores resultados foi o \textit{\textbf{jinaai/jina-embeddings-v3}}~\parencite{jina}, com um ajuste fino para tarefas de \textit{clustering}.
+
+A seguir apresentamos as principais diferenças resultantes da segmentação dos textos em seções e sentenças.
+
+\section{Segmentação por seções}
+
+Na figura \ref{fig:embspace_sec}, vemos uma visualização do espaço latente de \textit{embeddings}, projetada para um plano 2D pelo UMAP, com cada ponto correspondendo a uma seção de um livro, e colorido de acordo com o livro ao qual a seção pertence. Os círculos em amarelo transparente são projeções de palavras nesse espaço. Podemos ver que as projeções tendem a agrupar palavras relacionadas, como \textit{jewish, Abraham, hebrew, Muhammad, muslim, Christ, God, angel, saint}, relacionadas a religiões abraâmicas, \textit{rye, sorghum, yeast, wheat, harvest, plough, farm, bread, milk}, relacionadas a agricultura, \textit{dog, sheep, cattle}, relacionadas a animais, \textit{earth, start, moon, sun, weather, climate}, relacionados a corpos celestes e fenômenos atmosféricos, e \textit{war, fight, battle}, projetados muito próximos uns aos outros, pelo seu alto grau de similaridade semântica.
+
+\begin{figure}[h]
+    \includegraphics[width=\textwidth]{embspace_sec}
+    \caption{Visualização 2D do espaço de embeddings - seções.}
+    \label{fig:embspace_sec}
+\end{figure}
+Vemos também grupos passagens de um mesmo livro, o que é esperado, mas também a presença de sub-agrupamentos de passagens dentro de um livro. Note, por exemplo, a presença de dois aglomerados de passagens do livro \textit{Stones and metals} - um no canto inferior direito, próximo de \textit{steel} e \textit{gold}, e um na parte central-esquerda da imagem, perto da palavra \textit{money}. Note também a presença de um aglomerado de passagens do livro \textit{Rural matters} ao redor da palavra \textit{fruit}, e um de passagens do livro \textit{Animals}, próximo às palavras \textit{dog, sheep} e \textit{cattle}.
+
+Ao observar a distribuição dos tópicos pelos livros, na figura \ref{fig:livro-topico_sec}, podemos observar a presença tanto de temas concentrados, como o primeiro, presente majoritariamente nos livros \textit{Grammar} e \textit{Rhetoric and dialectic} (contendo as disciplinas do \textit{Trivium}), o sexto, praticamente exclusivo ao livro \textit{Stones and metals}, com passagens sobre materiais, metais, e cores, quanto temas mais transversais, distribuídos em diferentes livros, como o terceiro, distribuído principalmente entre os livros \textit{Mathematics, music, astronomy}, \textit{The cosmos and its parts}, \textit{Laws and times} e \textit{The Church and sects}, tratando de corpos celestes, estações do ano, a passagem do tempo e fenômenos atmosféricos.
+\begin{figure}[H]
+    \includegraphics[width=\textwidth]{dist_livros_sec}
+    \caption{Composição de livros por tópico - seções.}
+    \label{fig:livro-topico_sec}
+\end{figure}
+
+\subsection{Documentos por tópico}
+A seguir apresentamos alguns exemplos das passagens presentes em cada tópico, mostrando no máximo uma passagem por capítulo, e no máximo 5 capítulos de cada livro. A cada livro, mostramos a porcentagem de passagens daquele livro atribuídas ao tópico, menos as passagens classificadas como ``ruído''.
+
+\input topics_topics_1
+No primeiro tópico, observamos uma grande coesão, com pouca variabilidade temática, o que é esperado. Porém, apesar de estar bem concentrado nos livros \textit{Grammar} e \textit{Rhetoric and dialectic}, aparecem passagens de outros livros aparentemente não relacionados, mas realmente tratando de temas similares. Nas passagens apresentadas, o autor trata de assuntos ligados à retórica e à dialética.
+
+\input topics_topics_2
+Aqui o tema parece estar ligado à localização e à formação de diferentes povos e nações, com diferentes focos de acordo com o livro de onde a passagem foi retirada. Este tema parece um pouco mais distribuído do que o primeiro, mas aparece predominantemente ainda nos livros \textit{The earth and its parts} e \textit{Languages, nations, reigns, the military, citizens, family relationships}.
+
+\input topics_topics_3
+Aqui vemos passagens tratando principalmente da relação entre corpos celestes e a passagem do tempo e estações do ano, bem como manifestaçoes atmosféricas e elementos da natureza. Temos aqui uma variabilidade temática um pouco maior, e maior transversalidade também, com uma maior distribuição deste tópico por diferentes livros.
+
+\input topics_topics_4
+
+\input topics_topics_5
+Aqui vemos uma concentração muito grande de passagens sobre agricultura no livro \textit{Rural matters}, como esperado. Note também a presença de passagens falando do uso de ervas com fins terapêuticos, no livro \textit{Medicine}.
+
+\input topics_topics_6
+Aqui podemos ver uma sutil diferença de foco: tanto as passagens do livro \textit{Stones and metals} quanto as de \textit{Ships, buildings, and clothing} tratam de diferentes minerais, porém as provenientes do primeiro tratam mais da natureza desses minerais, enquanto as do segundo de parecem tratar de minerais como matéria-prima para construção, fabricação, etc.
+
+\section{Segmentação por sentenças}
+Agora investigamos os resultados da modelagem de tópicos usando a segmentação dos textos em sentenças.
+
+Na figura \ref{fig:embspace_sent} temos uma representação 2D do espaço dos embeddings. Em comparação à figura \ref{fig:embspace_sec}, podemos ver que, apesar dos pontos aparecerem menos concentrados, as principais ilhas temáticas se mantém, mesmo que em posições diferentes.
 
 \begin{figure}[H]
-    \includegraphics[width=\textwidth]{embspace}
-    \caption{Visualização 2D do espaço de embeddings.}
-    \label{fig:embspace}
-\end{figure}
-Vemos também grupos passagens de um mesmo livro, o que é esperado, mas também a presença de sub-agrupamentos de passagens dentro de um livro. Note, por exemplo, a presença de dois aglomerados de passagens do livro \textit{God, angels and saints} - um no canto inferior esquerdo, relacionado de maneira geral a religiões abraâmicas, e um na parte central-superior da imagem, perto das palavras \textit{Christ} e \textit{God}, o que pode indicar uma subdivisão temática mais específica ao cristianismo.
-
-
-Ao observar a distribuição dos tópicos pelos livros, na figura \ref{fig:livro-topico}, podemos observar a presença tanto de temas concentrados, como o primeiro, presente majoritariamente nos livros \textit{Grammar} e \textit{Rhetoric and dialectic} (contendo as disciplinas do \textit{Trivium}), o quarto, praticamente exclusivo ao livro \textit{Stones and metals}, com passagens sobre materiais, metais, e cores, quanto temas mais transversais, distribuídos em diferentes livros, como o terceiro, distribuído principalmente entre os livros \textit{The earth and its parts}, \textit{Languages, nations, reigns, the military, citizens, family relationships}, \textit{Buildings and fields} e \textit{The cosmos and its parts}, tratando de origens e características de diferentes povos, cidades e nações.
-\begin{figure}[h]
-    \includegraphics[width=\textwidth]{dist_livros}
-    \caption{Composição de livros por tópico.}
-    \label{fig:livro-topico}
+    \includegraphics[width=\textwidth]{embspace_sent}
+    \caption{Visualização 2D do espaço de embeddings - sentenças.}
+    \label{fig:embspace_sent}
 \end{figure}
 
+\subsection{Documentos por tópico}
+
+\input topics_sentences_1
+Este tópico se assemelha um pouco aos tópicos \ref{tema:topics_5} e \ref{tema:topics_6} encontrados na modelagem utilizando segmentação por seções, distribuindo-se primariamente nos livros \textit{Rural matters} e \textit{Stones and metals}, mas também englobando temas relacionados a mantimentos e ervas medicinais.
+
+\input topics_sentences_2
+
+\input topics_sentences_3
+
+\input topics_sentences_4
+
+\input topics_sentences_5
+Aqui temos passagens relacionadas a temas jurídicos. Como esperado, há uma concentração maior de passagens no livro \textit{Laws and times}, mas o tema está presente em vários outros livros.
+
+\input topics_sentences_6
+Aqui podemos observar temas relacionados à saúde e ao bem-estar, e uma boa concentração das passagens no livro \textit{Medicine}. Podemos notar a diferença no conteúdo semântico das passagens deste tópico e dos tópicos \ref{tema:topics_5} e \ref{tema:sentences_1}, que também contém passagens desse livro, porém com um foco em ervas medicinais.
+
+\begin{figure}[H]
+    \includegraphics[width=\textwidth]{dist_livros_sen}
+    \caption{Composição de livros por tópico - sentenças.}
+    \label{fig:livro-topico_sen}
+\end{figure}
+
+\section{Similaridade semântica}
+A seguir apresentamos os resultados do mini experimento de similaridade semântica, onde procuramos pelas sentenças mais próximas das sentenças de exemplo.
+
+\begin{table}[ht]
+    \centering
+    % \footnotesize
+    \setlength{\tabcolsep}{3pt}
+    \renewcommand{\arraystretch}{1.1}
+    
+    \caption{Resultados da busca por similaridade}
+    \label{tab:semantic_sim}
+    
+    \adjustbox{tabular=|p{5cm}|p{5cm}|p{5cm}|p{2.5cm}|, center}{
+        \hline
+        \textbf{Exemplo} & \textbf{Sentença} & \textbf{Localização} & \textbf{Similaridade de cosseno}\\
+        \hline
+        \multirow{3}{5cm}{\textbf{varrao\_en.1.48.2.S2}: \textit{The beard is called arista from the fact that it is the first part to dry (arescere).}} & \textit{The beard (arista) is so called because it is the first to dry up (arescere).} & Livro: Rural matters; capítulo: III; seção: 16; sentença: 0 & $0.97997$\\
+        \cline{2-4}
+        & \textit{The ancients named the beard (barba) that which pertains to men (vir) and not to women.} & Livro: The human being and portents; capítulo: I; seção: 45; sentença: 2 & $0.79411$\\
+        \cline{2-4}
+        & \textit{They are so called also for this reason, that from the cheeks the beard begins to grow (gignere, ppl.} & Livro: The human being and portents; capítulo: I; seção: 43; sentença: 1 & $0.71945$\\
+        \hline
+        \multirow{3}{5cm}{\textbf{varrao\_en.1.64.1.S0}: \textit{Amurca, which is a watery fluid, after it is pressed from the olives is stored along with the dregs in an earthenware vessel.}} & \textit{The amurca of olive oil is the watery part, so called from 'emerging' (emergere), that is, because it sinks (mergere) below the oil, and it is the oil's dregs.} & Livro: Rural matters; capítulo: VII; seção: 69; sentença: 0 & $0.86643$\\
+        \cline{2-4}
+        & \textit{But what is pressed from white olives is called 'Spanish oil,' and òµ???mtov in Greek.} & Livro: Rural matters; capítulo: VII; seção: 68; sentença: 1 & $0.74530$\\
+        \cline{2-4}
+        & \textit{Pickled olives (colymbas) are so called . . .} & ivro: Rural matters; capítulo: VII; seção: 67; sentença: 3 & $0.73650$\\
+        \hline
+    }
+\end{table}

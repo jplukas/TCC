@@ -1,0 +1,432 @@
+Topic: 0
+Representative words: tree, stone, color, grows, white, bronze, black, fruit, leaves, root.
+
+Book: 17 - Rural matters; (84.50%)
+Chapter II; section 7; sentence 0
+``7.A grain-field (seges) is [´´
+
+Chapter III; section 10; sentence 4
+``The second is distichon barley, because it has two rows; many call this Galaticum.´´
+
+Chapter IV; section 11; sentence 0
+``11. 'Bitter vetch' (ervum) derives its name from Greek, for they call it opoßoç, because while it is dangerous for some livestock it nevertheless makes bulls (cf. ßouç, "bull") plump.´´
+
+Chapter IX; section 106; sentence 2
+``We call a handful of hay a 'sheaf' (manipulum), and it is called manipulum because it "fills the hand" (manum implere).´´
+
+Chapter V; section 3; sentence 0
+``The labrusca is a wild vine that grows in marginal land, whence it is called labrusca, from the margins (labrum) and extremities of the land.´´
+
+--------------------------------------------------------------------------------------------------------------------
+Book: 16 - Stones and metals; (72.24%)
+Chapter I; section 10; sentence 2
+``The second kind, which people call 'lump sulfur' (i.e. fuller's earth), is used only by fullers.´´
+
+Chapter II; section 3; sentence 6
+``In some places it is so hard that people make walls and houses out of masses of salt, as in Arabia.´´
+
+Chapter III; section 9; sentence 0
+``Gypsum (gypsum) is related to limestone; it is a Greek term (i.e. yáyoç).´´
+
+Chapter IV; section 26; sentence 0
+``The stone melanites is so called because it exudes a sweet honeyed (melleus) fluid.´´
+
+Chapter IX; section 5; sentence 0
+``Amethystizontas is so named because the sparkle on its surface ranges towards the violet color of amethyst.´´
+
+--------------------------------------------------------------------------------------------------------------------
+Book: 20 - Provisions and various implements; (40.89%)
+Chapter II; section 23; sentence 0
+``Fried (frixus) is so termed from the sound food makes when it is seared in oil.´´
+
+Chapter III; section 10; sentence 1
+``Honey-wine (mulsum) is wine mixed with honey, for it is a drink made from water and honey, which the Greeks call µ?2(c)mpatov.´´
+
+Chapter IV; section 3; sentence 0
+``3. Ceramic dishes are said to have been first invented on the island of Samos, made from white clay and hardened by fire, hence 'Samian dishes.'´´
+
+Chapter V; section 4; sentence 2
+``An amystis (cf. ?´´
+
+Chapter VI; section 2; sentence 2
+``Later they passed into use for wine, but keeping the Greek term with which they had their origin.´´
+
+--------------------------------------------------------------------------------------------------------------------
+Book: 19 - Ships, buildings, and clothing; (23.99%)
+Chapter II; section 9; sentence 2
+``): The shining mast-heads (carchesium) of the tall mast glitter.´´
+
+Chapter IV; section 10; sentence 0
+``The sounding-lead (catapirates) is a line with a lead weight, with which the depth of the sea is tested.´´
+
+Chapter VI; section 7; sentence 4
+``Once extinguished it lasts so incorruptibly that the people who fix boundaries spread charcoals below the surface and place stones on top, so as to prove the boundary to a litigant however many generations later, and they recognize a stone fixed in this way to be a boundary.´´
+
+Chapter VII; section 1; sentence 0
+``The anvil (incus) is that tool on which iron is beaten out.´´
+
+Chapter X; section 12; sentence 4
+``Green silex is itself stubbornly resistant to fire, but there is nowhere where it is abundant, and it is found only as a stone and not as a rocky outcrop.´´
+
+--------------------------------------------------------------------------------------------------------------------
+Book: 4 - Medicine; (15.67%)
+Chapter IX; section 8; sentence 1
+``The remedy hiera is so called as if it were 'holy,' (cf. ¬?póç, "holy").´´
+
+Chapter VI; section 16; sentence 0
+``A carbuncle (carbunculus) is so called because at first it glows red, like fire, and then turns black, like an extinguished coal (carbo).´´
+
+Chapter VII; section 25; sentence 0
+``Paralysis (paralesis) is so called from damage to the body caused by excessive chilling, occurring either in the entire body, or in one part.´´
+
+Chapter VIII; section 3; sentence 1
+``Latin speakers call erysipelas (erisipela) 'sacred fire' - speaking in antiphrasis, as it should be cursed - inasmuch as the skin grows flame-red on its surface.´´
+
+Chapter X; section 3; sentence 0
+``A dinamidia describes the power of herbs, that is, their force and capability.´´
+
+--------------------------------------------------------------------------------------------------------------------
+********************************************************************************************************************
+
+Topic: 1
+Representative words: bird, birds, animal, venom, poison, owl, offspring, animals, fly, lions.
+
+Book: 12 - Animals; (69.86%)
+Chapter I; section 12; sentence 0
+``Although the Greeks name the lamb (agnus) from ?yvóç ("holy") as if it were sacred, Latin speakers think that it has this name because it recognizes (agnoscere) its mother before other animals, to the extent that even if it has strayed within a large herd, it immediately recognizes the voice of its parent by its bleat.´´
+
+Chapter II; section 1; sentence 1
+``They are called beasts (bestia) from the force (vis) with which they attack.´´
+
+Chapter III; section 9; sentence 1
+``It has great shrewdness, for it provides for the future and prepares during the summer what it consumes in the winter; during the harvest it selects the wheat and does not touch the barley.´´
+
+Chapter IV; section 4; sentence 1
+``The Greeks call it 6p?mYv, whence the term is borrowed into Latin so that we say draco.´´
+
+Chapter V; section 7; sentence 0
+``. Slugs (limax) are mud vermin, so named because they are generated either in mud (limus) or from mud; hence they are always regarded as filthy and unclean.´´
+
+--------------------------------------------------------------------------------------------------------------------
+Book: 11 - The human being and portents; (7.87%)
+Chapter I; section 39; sentence 2
+``They meet together to renew the power of the gaze with their frequent motion.´´
+
+Chapter II; section 25; sentence 0
+``The 'elder' (senior) is still fairly vigorous.´´
+
+Chapter III; section 26; sentence 0
+``In India there are said to be a race called Mampóßtot, who are twelve feet tall.´´
+
+--------------------------------------------------------------------------------------------------------------------
+Book: 20 - Provisions and various implements; (5.50%)
+Chapter II; section 23; sentence 3
+``Rancid (rancidus) is named after its defect, because it makes meat harsh (raucus).´´
+
+Chapter III; section 2; sentence 2
+``The ancients called wine venom (venenum), but after poison from a lethal sap was discovered they called the one thing wine, the other venom.´´
+
+Chapter XII; section 4; sentence 1
+``): Mothers in soft carriages (pilentum).´´
+
+Chapter XIV; section 8; sentence 0
+``A hoe (sarculus)- of these there are the single-bladed and the two-pronged.´´
+
+Chapter XV; section 4; sentence 0
+``The 'wolf' (lupus) or 'little dog' (canicula) is an iron grapple that takes such names because if anything falls in a well it snatches them and draws them out.´´
+
+--------------------------------------------------------------------------------------------------------------------
+Book: 8 - The Church and sects; (3.69%)
+Chapter IX; section 10; sentence 0
+``Hence also Lucan (Civil War 6.457): The mind, polluted by no poison of swallowed venom, yet perishes under a spell.´´
+
+Chapter V; section 69; sentence 4
+``Some walk barefoot, others do not eat with other people.´´
+
+Chapter XI; section 63; sentence 2
+``They furnish her with tame lions below to show that no kind of beast is so wild that it cannot be subjugated and ruled by her.´´
+
+--------------------------------------------------------------------------------------------------------------------
+Book: 18 - War and games; (2.42%)
+Chapter III; section 3; sentence 0
+``The standard of dragons originated in the killing of the serpent Python by Apollo.´´
+
+Chapter VII; section 4; sentence 1
+``Indeed, "Theyintercept (excipere) boars, lie in wait for lions, and penetrate bears, if only one's hand is steady" (cf.´´
+
+Chapter X; section 2; sentence 1
+``It is wound up with a thong of sinew and hurls either spears or stones with great force.´´
+
+Chapter XII; section 5; sentence 2
+``): A cetra covers their left arms.´´
+
+--------------------------------------------------------------------------------------------------------------------
+********************************************************************************************************************
+
+Topic: 2
+Representative words: garment, hair, wear, cloak, woven, cloth, linen, rings, tunic, silk.
+
+Book: 19 - Ships, buildings, and clothing; (33.75%)
+Chapter I; section 27; sentence 1
+``It is also known as the litoraria, and as the caudica, made from a single hollowed piece of wood (cf.´´
+
+Chapter V; section 3; sentence 1
+``It is also called the 'seine' (verriculum) because verrere means "drag."´´
+
+Chapter VII; section 1; sentence 4
+``tussus) on it, that is, stretched out.´´
+
+Chapter XVII; section 6; sentence 0
+``Now, 'silk' (sericum) is one thing, and 'Syrian' (Syricum) is another, for silk is a fiber that the Chinese (Seres; East Asians generally) export, while Syrian is a pigment that the Syrian Phoenicians gather at the shores of the Red Sea.´´
+
+Chapter XVIII; section 3; sentence 0
+``A string (linea) is named from its material, for it is made from flax (linum).´´
+
+--------------------------------------------------------------------------------------------------------------------
+Book: 11 - The human being and portents; (11.24%)
+Chapter I; section 26; sentence 0
+``The crown (vertex) is the place where the hairs of the head concentrate, and where the hair growth spirals (vertere, "turn") - whence it is named.´´
+
+--------------------------------------------------------------------------------------------------------------------
+Book: 20 - Provisions and various implements; (5.50%)
+Chapter III; section 14; sentence 1
+``It is called passum from 'suffering' (pati, ppl.´´
+
+Chapter IX; section 5; sentence 0
+``Bag (saccus) is so called from the word 'blanket' (sagum), because it is made by sewing one up, as if the word were sagus.´´
+
+Chapter V; section 5; sentence 1
+``An ampulla (ampulla) is as if the word were a 'large bubble' (ampla bulla), for it has the spherical shape of bubbles that are made from foaming water and thus are inflated by the wind.´´
+
+Chapter VII; section 1; sentence 1
+``A scortia is a vessel for oil, so called because it is made of leather (corium).´´
+
+Chapter XII; section 4; sentence 4
+``Unless they were chaste, matrons could not use these; nor, likewise, could they wear fillets.´´
+
+--------------------------------------------------------------------------------------------------------------------
+Book: 18 - War and games; (5.31%)
+Chapter LXIX; section 1; sentence 0
+``A ball (pila) is properly so called because it is stuffed with hair (pilus).´´
+
+Chapter XII; section 4; sentence 0
+``A peltum (i.e. pelta) is a very short buckler shaped like a half moon.´´
+
+Chapter XIII; section 2; sentence 0
+``2. 'Scale-armor' (squama) is an iron cuirass made from iron or bronze plates linked together in the manner of fish scales (squama), and named for their glittering likeness to fish scales.´´
+
+Chapter XIV; section 1; sentence 1
+``The cassis was named by the Etruscans, and I think they named that helmet cassis from the word 'head' (caput).´´
+
+--------------------------------------------------------------------------------------------------------------------
+Book: 5 - Laws and times; (2.41%)
+Chapter XXVII; section 7; sentence 0
+``. Foot-shackles (compes) are named because they 'restrain the feet' (continere + pes).´´
+
+--------------------------------------------------------------------------------------------------------------------
+********************************************************************************************************************
+
+Topic: 3
+Representative words: exile, ignarus, extra, comparative, comparison, learned, terror, doctus, outside, ignorant ignarus.
+
+Book: 10 - Vocabulary; (33.00%)
+Chapter A; section 8; sentence 3
+``Ambitious (ambitiosus), because one solicits (ambire) honors.´´
+
+Chapter B; section 31; sentence 0
+``Baburrus, "stupid, inept."´´
+
+Chapter C; section 61; sentence 1
+``Similarly a lunatic (lunaticus) because [´´
+
+Chapter D; section 77; sentence 3
+``Indolent (desidiosus), "sluggish, lazy," so called from 'settling down' (desidere), that is, from sitting too much.´´
+
+Chapter E; section 83; sentence 3
+``Destitute (expers), because 'without a share (pars),' for such a one lacks a share.´´
+
+--------------------------------------------------------------------------------------------------------------------
+Book: 1 - Grammar; (3.29%)
+Chapter I; section 1; sentence 2
+``A discipline is so named in another way, because 'the full thing is learned' (discitur plena).´´
+
+Chapter VI; section 2; sentence 2
+``The adverb is taken from the noun, as in 'a learned one, learnedly' (doctus, docte).´´
+
+Chapter VII; section 1; sentence 1
+``Indeed, unless you know its name (nomen), the knowledge of a thing perishes.´´
+
+Chapter XXVII; section 15; sentence 0
+``There is a question about how maxumus or maximus ("greatest"), and any similar pairs, ought to be written.´´
+
+Chapter XXVIII; section 2; sentence 0
+``If any one of these is lacking, it is no longer analogy, that is, similarity, but rather anomaly, that is, outside the rule, such as lepus ("hare") and lupus ("wolf").´´
+
+--------------------------------------------------------------------------------------------------------------------
+Book: 5 - Laws and times; (2.07%)
+Chapter XXVII; section 30; sentence 0
+``Proscription (proscriptio) is a condemnation of exile at a distance, as if it were a 'writing afar' (porro scriptio).´´
+
+--------------------------------------------------------------------------------------------------------------------
+Book: 2 - Rhetoric and dialectic; (1.84%)
+Chapter IX; section 15; sentence 1
+``is] an enemy."´´
+
+Chapter V; section 7; sentence 1
+``Comparison (comparatio) occurs when some deed of another person is argued to be proper and useful, because as that deed happened, so this deed at issue is said to have been committed.´´
+
+Chapter XXI; section 9; sentence 1
+``Rutilius Lupus, Schemata Lexeos 1.4): "While you call yourself wise instead of cunning, brave instead of reckless, thrifty instead of stingy."´´
+
+Chapter XXIV; section 6; sentence 2
+``Temperance (temperantia), how passion and the desire for things may be reined in.´´
+
+--------------------------------------------------------------------------------------------------------------------
+Book: 8 - The Church and sects; (0.79%)
+Chapter V; section 6; sentence 0
+``The Gnostics (Gnosticus) wish to call themselves thus because of the superiority of their knowledge (cf. yv?otç, "knowledge").´´
+
+Chapter XI; section 88; sentence 0
+``They name Genius (Genius) thus because he possesses the force, as it were, of generating (gignere, ppl.´´
+
+--------------------------------------------------------------------------------------------------------------------
+********************************************************************************************************************
+
+Topic: 4
+Representative words: law, laws, punishment, consuls, judge, justice, judicial, ius, charge, unjust.
+
+Book: 5 - Laws and times; (25.17%)
+Chapter I; section 3; sentence 0
+``Numa Pompilius, who succeeded Romulus to the throne, first established laws for the Romans.´´
+
+Chapter II; section 1; sentence 0
+``All laws are either divine or human.´´
+
+Chapter III; section 1; sentence 0
+``Jurisprudence is a general term, and a law is an aspect of jurisprudence.´´
+
+Chapter IV; section 2; sentence 1
+``Now this, or whatever is similar to it, is never unjust, but is held to be natural and fair.´´
+
+Chapter IX; section 1; sentence 2
+``It concerns such things as legal inheritances, cretio (i.e. formal acceptance of an inheritance), guardianship, usucapio (i.e. acquisition of ownership by use): these laws are found among no other group of people, but are particular to the Romans and established for them alone.´´
+
+--------------------------------------------------------------------------------------------------------------------
+Book: 9 - Languages, nations, reigns, the military, citizens, family relationships; (12.76%)
+Chapter I; section 7; sentence 2
+``Then Mixed, which emerged in the Roman state after the wide expansion of the Empire, along with new customs and peoples, corrupted the integrity of speech with solecisms and barbarisms.´´
+
+Chapter III; section 6; sentence 1
+``Because the Romans would not put up with the haughty domination of kings, they made a pair of consuls serve as the governing power year by year - for the arrogance of kings was not like the benevolence of a consul, but the haughtiness of a master.´´
+
+Chapter IV; section 24; sentence 0
+``Curiales are the same as decurions, and they are called curiales because they 'have charge of ' (procurare) and carry out civic duties.´´
+
+--------------------------------------------------------------------------------------------------------------------
+Book: 2 - Rhetoric and dialectic; (9.47%)
+Chapter IV; section 2; sentence 0
+``. Judicial, in which a decision for punishment or reward is rendered according to the deed of that person.´´
+
+Chapter V; section 2; sentence 2
+``Under purpose, judicial (iudicialis) and 'related to affairs' (negotialis).´´
+
+Chapter VIII; section 2; sentence 0
+``The doubtful, in which either the judgment is doubtful, or a case is of partly decent and partly wicked matters, so that it arouses both benevolence and offense.´´
+
+Chapter X; section 6; sentence 0
+``A law will be decent, just, enforceable, natural, in keeping with the custom of the country, appropriate to the place and time, needful, useful, and also clear - so that it does not hold anything that can deceive through obscurity - and for no private benefit, but for the common profit (communis utilitas) of the citizens.´´
+
+Chapter XII; section 3; sentence 3
+``In words, when someone is said to have used words that are ugly and not appropriate to someone's authority, as if someone were to defame Cato the Censor himself as having incited young people to wickedness and lechery.´´
+
+--------------------------------------------------------------------------------------------------------------------
+Book: 18 - War and games; (7.25%)
+Chapter XV; section 5; sentence 0
+``A lawsuit consists either of argumentation or of evidence.´´
+
+--------------------------------------------------------------------------------------------------------------------
+Book: 10 - Vocabulary; (6.40%)
+Chapter A; section 7; sentence 1
+``Fair (aequus), meaning "naturally just," from 'equity' (aequitas), that is, after the idea of what is equal (aequus) - whence likewise 'equity' is so called after a certain equalness (aequalitate).´´
+
+Chapter C; section 61; sentence 3
+``Confounded (confusus), so called from one's confession (confessio) of a wicked deed; hence also 'confounding' (confusio).´´
+
+Chapter D; section 80; sentence 0
+``Condemned (damnatus) and condemnable (damnabilis): of these the former has already been sentenced, the latter can be sentenced.´´
+
+Chapter F; section 107; sentence 0
+``Criminal (facinorosus), so called from the commission of a particular deed, for he does (facere) what harms (nocere) another.´´
+
+Chapter I; section 149; sentence 1
+``Infitiator, "one who denies," because he does not confess (fateri) but strives against the truth witha lie.´´
+
+--------------------------------------------------------------------------------------------------------------------
+********************************************************************************************************************
+
+Topic: 5
+Representative words: disease, bile, intestines, accompanied, blood, lungs, pain, illness, fever, phlegm.
+
+Book: 4 - Medicine; (49.31%)
+Chapter IX; section 11; sentence 3
+``Enema (enema) in Greek is called 'loosening' (relaxatio) in Latin.´´
+
+Chapter V; section 1; sentence 0
+``Health is integrity of the body and a balance of its nature with respect to its heat and moisture, which is its blood - hence health (sanitas) is so called, as if it were the condition of the blood (sanguis).´´
+
+Chapter VI; section 1; sentence 0
+``An ò(?±a is an acute illness that either passes quickly or kills rather quickly, such as pleurisis, or phrenesis, for in Greek ò(áç means acute and swift.´´
+
+Chapter VII; section 1; sentence 0
+``Chronic disease (chronia) is an extended illness that lasts for a long time, like gout or consumption, for ypóvoç in Greek means "time."´´
+
+Chapter VIII; section 2; sentence 0
+``2. Parotids (parotida) are areas of hardness or accretions that emerge in the vicinity of the ears, caused by fever or something else, whence they are called papYt(c)6?ç, for Yta is the Greek word for ears.´´
+
+--------------------------------------------------------------------------------------------------------------------
+Book: 11 - The human being and portents; (17.60%)
+Chapter I; section 57; sentence 0
+``In the Gallic language toles (cf. classical Latin toles, "goiter") - what in the diminutive are commonly called tonsils (tusilla, i.e. tonsilla) - is the name for the part in the throat that often swells up (turgescere).´´
+
+Chapter II; section 30; sentence 3
+``Indeed, there are two things whereby the forces of the body are diminished, old age and disease.´´
+
+--------------------------------------------------------------------------------------------------------------------
+Book: 20 - Provisions and various implements; (8.93%)
+Chapter I; section 3; sentence 5
+``Eating and drinking, as (cf.´´
+
+Chapter II; section 2; sentence 1
+``Youths take nourishment in order to grow, the elderly to endure, for the flesh cannot subsist unless it is strengthened with nourishment.´´
+
+Chapter IV; section 13; sentence 0
+``Spoons (coclear) are so called because they were first used for snails (coclea).´´
+
+Chapter VIII; section 1; sentence 0
+``Any vessel intended for cooking (coquere) is called coculum.´´
+
+--------------------------------------------------------------------------------------------------------------------
+Book: 6 - Books and ecclesiastical offices; (3.04%)
+Chapter XIX; section 65; sentence 0
+``Fasting (ieiunium) is parsimony of sustenance and abstinence from food, and its name is given to it from a certain portion of the intestines, always thin and empty, which is commonly called the jejunum (ieiunum).´´
+
+--------------------------------------------------------------------------------------------------------------------
+Book: 10 - Vocabulary; (1.31%)
+Chapter C; section 61; sentence 0
+``Epileptic (caducus, "falling sickness"), so called from falling down (cadere).´´
+
+Chapter D; section 70; sentence 0
+``70. 'Thickly smeared' (delibutus), anointed with oil as is the custom for athletes or youths in the wrestling arena.´´
+
+Chapter F; section 99; sentence 1
+``and] blood arouses beauty.´´
+
+Chapter L; section 161; sentence 0
+``Panic-stricken (lymphaticus), because one fears water (cf. lympha, "water"), one whom the Greeks call ú6po??óßoç ("hydrophobic").´´
+
+Chapter M; section 176; sentence 1
+``Evil (malus) is named after black bile; the Greeks call black µs2aç.´´
+
+--------------------------------------------------------------------------------------------------------------------
+********************************************************************************************************************
+
